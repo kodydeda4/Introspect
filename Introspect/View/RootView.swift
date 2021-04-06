@@ -21,12 +21,12 @@ struct RootView: View {
                         .padding()
                     
                     Spacer()
-                    ForEach(viewStore.currentQuestion.options, id: \.self) { option in
-                        Button(option.lowercased()) {
-                            viewStore.send(.optionSelected(option))
+                    ForEach(viewStore.currentQuestion.responses, id: \.self) { response in
+                        Button(response.lowercased()) {
+                            viewStore.send(.optionSelected(response))
                         }
                         .buttonStyle(RoundedRectangleButtonStyle(
-                                        style: viewStore.currentQuestion.answered == option ? .confirm : .dismiss))
+                                        style: viewStore.currentQuestion.selectedResponse == response ? .confirm : .dismiss))
                     }
                     .padding(.horizontal)
                     Spacer()

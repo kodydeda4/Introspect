@@ -9,15 +9,15 @@ import Foundation
 
 struct Question: Equatable {
     var content: String
-    var answered: String?
-    var options: [String]
+    var selectedResponse: String?
+    var responses: [String]
 }
 
 extension Question {
     static var allCases: [Question] = [
         Question(
             content: "What's your favorite color?",
-            options: [
+            responses: [
                 "Red",
                 "Blue",
                 "greeN"
@@ -25,7 +25,7 @@ extension Question {
         ),
         Question(
             content: "What's your favorite shape?",
-            options: [
+            responses: [
                 "Square",
                 "Circle",
                 "triangle",

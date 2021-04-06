@@ -32,16 +32,16 @@ extension Root {
             switch action {
             
             case let .optionSelected(option):
-                if option != state.currentQuestion.answered {
-                    state.currentQuestion.answered = option
-                    state.questions[state.questionNumber].answered = option
+                if option != state.currentQuestion.selectedResponse {
+                    state.currentQuestion.selectedResponse = option
+                    state.questions[state.questionNumber].selectedResponse = option
                     return Effect(value: .nextQuestionButtonTapped)
                         .delay(for: 0.5, scheduler: DispatchQueue.main)
                         .eraseToEffect()
                     
                 } else {
-                    state.currentQuestion.answered = nil
-                    state.questions[state.questionNumber].answered = nil
+                    state.currentQuestion.selectedResponse = nil
+                    state.questions[state.questionNumber].selectedResponse = nil
                     return .none
                 }
                 

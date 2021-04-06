@@ -56,22 +56,50 @@ struct TestFinishedView: View {
 struct TestView: View {
     let store: Store<Root.State, Root.Action>
     
+    @State var completedQuestions = 0
+    
     var body: some View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 VStack(alignment: .leading) {
+                    
+                    //Progressbar
+                    VStack(alignment: .trailing) {
+                        Text("\(viewStore.questionNumber+1)/\(viewStore.questions.count) Complete")
+                            .bold()
+                        
+                        HStack(spacing: 0) {
+                            ForEach(viewStore.questions) {
+                                if $0.selectedResponse == nil {
+                                    Rectangle()
+                                        .foregroundColor(Color(.secondarySystemBackground))
+                                } else {
+                                    Rectangle()
+                                        .foregroundColor(.accentColor)
+                                }
+                            }
+                        }
+                        .frame(height: 10)
+                        .background(Color(.secondarySystemBackground))
+                        .clipShape(Capsule())
+                    }
+                    
                     Text(viewStore.currentQuestion.content)
                         .font(.title)
                         .bold()
                         .padding()
-                    
-                    Spacer()
+                                        
                     ForEach(viewStore.currentQuestion.responses, id: \.self) { response in
                         Button(response.lowercased()) {
                             viewStore.send(.optionSelected(response))
                         }
-                        .buttonStyle(RoundedRectangleButtonStyle(
-                                        style: viewStore.currentQuestion.selectedResponse == response ? .confirm : .dismiss))
+                        .buttonStyle(
+                            RoundedRectangleButtonStyle(
+                                style: viewStore.currentQuestion.selectedResponse == response
+                                    ? .confirm
+                                    : .dismiss
+                            )
+                        )
                     }
                     .padding(.horizontal)
                     Spacer()
@@ -89,7 +117,8 @@ struct TestView: View {
                     }
                 }
                 .padding()
-                .navigationBarTitle("Question \(viewStore.questionNumber+1)/\(viewStore.questions.count)")
+                .navigationBarHidden(true)
+                //.navigationBarTitle("Question \(viewStore.questionNumber+1)/\(viewStore.questions.count)")
             }
         }
     }

@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct Question: Equatable {
+struct Question: Equatable, Identifiable, CaseIterable {
+    var id: String { content }
+    
     var content: String
     var selectedResponse: String?
     var responses: [String]

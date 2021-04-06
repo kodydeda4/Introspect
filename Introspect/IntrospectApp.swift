@@ -11,7 +11,8 @@ import SwiftUI
 struct IntrospectApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView(store: Root.defaultStore)
+            //ExampleView(store: Example.defaultStore)
         }
     }
 }

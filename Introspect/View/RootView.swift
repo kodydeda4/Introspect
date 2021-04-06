@@ -108,7 +108,8 @@ struct TestView: View {
                             viewStore.send(.previousQuestionButtonTapped)
                         }
                         .buttonStyle(RoundedRectangleButtonStyle(style: .dismiss))
-                        
+                        .disabled(viewStore.questionNumber == 0)
+
                         Button("Next") {
                             viewStore.send(.nextQuestionButtonTapped)
                             

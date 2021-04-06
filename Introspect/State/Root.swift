@@ -10,11 +10,13 @@ import ComposableArchitecture
 
 struct Root {
     struct State: Equatable {
-        // state
+        var questionNumber = 0
+        var questions: [Question] = Question.allCases
     }
     
     enum Action: Equatable {
-        // action
+        case previousQuestionButtonTapped
+        case nextQuestionButtonTapped
     }
     
     struct Environment {
@@ -27,6 +29,17 @@ extension Root {
         Reducer { state, action, environment in
             switch action {
             
+            case .previousQuestionButtonTapped:
+                if state.questionNumber > 0 {
+                    state.questionNumber -= 1
+                }
+                return .none
+                
+            case .nextQuestionButtonTapped:
+                if state.questionNumber < state.questions.count - 1 {
+                    state.questionNumber += 1
+                }
+                return .none
             }
         }
     )

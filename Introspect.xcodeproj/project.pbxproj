@@ -14,6 +14,8 @@
 		33008242261CECEE00A9427C /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33008241261CECEE00A9427C /* Example.swift */; };
 		33008245261CECFB00A9427C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33008244261CECFB00A9427C /* RootView.swift */; };
 		33008249261CF2D300A9427C /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33008248261CF2D300A9427C /* Root.swift */; };
+		3300824E261CF52200A9427C /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3300824D261CF52200A9427C /* Question.swift */; };
+		33008255261CFF3800A9427C /* ButtonStyle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33008254261CFF3800A9427C /* ButtonStyle+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		33008241261CECEE00A9427C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		33008244261CECFB00A9427C /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		33008248261CF2D300A9427C /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
+		3300824D261CF52200A9427C /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		33008254261CFF3800A9427C /* ButtonStyle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ButtonStyle+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,7 @@
 		3300823E261CECC500A9427C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3300824D261CF52200A9427C /* Question.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -105,6 +110,7 @@
 		33008240261CECD400A9427C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				33008254261CFF3800A9427C /* ButtonStyle+Extensions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -184,6 +190,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3300824E261CF52200A9427C /* Question.swift in Sources */,
+				33008255261CFF3800A9427C /* ButtonStyle+Extensions.swift in Sources */,
 				33008245261CECFB00A9427C /* RootView.swift in Sources */,
 				3300822A261CEC7800A9427C /* IntrospectApp.swift in Sources */,
 				33008242261CECEE00A9427C /* Example.swift in Sources */,

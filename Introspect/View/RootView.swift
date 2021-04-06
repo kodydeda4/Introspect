@@ -13,10 +13,35 @@ struct RootView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            Text("Hello World")
+            NavigationView {
+                VStack {
+                    Text(viewStore.questions[viewStore.questionNumber].content)
+                        .font(.title)
+                        .bold()
+                        .padding()
+                    
+                    HStack {
+                        Button("Back", action: {
+                            viewStore.send(.previousQuestionButtonTapped)
+                        })
+                        .buttonStyle(RoundedRectangleButtonStyle(style: .dismiss))
+
+                        Button("Next", action: {
+                            viewStore.send(.nextQuestionButtonTapped)
+                        })
+                        .buttonStyle(RoundedRectangleButtonStyle(style: .confirm))
+                    }
+                }
+                .padding()
+                .navigationBarTitle("Question \(viewStore.questionNumber+1)/\(viewStore.questions.count)")
+            }
         }
     }
 }
+
+
+
+
 
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {

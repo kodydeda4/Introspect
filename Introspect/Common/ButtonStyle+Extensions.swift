@@ -33,13 +33,11 @@ struct RoundedRectangleButtonStyle: ButtonStyle {
     var style: Style
     
     func makeBody(configuration: Configuration) -> some View {
-    Button(action: {}, label: {
         RoundedRectangle(cornerRadius: 10)
             .frame(height: 50)
             .foregroundColor(style.bgColor)
             .overlay(configuration.label.foregroundColor(style.fgColor))
             .scaleEffect(configuration.isPressed ? 0.95 : 1)
-    })
   }
 }
 

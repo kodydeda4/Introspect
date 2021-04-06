@@ -15,21 +15,17 @@ struct RootView: View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 VStack {
-                    Text(viewStore.questions[viewStore.questionNumber].content)
+                    Text(viewStore.currentQuestion.content)
                         .font(.title)
                         .bold()
                         .padding()
                     
                     HStack {
-                        Button("Back", action: {
-                            viewStore.send(.previousQuestionButtonTapped)
-                        })
-                        .buttonStyle(RoundedRectangleButtonStyle(style: .dismiss))
-
-                        Button("Next", action: {
-                            viewStore.send(.nextQuestionButtonTapped)
-                        })
-                        .buttonStyle(RoundedRectangleButtonStyle(style: .confirm))
+                        Button("Back") { viewStore.send(.previousQuestionButtonTapped) }
+                            .buttonStyle(RoundedRectangleButtonStyle(style: .dismiss))
+                        
+                        Button("Next") { viewStore.send(.nextQuestionButtonTapped) }
+                            .buttonStyle(RoundedRectangleButtonStyle(style: .confirm))
                     }
                 }
                 .padding()

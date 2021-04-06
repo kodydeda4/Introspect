@@ -12,6 +12,7 @@ struct Root {
     struct State: Equatable {
         var questionNumber = 0
         var questions: [Question] = Question.allCases
+        var currentQuestion: Question { questions[questionNumber] }
     }
     
     enum Action: Equatable {
@@ -36,12 +37,14 @@ extension Root {
                 return .none
                 
             case .nextQuestionButtonTapped:
-                if state.questionNumber < state.questions.count - 1 {
+                if state.questionNumber + 1 < state.questions.count {
                     state.questionNumber += 1
                 }
                 return .none
             }
+            
         }
+        .debug()
     )
 }
 

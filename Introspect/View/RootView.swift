@@ -20,12 +20,27 @@ struct RootView: View {
                         .bold()
                         .padding()
                     
+                    Spacer()
+                    ForEach(viewStore.currentQuestion.options, id: \.self) { option in
+                        Button(option.lowercased()) {
+                            viewStore.send(.optionSelected(option))
+                        }
+                        .buttonStyle(RoundedRectangleButtonStyle(
+                                        style: viewStore.currentQuestion.answered == option ? .confirm : .dismiss))
+                    }
+                    .padding(.horizontal)
+                    Spacer()
                     HStack {
-                        Button("Back") { viewStore.send(.previousQuestionButtonTapped) }
-                            .buttonStyle(RoundedRectangleButtonStyle(style: .dismiss))
+                        Button("Back") {
+                            viewStore.send(.previousQuestionButtonTapped)
+                        }
+                        .buttonStyle(RoundedRectangleButtonStyle(style: .dismiss))
                         
-                        Button("Next") { viewStore.send(.nextQuestionButtonTapped) }
-                            .buttonStyle(RoundedRectangleButtonStyle(style: .confirm))
+                        Button("Next") {
+                            viewStore.send(.nextQuestionButtonTapped)
+                            
+                        }
+                        .buttonStyle(RoundedRectangleButtonStyle(style: .confirm))
                     }
                 }
                 .padding()
@@ -34,9 +49,6 @@ struct RootView: View {
         }
     }
 }
-
-
-
 
 
 struct RootView_Previews: PreviewProvider {

@@ -13,12 +13,14 @@ struct Root {
         var questionNumber = 0
         var questions: [Question] = Question.allCases
         var currentQuestion: Question = Question.allCases.first!
+        var testFinished = false
     }
     
     enum Action: Equatable {
         case optionSelected(String)
         case previousQuestionButtonTapped
         case nextQuestionButtonTapped
+        case toggleTestFinished
     }
     
     struct Environment {
@@ -57,10 +59,19 @@ extension Root {
                 if state.questionNumber + 1 < state.questions.count {
                     state.questionNumber += 1
                     state.currentQuestion = state.questions[state.questionNumber]
-                }
-                return .none
+                    return .none
+                } else {
+                    if state.questions.filter({ $0.selectedResponse == nil }).isEmpty {
+                        return Effect(value: .toggleTestFinished)
+                    } else {
+                        return .none
+                    }
             }
             
+            case .toggleTestFinished:
+                state.testFinished.toggle()
+                return .none
+            }
         }
         .debug()
     )

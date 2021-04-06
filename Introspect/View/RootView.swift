@@ -13,8 +13,53 @@ struct RootView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
+            if viewStore.testFinished {
+                TestFinishedView(store: store)
+            } else {
+                TestView(store: store)
+            }
+        }
+    }
+}
+
+struct TestFinishedView: View {
+    let store: Store<Root.State, Root.Action>
+    
+    var body: some View {
+        WithViewStore(store) { viewStore in
             NavigationView {
                 VStack {
+                    Text("Done!")
+                        .font(.title)
+                        .bold()
+                        .padding()
+                    
+                    HStack {
+                        Button("Go Back") {
+                            viewStore.send(.toggleTestFinished)
+                        }
+                        .buttonStyle(RoundedRectangleButtonStyle(style: .dismiss))
+                        
+                        Button("Submit") {
+                            viewStore.send(.previousQuestionButtonTapped)
+                        }
+                        .buttonStyle(RoundedRectangleButtonStyle(style: .confirm))
+                    }
+                }
+                .padding()
+            }
+        }
+    }
+}
+
+
+struct TestView: View {
+    let store: Store<Root.State, Root.Action>
+    
+    var body: some View {
+        WithViewStore(store) { viewStore in
+            NavigationView {
+                VStack(alignment: .leading) {
                     Text(viewStore.currentQuestion.content)
                         .font(.title)
                         .bold()
@@ -49,6 +94,14 @@ struct RootView: View {
         }
     }
 }
+
+struct TestView_Previews: PreviewProvider {
+    static var previews: some View {
+        TestView(store: Root.defaultStore)
+    }
+}
+
+
 
 
 struct RootView_Previews: PreviewProvider {

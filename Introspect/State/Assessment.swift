@@ -28,7 +28,7 @@ struct Assessment {
     
     enum Action: Equatable {
         case startButtonTapped
-//        case questionIndexButtonTapped(Int)
+        case questionIndexButtonTapped(Int)
         case responseButtonTapped(String)
         case backButtonTapped
         case nextButtonTapped
@@ -56,11 +56,16 @@ extension Assessment {
                 case true:
                     state.currentQuestion.response = nil
                     state.questions[state.index] = state.currentQuestion
+                    return .none
+                    
                 case false:
                     state.currentQuestion.response = response
                     state.questions[state.index] = state.currentQuestion
+                    return Effect(value: .nextButtonTapped)
+                        .delay(for: 1.0, scheduler: DispatchQueue.main)
+                        .eraseToEffect()
                 }
-                return .none
+
                 
             case .backButtonTapped:
                 switch state.progress {
@@ -89,6 +94,7 @@ extension Assessment {
                 return .none
                                 
             case .nextButtonTapped:
+                
                 switch state.progress {
                 
                 case .notYetStarted:
@@ -138,14 +144,27 @@ extension Assessment {
                 state.showingSheetView = true
                 return .none
                 
-//            case let .questionIndexButtonTapped(int):
-//                state.questions[state.questionIndex].response = state.currentQuestion.response
-//                state.questionIndex = int
-//                state.currentQuestion = state.questions[state.questionIndex]
-//
-//                state.showingSheetView = false
-//
-//                return Effect(value: .updateTestStatus)
+            case let .questionIndexButtonTapped(int):
+                state.questions[state.index].response = state.currentQuestion.response
+                state.index = int
+                state.currentQuestion = state.questions[state.index]
+
+                state.showingSheetView = false
+
+                if state.index == 0 {
+                    state.progress = .firstQuestion
+                    
+                } else if state.index < state.questions.count - 1 {
+                    state.progress = .active
+                    
+                } else if state.progress != .lastQuestion && state.index == state.questions.count - 1 {
+                    state.progress = .lastQuestion
+
+                } else if state.progress == .lastQuestion && state.questions.filter({ $0.response == nil }).count == 0 {
+                    state.progress = .finished
+                    
+                }
+                return .none
                 
             }
         }

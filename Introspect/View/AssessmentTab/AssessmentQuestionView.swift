@@ -9,8 +9,6 @@ import SwiftUI
 import ComposableArchitecture
 
 struct AssessmentQuestionView: View {
-    @Environment(\.presentationMode) var presentationMode
-
     let store: Store<Assessment.State, Assessment.Action>
         
     var body: some View {
@@ -18,8 +16,10 @@ struct AssessmentQuestionView: View {
             NavigationView {
                 VStack(alignment: .leading) {
                     VStack(alignment: .trailing) {
-                        Text("\(viewStore.questionNumber+1)/\(viewStore.questions.count) Complete")
+                        Button(action: { viewStore.send(.enableSheet) }) {
+                            Text("\(viewStore.questionNumber+1)/\(viewStore.questions.count) Complete")
                             .bold()
+                        }
                         HStack(spacing: 0) {
                             ForEach(viewStore.questions) {
                                 if $0.selectedResponse == nil {
@@ -77,14 +77,9 @@ struct AssessmentQuestionView: View {
                 }
                 .padding()
                 .navigationBarHidden(true)
-                .gesture(
-                    DragGesture()
-                        .onEnded {
-                            if $0.translation.width > 100 {
-                                self.presentationMode.wrappedValue.dismiss()
-                            }
-                        }
-                )
+                .sheet(isPresented: viewStore.binding(get: \.sheet, send: .disableSheet)) {
+                    AssessmentSheetView(store: store)
+                }
 
             }
         }

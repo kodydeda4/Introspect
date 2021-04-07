@@ -23,6 +23,7 @@
 		33742F29261D2E11002B769C /* AssessmentFinishedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F28261D2E11002B769C /* AssessmentFinishedView.swift */; };
 		33742F2E261D2E6C002B769C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F2D261D2E6C002B769C /* AboutView.swift */; };
 		33742F31261D2E96002B769C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F30261D2E96002B769C /* ProfileView.swift */; };
+		33F5FA16261D357F00DC1986 /* AssessmentSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F5FA15261D357F00DC1986 /* AssessmentSheetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		33742F28261D2E11002B769C /* AssessmentFinishedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentFinishedView.swift; sourceTree = "<group>"; };
 		33742F2D261D2E6C002B769C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		33742F30261D2E96002B769C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		33F5FA15261D357F00DC1986 /* AssessmentSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentSheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				33008244261CECFB00A9427C /* AssessmentView.swift */,
+				33F5FA15261D357F00DC1986 /* AssessmentSheetView.swift */,
 				335AEFF1261D31310048ED51 /* AssessmentStartView.swift */,
 				33742F25261D2DE9002B769C /* AssessmentQuestionView.swift */,
 				33742F28261D2E11002B769C /* AssessmentFinishedView.swift */,
@@ -243,6 +246,7 @@
 				33742F1E261D2B71002B769C /* Root.swift in Sources */,
 				33008245261CECFB00A9427C /* AssessmentView.swift in Sources */,
 				3300822A261CEC7800A9427C /* IntrospectApp.swift in Sources */,
+				33F5FA16261D357F00DC1986 /* AssessmentSheetView.swift in Sources */,
 				33008242261CECEE00A9427C /* Example.swift in Sources */,
 				33008249261CF2D300A9427C /* Assessment.swift in Sources */,
 				33742F29261D2E11002B769C /* AssessmentFinishedView.swift in Sources */,

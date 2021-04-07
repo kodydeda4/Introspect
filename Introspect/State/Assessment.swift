@@ -15,15 +15,19 @@ struct Assessment {
         var currentQuestion: Question = Question.allCases.first!
         var testFinished = false
         var testStarted = false
+        var sheet = false
     }
     
     enum Action: Equatable {
         case optionSelected(String)
+        case updateCurrentQuestion(Int)
         case previousQuestionButtonTapped
         case nextQuestionButtonTapped
         case toggleTestFinished
         case submitTestButtonTapped
         case startTestButtonTapped
+        case disableSheet
+        case enableSheet
     }
     
     struct Environment {
@@ -81,6 +85,19 @@ extension Assessment {
                 
             case .submitTestButtonTapped:
                 return .none
+                
+            case .disableSheet:
+                state.sheet = false
+                return .none
+                
+            case .enableSheet:
+                state.sheet = true
+                return .none
+                
+            case let .updateCurrentQuestion(int):
+                state.questionNumber = int
+                state.currentQuestion = state.questions[state.questionNumber]
+                return Effect(value: .disableSheet)
             }
         }
         .debug()

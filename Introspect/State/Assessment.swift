@@ -40,7 +40,6 @@ struct Assessment {
         case backButtonTapped
         case nextButtonTapped
         
-//        case toggleTestFinished
         case submitButtonTapped
         
         case hideSheetView
@@ -58,23 +57,37 @@ extension Assessment {
             switch action {
             
             case let .responseSelected(option):
-                if option != state.currentQuestion.selectedResponse {
+                if state.currentQuestion.selectedResponse == option {
+                    state.currentQuestion.selectedResponse = nil
+                    state.questions[state.questionIndex].selectedResponse = state.currentQuestion.selectedResponse
+                    return .none
+                } else {
                     state.currentQuestion.selectedResponse = option
-                    state.questions[state.questionIndex].selectedResponse = option
+                    state.questions[state.questionIndex].selectedResponse = state.currentQuestion.selectedResponse
+                    
                     return Effect(value: .nextButtonTapped)
                         .delay(for: 0.5, scheduler: DispatchQueue.main)
                         .eraseToEffect()
-                    
-                } else {
-                    state.currentQuestion.selectedResponse = nil
-                    state.questions[state.questionIndex].selectedResponse = nil
-                    return .none
                 }
                 
             case .backButtonTapped:
-                if state.questionIndex > 0 {
+                switch state.testStatus {
+                case .active:
                     state.questionIndex -= 1
                     state.currentQuestion = state.questions[state.questionIndex]
+                
+                case .lastQuestion:
+                    state.questionIndex -= 1
+                    state.currentQuestion = state.questions[state.questionIndex]
+                    state.testStatus = .active
+                    
+                case .finished:
+                    state.currentQuestion.selectedResponse = nil
+                    state.questions[state.questionIndex].selectedResponse = state.currentQuestion.selectedResponse
+                    state.testStatus = .lastQuestion
+                    
+                default:
+                    print("back button tapped")
                 }
                 return .none
                 
@@ -83,9 +96,14 @@ extension Assessment {
                 switch state.testStatus {
                 
                 case .lastQuestion:
-                    state.testStatus = .finished
+                    if state.questionIndex == state.questions.count - 1
+                        && state.questions.filter({ $0.selectedResponse == nil }).count == 0
+                    {
+                        state.testStatus = .finished
+                    }
                     
                 default:
+                    state.questions[state.questionIndex] = state.currentQuestion
                     state.questionIndex += 1
                     state.currentQuestion = state.questions[state.questionIndex]
 
@@ -114,6 +132,14 @@ extension Assessment {
             case let .updateCurrentQuestion(int):
                 state.questionIndex = int
                 state.currentQuestion = state.questions[state.questionIndex]
+                
+                if state.questionIndex == 0 {
+                    state.testStatus = .firstQuestion
+                } else if state.questionIndex == state.questions.count - 1 {
+                    state.testStatus = .lastQuestion
+                } else {
+                    state.testStatus = .active
+                }
                 return Effect(value: .hideSheetView)
             }
         }

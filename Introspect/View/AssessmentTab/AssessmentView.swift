@@ -13,19 +13,12 @@ struct AssessmentView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-//            switch viewStore.testStatus {
-//            case .notYetStarted:
-//                AssessmentStartView(store: store)
-//            case .active:
-//                AssessmentQuestionView(store: store)
-//            case .finished:
-//                AssessmentFinishedView(store: store)
-//            }
-            if viewStore.testStatus == .notYetStarted {
+            switch viewStore.testStatus {
+            case .notYetStarted:
                 AssessmentStartView(store: store)
-            } else if viewStore.testStatus == .finished {
+            case .finished:
                 AssessmentFinishedView(store: store)
-            } else {
+            default:
                 AssessmentQuestionView(store: store)
             }
         }

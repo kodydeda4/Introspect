@@ -9,18 +9,17 @@ import SwiftUI
 import ComposableArchitecture
 
 struct AssessmentQuestionView: View {
+    @Environment(\.presentationMode) var presentationMode
+
     let store: Store<Assessment.State, Assessment.Action>
         
     var body: some View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 VStack(alignment: .leading) {
-                    
-                    //Progressbar
                     VStack(alignment: .trailing) {
                         Text("\(viewStore.questionNumber+1)/\(viewStore.questions.count) Complete")
                             .bold()
-                        
                         HStack(spacing: 0) {
                             ForEach(viewStore.questions) {
                                 if $0.selectedResponse == nil {
@@ -36,7 +35,6 @@ struct AssessmentQuestionView: View {
                         .background(Color(.secondarySystemBackground))
                         .clipShape(Capsule())
                     }
-                    
                     Text(viewStore.currentQuestion.content)
                         .font(.title)
                         .bold()
@@ -72,7 +70,15 @@ struct AssessmentQuestionView: View {
                 }
                 .padding()
                 .navigationBarHidden(true)
-                //.navigationBarTitle("Question \(viewStore.questionNumber+1)/\(viewStore.questions.count)")
+                .gesture(
+                    DragGesture()
+                        .onEnded {
+                            if $0.translation.width > 100 {
+                                self.presentationMode.wrappedValue.dismiss()
+                            }
+                        }
+                )
+
             }
         }
     }

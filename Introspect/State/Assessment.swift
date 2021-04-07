@@ -14,6 +14,7 @@ struct Assessment {
         var questions: [Question] = Question.allCases
         var currentQuestion: Question = Question.allCases.first!
         var testFinished = false
+        var testStarted = false
     }
     
     enum Action: Equatable {
@@ -22,6 +23,7 @@ struct Assessment {
         case nextQuestionButtonTapped
         case toggleTestFinished
         case submitTestButtonTapped
+        case startTestButtonTapped
     }
     
     struct Environment {
@@ -68,6 +70,10 @@ extension Assessment {
                         return .none
                     }
             }
+                
+            case .startTestButtonTapped:
+                state.testStarted.toggle()
+                return .none
             
             case .toggleTestFinished:
                 state.testFinished.toggle()

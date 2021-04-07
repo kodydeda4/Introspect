@@ -14,8 +14,8 @@ struct AboutView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             Form {
-                Section(header: Text("UNCW Fall 2021")) {
-                    Text("CSC 455 - Database Design & Implementation")
+                Section(header: Text("UNCW Fall 2021 | CSC 455")) {
+                    Text("Database Design & Implementation")
                     Text("Dr Ferner")
                 }
                 Section(header: Text("Team Members")) {

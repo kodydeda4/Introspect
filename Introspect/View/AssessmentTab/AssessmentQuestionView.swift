@@ -24,7 +24,7 @@ struct AssessmentQuestionView: View {
                 
                 // Responses
                 ForEach(viewStore.currentQuestion.responses, id: \.self) { response in
-                    Button(response.lowercased()) {
+                    Button(response) {
                         viewStore.send(.responseButtonTapped(response))
                     }
                     .buttonStyle(RoundedRectangleButtonStyle(style: viewStore.currentQuestion.response == response ? .confirm : .dismiss))

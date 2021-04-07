@@ -10,10 +10,10 @@ import ComposableArchitecture
 
 struct Assessment {
     struct State: Equatable {
-        var progress: Progress = .notYetStarted
+        var progress : Progress   = .notYetStarted
         var questions: [Question] = Question.allCases
         
-        var questionIndex = 0
+        var index = 0
         var currentQuestion: Question = Question.allCases.first!
         var showingSheetView = false
         
@@ -27,21 +27,14 @@ struct Assessment {
     }
     
     enum Action: Equatable {
-        case startTestButtonTapped
+        case startButtonTapped
 //        case questionIndexButtonTapped(Int)
-        
-        case responseSelected(String)
-        
+        case responseButtonTapped(String)
         case backButtonTapped
         case nextButtonTapped
-        
         case submitButtonTapped
-        
         case hideSheetView
         case showSheetView
-        
-        
-        case updateTestStatus
     }
     
     struct Environment {
@@ -49,88 +42,87 @@ struct Assessment {
     }
 }
 
+extension Array {
+    var indexCount: Int { self.count - 1 }
+}
+
 extension Assessment {
     static let reducer = Reducer<State, Action, Environment>.combine(
         Reducer { state, action, environment in
             switch action {
-            
-            case .updateTestStatus:
-                if state.questionIndex == 0 {
-                    state.progress = .firstQuestion
-                } else if state.questionIndex == state.questions.count - 1 {
+
+            case let .responseButtonTapped(response):
+                switch state.currentQuestion.response == response {
+                case true:
+                    state.currentQuestion.response = nil
+                    state.questions[state.index] = state.currentQuestion
+                case false:
+                    state.currentQuestion.response = response
+                    state.questions[state.index] = state.currentQuestion
+                }
+                return .none
+                
+            case .backButtonTapped:
+                switch state.progress {
+                case .active, .lastQuestion:
+                    state.index -= 1
+                    state.currentQuestion = state.questions[state.index]
+                    
+                case .finished:
+                    state.currentQuestion.response = nil
+                    state.questions[state.index] = state.currentQuestion
                     state.progress = .lastQuestion
-                } else {
+                    
+                default:
+                    print("back button tapped")
+                }
+                
+                if state.index == 0 {
+                    state.progress = .firstQuestion
+                    
+                } else if state.index < state.questions.count - 1 {
                     state.progress = .active
+                    
+                } else if state.index == state.questions.count - 1 {
+                    state.progress = .lastQuestion
+                }
+                return .none
+                                
+            case .nextButtonTapped:
+                switch state.progress {
+                
+                case .notYetStarted:
+                    print("Never gets here")
+                    
+                case .firstQuestion, .active:
+                    state.index += 1
+                    state.currentQuestion = state.questions[state.index]
+                    
+                case .lastQuestion:
+                    print("Just return the effect")
+                    
+                case .finished:
+                    print("Never gets here")
+                }
+                
+                
+                if state.index == 0 {
+                    state.progress = .firstQuestion
+                    
+                } else if state.index < state.questions.count - 1 {
+                    state.progress = .active
+                    
+                } else if state.progress != .lastQuestion && state.index == state.questions.count - 1 {
+                    state.progress = .lastQuestion
+
+                } else if state.progress == .lastQuestion && state.questions.filter({ $0.response == nil }).count == 0 {
+                    state.progress = .finished
+                    
                 }
                 return .none
 
-            
-            case let .responseSelected(response):
-                return .none
-//                if state.currentQuestion.response == response {
-//                    state.currentQuestion.response = nil
-//
-//                    return Effect(value: .updateTestStatus)
-//
-//                } else {
-//                    state.currentQuestion.response = response
-//
-//                    return Effect(value: .nextButtonTapped)
-//                        .delay(for: 0.5, scheduler: DispatchQueue.main)
-//                        .eraseToEffect()
-//                }
                 
-                
-            case .backButtonTapped:
-                return .none
-//                switch state.progress {
-//                case .active:
-//                    state.questionIndex -= 1
-//                    state.currentQuestion = state.questions[state.questionIndex]
-//                    if state.questionIndex == state.questions.count - 1 {
-//                        state.progress = .firstQuestion
-//                    }
-//
-//                case .lastQuestion:
-//                    state.questionIndex -= 1
-//                    state.currentQuestion = state.questions[state.questionIndex]
-//                    state.progress = .active
-//
-//                case .finished:
-//                    state.currentQuestion.response = nil
-//                    state.progress = .lastQuestion
-//
-//                default:
-//                    print("back button tapped")
-//                }
-//                return Effect(value: .updateTestStatus)
-                
-                
-                
-            case .nextButtonTapped:
-                return .none
-//                switch state.progress {
-//
-//                case .lastQuestion:
-//                    if state.questionIndex == state.questions.count - 1
-//                        && state.questions.filter({ $0.response == nil }).count == 0
-//                    {
-//                        state.progress = .finished
-//                    }
-//
-//                default:
-//                    state.questions[state.questionIndex] = state.currentQuestion
-//                    state.questionIndex += 1
-//                    state.currentQuestion = state.questions[state.questionIndex]
-//
-//                    if state.questionIndex == state.questions.count - 1 {
-//                        state.progress = .lastQuestion
-//                    }
-//                }
-//                return .none
-                
-                
-            case .startTestButtonTapped:
+            case .startButtonTapped:
                 state.progress = .firstQuestion
                 return .none
 

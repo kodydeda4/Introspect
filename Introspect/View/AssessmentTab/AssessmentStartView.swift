@@ -28,7 +28,7 @@ struct AssessmentStartView: View {
                         
 
                     Button("Start Test") {
-                        viewStore.send(.startTestButtonTapped)
+                        viewStore.send(.startButtonTapped)
                     }
                     .buttonStyle(RoundedRectangleButtonStyle(style: .confirm))
                     .padding()

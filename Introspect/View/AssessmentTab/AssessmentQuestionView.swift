@@ -17,7 +17,7 @@ struct AssessmentQuestionView: View {
                 VStack(alignment: .leading) {
                     VStack(alignment: .trailing) {
                         Button(action: { viewStore.send(.showSheetView) }) {
-                            Text("\(viewStore.questionIndex+1)/\(viewStore.questions.count) Complete")
+                            Text("\(viewStore.questions.filter({ $0.response != nil}).count)/\(viewStore.questions.count) Complete")
                             .bold()
                         }
                         HStack(spacing: 0) {
@@ -42,7 +42,7 @@ struct AssessmentQuestionView: View {
                                         
                     ForEach(viewStore.currentQuestion.responses, id: \.self) { response in
                         Button(response.lowercased()) {
-                            viewStore.send(.responseSelected(response))
+                            viewStore.send(.responseButtonTapped(response))
                         }
                         .buttonStyle(RoundedRectangleButtonStyle(style: viewStore.currentQuestion.response == response ? .confirm : .dismiss))
                     }

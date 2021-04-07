@@ -18,6 +18,8 @@
 		33008255261CFF3800A9427C /* ButtonStyle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33008254261CFF3800A9427C /* ButtonStyle+Extensions.swift */; };
 		33742F1E261D2B71002B769C /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F1D261D2B71002B769C /* Root.swift */; };
 		33742F22261D2BFB002B769C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F21261D2BFB002B769C /* RootView.swift */; };
+		33742F26261D2DE9002B769C /* AssessmentQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F25261D2DE9002B769C /* AssessmentQuestionView.swift */; };
+		33742F29261D2E11002B769C /* AssessmentFinishedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F28261D2E11002B769C /* AssessmentFinishedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		33008254261CFF3800A9427C /* ButtonStyle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ButtonStyle+Extensions.swift"; sourceTree = "<group>"; };
 		33742F1D261D2B71002B769C /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
 		33742F21261D2BFB002B769C /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		33742F25261D2DE9002B769C /* AssessmentQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentQuestionView.swift; sourceTree = "<group>"; };
+		33742F28261D2E11002B769C /* AssessmentFinishedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentFinishedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				33742F21261D2BFB002B769C /* RootView.swift */,
-				33008244261CECFB00A9427C /* AssessmentView.swift */,
+				33742F2B261D2E32002B769C /* AssessmentTab */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -119,6 +123,16 @@
 				33008254261CFF3800A9427C /* ButtonStyle+Extensions.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		33742F2B261D2E32002B769C /* AssessmentTab */ = {
+			isa = PBXGroup;
+			children = (
+				33008244261CECFB00A9427C /* AssessmentView.swift */,
+				33742F25261D2DE9002B769C /* AssessmentQuestionView.swift */,
+				33742F28261D2E11002B769C /* AssessmentFinishedView.swift */,
+			);
+			path = AssessmentTab;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +218,8 @@
 				3300822A261CEC7800A9427C /* IntrospectApp.swift in Sources */,
 				33008242261CECEE00A9427C /* Example.swift in Sources */,
 				33008249261CF2D300A9427C /* Assessment.swift in Sources */,
+				33742F29261D2E11002B769C /* AssessmentFinishedView.swift in Sources */,
+				33742F26261D2DE9002B769C /* AssessmentQuestionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

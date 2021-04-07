@@ -1,0 +1,44 @@
+//
+//  AssessmentFinishedView.swift
+//  Introspect
+//
+//  Created by Kody Deda on 4/6/21.
+//
+
+import SwiftUI
+import ComposableArchitecture
+
+struct AssessmentFinishedView: View {
+    let store: Store<Assessment.State, Assessment.Action>
+    
+    var body: some View {
+        WithViewStore(store) { viewStore in
+            NavigationView {
+                VStack {
+                    Text("Done!")
+                        .font(.title)
+                        .bold()
+                        .padding()
+                    
+                    HStack {
+                        Button("Go Back") {
+                            viewStore.send(.toggleTestFinished)
+                        }
+                        .buttonStyle(RoundedRectangleButtonStyle(style: .dismiss))
+                        
+                        Button("Submit") {
+                            viewStore.send(.submitTestButtonTapped)
+                        }
+                        .buttonStyle(RoundedRectangleButtonStyle(style: .confirm))
+                    }
+                }
+                .padding()
+            }
+        }
+    }
+}
+struct AssessmentFinishedView_Previews: PreviewProvider {
+    static var previews: some View {
+        AssessmentFinishedView(store: Assessment.defaultStore)
+    }
+}

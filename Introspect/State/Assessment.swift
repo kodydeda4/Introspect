@@ -28,7 +28,7 @@ struct Assessment {
     
     enum Action: Equatable {
         case startTestButtonTapped
-        case questionIndexButtonTapped(Int)
+//        case questionIndexButtonTapped(Int)
         
         case responseSelected(String)
         
@@ -130,14 +130,14 @@ extension Assessment {
                 state.showingSheetView = true
                 return .none
                 
-            case let .questionIndexButtonTapped(int):
-                state.questions[state.questionIndex].response = state.currentQuestion.response
-                state.questionIndex = int
-                state.currentQuestion = state.questions[state.questionIndex]
-                
-                state.showingSheetView = false
-                
-                return Effect(value: .updateTestStatus)
+//            case let .questionIndexButtonTapped(int):
+//                state.questions[state.questionIndex].response = state.currentQuestion.response
+//                state.questionIndex = int
+//                state.currentQuestion = state.questions[state.questionIndex]
+//
+//                state.showingSheetView = false
+//
+//                return Effect(value: .updateTestStatus)
                 
             case .updateTestStatus:
                 if state.questionIndex == 0 {

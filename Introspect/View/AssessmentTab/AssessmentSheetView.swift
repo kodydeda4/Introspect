@@ -21,18 +21,18 @@ struct AssessmentSheetView: View {
                 Divider()
                     .padding()
 
-                LazyVGrid(
-                    columns: [GridItem](repeating: .init(.flexible()), count: 4),
-                    spacing: 20
-                ) {
-                    ForEach(0..<viewStore.questions.count) { index in
-                        Button(index.description) {
-                            viewStore.send(.questionIndexButtonTapped(index))
-                        }
-                        .buttonStyle(RoundedRectangleButtonStyle(style: viewStore.questions[index].response == nil ? .dismiss : .confirm))
-                        .shadow(radius: viewStore.questionIndex == index ? 1 : 0)
-                    }
-                }
+//                LazyVGrid(
+//                    columns: [GridItem](repeating: .init(.flexible()), count: 4),
+//                    spacing: 20
+//                ) {
+//                    ForEach(0..<viewStore.questions.count) { index in
+//                        Button(index.description) {
+//                            viewStore.send(.questionIndexButtonTapped(index))
+//                        }
+//                        .buttonStyle(RoundedRectangleButtonStyle(style: viewStore.questions[index].response == nil ? .dismiss : .confirm))
+//                        .shadow(radius: viewStore.questionIndex == index ? 1 : 0)
+//                    }
+//                }
                 Spacer()
             }
             .padding()

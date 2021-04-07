@@ -27,7 +27,7 @@ struct AssessmentSheetView: View {
                 ) {
                     ForEach(0..<viewStore.questions.count) { index in
                         Button(index.description) {
-                            viewStore.send(.questionIndexButtonTapped(index))
+                            viewStore.send(.sheetQuestionButtonTapped(index))
                         }
                         .buttonStyle(RoundedRectangleButtonStyle(style: viewStore.questions[index].response == nil ? .dismiss : .confirm))
                         .shadow(radius: viewStore.index == index ? 1 : 0)

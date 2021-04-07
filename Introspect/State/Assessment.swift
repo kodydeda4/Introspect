@@ -29,13 +29,14 @@ struct Assessment {
     
     enum Action: Equatable {
         case startButtonTapped
-        case questionIndexButtonTapped(Int)
         case responseButtonTapped(String)
         case backButtonTapped
         case nextButtonTapped
         case submitButtonTapped
+
         case hideSheetView
         case showSheetView
+        case sheetQuestionButtonTapped(Int)
     }
     
     struct Environment {
@@ -96,18 +97,22 @@ extension Assessment {
     static let reducer = Reducer<State, Action, Environment>.combine(
         Reducer { state, action, environment in
             switch action {
-
+            
+            case .startButtonTapped:
+                state.progress = .firstQuestion
+                return .none
+                
             case let .responseButtonTapped(response):
                 switch state.currentQuestion.response == response {
                 case true:
                     state.currentQuestion.response = nil
                     state.questions[state.index] = state.currentQuestion
+                    
                     return .none
                     
                 case false:
                     state.currentQuestion.response = response
                     state.questions[state.index] = state.currentQuestion
-                    
                     state.changingQuestion = true
 
                     return Effect(value: .nextButtonTapped)
@@ -148,11 +153,6 @@ extension Assessment {
                 state.progress = environment.getProgress(state)
                 return .none
 
-                
-            case .startButtonTapped:
-                state.progress = .firstQuestion
-                return .none
-
             case .submitButtonTapped:
                 state.progress = .finished
                 return .none
@@ -165,7 +165,7 @@ extension Assessment {
                 state.showingSheetView = true
                 return .none
                 
-            case let .questionIndexButtonTapped(int):
+            case let .sheetQuestionButtonTapped(int):
                 state.questions[state.index].response = state.currentQuestion.response
                 state.index = int
                 state.currentQuestion = state.questions[state.index]
@@ -173,7 +173,6 @@ extension Assessment {
                 state.showingSheetView = false
                 state.progress = environment.getProgressIndexButtonTapped(state)
                 return .none
-                
             }
         }
         .debug()

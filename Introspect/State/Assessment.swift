@@ -42,10 +42,6 @@ struct Assessment {
     }
 }
 
-extension Array {
-    var indexCount: Int { self.count - 1 }
-}
-
 extension Assessment {
     static let reducer = Reducer<State, Action, Environment>.combine(
         Reducer { state, action, environment in

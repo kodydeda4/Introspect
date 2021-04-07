@@ -14,11 +14,11 @@ struct RootView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             TabView {
-                Text("About")
+                AboutView(store: store)
                     .tabItem { Label("About", systemImage: "gear").foregroundColor(.accentColor) }
                 AssessmentView(store: store.scope(state: \.assessment, action: Root.Action.assessment))
                     .tabItem { Label("Search", systemImage: "magnifyingglass").foregroundColor(.accentColor) }
-                Text("Profile \(viewStore.completedAssessments.count)")
+                ProfileView(store: store)
                     .tabItem { Label("Profile", systemImage: "heart").foregroundColor(.accentColor) }
             }
         }

@@ -16,7 +16,7 @@ struct AssessmentView: View {
             if viewStore.testFinished {
                 AssessmentFinishedView(store: store)
             } else {
-                AssessmentView(store: store)
+                AssessmentQuestionView(store: store)
             }
         }
     }

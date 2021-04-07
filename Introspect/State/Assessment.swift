@@ -33,7 +33,7 @@ struct Assessment {
     
     enum Action: Equatable {
         case startTestButtonTapped
-        case updateCurrentQuestion(Int)
+        case questionIndexButtonTapped(Int)
         
         case responseSelected(String)
         
@@ -44,6 +44,9 @@ struct Assessment {
         
         case hideSheetView
         case showSheetView
+        
+        
+        case updateTestStatus
     }
     
     struct Environment {
@@ -56,14 +59,14 @@ extension Assessment {
         Reducer { state, action, environment in
             switch action {
             
-            case let .responseSelected(option):
-                if state.currentQuestion.selectedResponse == option {
-                    state.currentQuestion.selectedResponse = nil
-                    state.questions[state.questionIndex].selectedResponse = state.currentQuestion.selectedResponse
+            case let .responseSelected(response):
+                if state.currentQuestion.response == response {
+                    state.currentQuestion.response = nil
+                    state.questions[state.questionIndex].response = state.currentQuestion.response
                     return .none
                 } else {
-                    state.currentQuestion.selectedResponse = option
-                    state.questions[state.questionIndex].selectedResponse = state.currentQuestion.selectedResponse
+                    state.currentQuestion.response = response
+                    state.questions[state.questionIndex].response = state.currentQuestion.response
                     
                     return Effect(value: .nextButtonTapped)
                         .delay(for: 0.5, scheduler: DispatchQueue.main)
@@ -75,6 +78,9 @@ extension Assessment {
                 case .active:
                     state.questionIndex -= 1
                     state.currentQuestion = state.questions[state.questionIndex]
+                    if state.questionIndex == state.questions.count - 1 {
+                        state.testStatus = .firstQuestion
+                    }
                 
                 case .lastQuestion:
                     state.questionIndex -= 1
@@ -82,8 +88,8 @@ extension Assessment {
                     state.testStatus = .active
                     
                 case .finished:
-                    state.currentQuestion.selectedResponse = nil
-                    state.questions[state.questionIndex].selectedResponse = state.currentQuestion.selectedResponse
+                    state.currentQuestion.response = nil
+                    state.questions[state.questionIndex].response = state.currentQuestion.response
                     state.testStatus = .lastQuestion
                     
                 default:
@@ -97,7 +103,7 @@ extension Assessment {
                 
                 case .lastQuestion:
                     if state.questionIndex == state.questions.count - 1
-                        && state.questions.filter({ $0.selectedResponse == nil }).count == 0
+                        && state.questions.filter({ $0.response == nil }).count == 0
                     {
                         state.testStatus = .finished
                     }
@@ -129,10 +135,16 @@ extension Assessment {
                 state.showingSheetView = true
                 return .none
                 
-            case let .updateCurrentQuestion(int):
+            case let .questionIndexButtonTapped(int):
+                state.questions[state.questionIndex].response = state.currentQuestion.response
                 state.questionIndex = int
                 state.currentQuestion = state.questions[state.questionIndex]
                 
+                state.showingSheetView = false
+                
+                return Effect(value: .updateTestStatus)
+                
+            case .updateTestStatus:
                 if state.questionIndex == 0 {
                     state.testStatus = .firstQuestion
                 } else if state.questionIndex == state.questions.count - 1 {
@@ -140,7 +152,7 @@ extension Assessment {
                 } else {
                     state.testStatus = .active
                 }
-                return Effect(value: .hideSheetView)
+                return .none
             }
         }
         .debug()

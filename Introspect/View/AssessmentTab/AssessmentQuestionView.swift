@@ -22,7 +22,7 @@ struct AssessmentQuestionView: View {
                         }
                         HStack(spacing: 0) {
                             ForEach(viewStore.questions) {
-                                if $0.selectedResponse == nil {
+                                if $0.response == nil {
                                     Rectangle()
                                         .foregroundColor(Color(.secondarySystemBackground))
                                 } else {
@@ -46,7 +46,7 @@ struct AssessmentQuestionView: View {
                         }
                         .buttonStyle(
                             RoundedRectangleButtonStyle(
-                                style: viewStore.currentQuestion.selectedResponse == response
+                                style: viewStore.currentQuestion.response == response
                                     ? .confirm
                                     : .dismiss
                             )
@@ -77,7 +77,6 @@ struct AssessmentQuestionView: View {
                 .sheet(isPresented: viewStore.binding(get: \.showingSheetView, send: .hideSheetView)) {
                     AssessmentSheetView(store: store)
                 }
-
             }
         }
     }

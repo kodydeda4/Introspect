@@ -11,7 +11,7 @@ struct Question: Equatable, Identifiable, CaseIterable {
     var id: String { content }
     
     var content: String
-    var selectedResponse: String?
+    var response: String?
     var responses: [String]
 }
 

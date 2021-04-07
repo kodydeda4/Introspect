@@ -60,7 +60,7 @@ struct AssessmentQuestionView: View {
                             viewStore.send(.backButtonTapped)
                         }
                         .buttonStyle(RoundedRectangleButtonStyle(style: .dismiss))
-                        .disabled(viewStore.testStatus == .firstQuestion)
+                        .disabled(viewStore.progress == .firstQuestion)
 
                         Button("Next") {
                             viewStore.send(.nextButtonTapped)

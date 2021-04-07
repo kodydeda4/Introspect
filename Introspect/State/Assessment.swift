@@ -10,19 +10,14 @@ import ComposableArchitecture
 
 struct Assessment {
     struct State: Equatable {
-        var questionIndex = 0
+        var progress: Progress = .notYetStarted
         var questions: [Question] = Question.allCases
+        
+        var questionIndex = 0
         var currentQuestion: Question = Question.allCases.first!
-        
-        var testStatus: TestStatus = .notYetStarted
-        
-//        var unansweredQuestions : Int { questions.filter { $0.selectedResponse == nil }.count }
-//        var firstQuestion : Bool { questionIndex == 0 }
-//        var lastQuestion  : Bool { unansweredQuestions == 1 && questionIndex == questions.count - 1 }
-        
         var showingSheetView = false
         
-        enum TestStatus {
+        enum Progress {
             case notYetStarted
             case firstQuestion
             case active
@@ -74,23 +69,23 @@ extension Assessment {
                 }
                 
             case .backButtonTapped:
-                switch state.testStatus {
+                switch state.progress {
                 case .active:
                     state.questionIndex -= 1
                     state.currentQuestion = state.questions[state.questionIndex]
                     if state.questionIndex == state.questions.count - 1 {
-                        state.testStatus = .firstQuestion
+                        state.progress = .firstQuestion
                     }
                 
                 case .lastQuestion:
                     state.questionIndex -= 1
                     state.currentQuestion = state.questions[state.questionIndex]
-                    state.testStatus = .active
+                    state.progress = .active
                     
                 case .finished:
                     state.currentQuestion.response = nil
                     state.questions[state.questionIndex].response = state.currentQuestion.response
-                    state.testStatus = .lastQuestion
+                    state.progress = .lastQuestion
                     
                 default:
                     print("back button tapped")
@@ -99,13 +94,13 @@ extension Assessment {
                 
                 
             case .nextButtonTapped:
-                switch state.testStatus {
+                switch state.progress {
                 
                 case .lastQuestion:
                     if state.questionIndex == state.questions.count - 1
                         && state.questions.filter({ $0.response == nil }).count == 0
                     {
-                        state.testStatus = .finished
+                        state.progress = .finished
                     }
                     
                 default:
@@ -114,17 +109,17 @@ extension Assessment {
                     state.currentQuestion = state.questions[state.questionIndex]
 
                     if state.questionIndex == state.questions.count - 1 {
-                        state.testStatus = .lastQuestion
+                        state.progress = .lastQuestion
                     }
                 }
                 return .none
                 
             case .startTestButtonTapped:
-                state.testStatus = .active
+                state.progress = .active
                 return .none
 
             case .submitButtonTapped:
-                state.testStatus = .finished
+                state.progress = .finished
                 return .none
                 
             case .hideSheetView:
@@ -146,11 +141,11 @@ extension Assessment {
                 
             case .updateTestStatus:
                 if state.questionIndex == 0 {
-                    state.testStatus = .firstQuestion
+                    state.progress = .firstQuestion
                 } else if state.questionIndex == state.questions.count - 1 {
-                    state.testStatus = .lastQuestion
+                    state.progress = .lastQuestion
                 } else {
-                    state.testStatus = .active
+                    state.progress = .active
                 }
                 return .none
             }

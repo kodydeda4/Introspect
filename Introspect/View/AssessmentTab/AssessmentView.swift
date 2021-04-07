@@ -13,7 +13,7 @@ struct AssessmentView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            switch viewStore.testStatus {
+            switch viewStore.progress {
             case .notYetStarted:
                 AssessmentStartView(store: store)
             case .finished:

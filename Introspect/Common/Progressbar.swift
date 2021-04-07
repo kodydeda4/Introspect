@@ -1,5 +1,5 @@
 //
-//  MyProgressbar.swift
+//  Progressbar.swift
 //  Introspect
 //
 //  Created by Kody Deda on 4/7/21.
@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-
-public struct MyProgressbar: View {
+public struct Progressbar: View {
     var percentage: CGFloat
     var action: () -> Void
     public var body: some View {
@@ -40,9 +39,9 @@ public struct MyProgressbar: View {
 }
 
 
-struct MyProgressbar_Previews: PreviewProvider {
+struct Progressbar_Previews: PreviewProvider {
     static var previews: some View {
-        MyProgressbar(
+        Progressbar(
             percentage: 1.0,
             action: {}
         )

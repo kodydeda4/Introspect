@@ -7,7 +7,6 @@
 
 import SwiftUI
 import ComposableArchitecture
-import Progress_Bar
 
 struct AssessmentQuestionView: View {
     let store: Store<Assessment.State, Assessment.Action>
@@ -15,7 +14,7 @@ struct AssessmentQuestionView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             VStack(alignment: .leading) {
-                MyProgressbar(percentage: viewStore.percentCompleted, action: { viewStore.send(.showSheetView) })
+                Progressbar(percentage: viewStore.percentCompleted, action: { viewStore.send(.showSheetView) })
                 
                 // Question
                 Text(viewStore.currentQuestion.content)

@@ -54,68 +54,84 @@ extension Assessment {
         Reducer { state, action, environment in
             switch action {
             
-            case let .responseSelected(response):
-                if state.currentQuestion.response == response {
-                    state.currentQuestion.response = nil
-                    state.questions[state.questionIndex].response = state.currentQuestion.response
-                    return .none
-                } else {
-                    state.currentQuestion.response = response
-                    state.questions[state.questionIndex].response = state.currentQuestion.response
-                    
-                    return Effect(value: .nextButtonTapped)
-                        .delay(for: 0.5, scheduler: DispatchQueue.main)
-                        .eraseToEffect()
-                }
-                
-            case .backButtonTapped:
-                switch state.progress {
-                case .active:
-                    state.questionIndex -= 1
-                    state.currentQuestion = state.questions[state.questionIndex]
-                    if state.questionIndex == state.questions.count - 1 {
-                        state.progress = .firstQuestion
-                    }
-                
-                case .lastQuestion:
-                    state.questionIndex -= 1
-                    state.currentQuestion = state.questions[state.questionIndex]
-                    state.progress = .active
-                    
-                case .finished:
-                    state.currentQuestion.response = nil
-                    state.questions[state.questionIndex].response = state.currentQuestion.response
+            case .updateTestStatus:
+                if state.questionIndex == 0 {
+                    state.progress = .firstQuestion
+                } else if state.questionIndex == state.questions.count - 1 {
                     state.progress = .lastQuestion
-                    
-                default:
-                    print("back button tapped")
+                } else {
+                    state.progress = .active
                 }
                 return .none
+
+            
+            case let .responseSelected(response):
+                return .none
+//                if state.currentQuestion.response == response {
+//                    state.currentQuestion.response = nil
+//
+//                    return Effect(value: .updateTestStatus)
+//
+//                } else {
+//                    state.currentQuestion.response = response
+//
+//                    return Effect(value: .nextButtonTapped)
+//                        .delay(for: 0.5, scheduler: DispatchQueue.main)
+//                        .eraseToEffect()
+//                }
+                
+                
+            case .backButtonTapped:
+                return .none
+//                switch state.progress {
+//                case .active:
+//                    state.questionIndex -= 1
+//                    state.currentQuestion = state.questions[state.questionIndex]
+//                    if state.questionIndex == state.questions.count - 1 {
+//                        state.progress = .firstQuestion
+//                    }
+//
+//                case .lastQuestion:
+//                    state.questionIndex -= 1
+//                    state.currentQuestion = state.questions[state.questionIndex]
+//                    state.progress = .active
+//
+//                case .finished:
+//                    state.currentQuestion.response = nil
+//                    state.progress = .lastQuestion
+//
+//                default:
+//                    print("back button tapped")
+//                }
+//                return Effect(value: .updateTestStatus)
+                
                 
                 
             case .nextButtonTapped:
-                switch state.progress {
-                
-                case .lastQuestion:
-                    if state.questionIndex == state.questions.count - 1
-                        && state.questions.filter({ $0.response == nil }).count == 0
-                    {
-                        state.progress = .finished
-                    }
-                    
-                default:
-                    state.questions[state.questionIndex] = state.currentQuestion
-                    state.questionIndex += 1
-                    state.currentQuestion = state.questions[state.questionIndex]
-
-                    if state.questionIndex == state.questions.count - 1 {
-                        state.progress = .lastQuestion
-                    }
-                }
                 return .none
+//                switch state.progress {
+//
+//                case .lastQuestion:
+//                    if state.questionIndex == state.questions.count - 1
+//                        && state.questions.filter({ $0.response == nil }).count == 0
+//                    {
+//                        state.progress = .finished
+//                    }
+//
+//                default:
+//                    state.questions[state.questionIndex] = state.currentQuestion
+//                    state.questionIndex += 1
+//                    state.currentQuestion = state.questions[state.questionIndex]
+//
+//                    if state.questionIndex == state.questions.count - 1 {
+//                        state.progress = .lastQuestion
+//                    }
+//                }
+//                return .none
+                
                 
             case .startTestButtonTapped:
-                state.progress = .active
+                state.progress = .firstQuestion
                 return .none
 
             case .submitButtonTapped:
@@ -139,15 +155,6 @@ extension Assessment {
 //
 //                return Effect(value: .updateTestStatus)
                 
-            case .updateTestStatus:
-                if state.questionIndex == 0 {
-                    state.progress = .firstQuestion
-                } else if state.questionIndex == state.questions.count - 1 {
-                    state.progress = .lastQuestion
-                } else {
-                    state.progress = .active
-                }
-                return .none
             }
         }
         .debug()

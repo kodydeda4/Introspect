@@ -44,13 +44,7 @@ struct AssessmentQuestionView: View {
                         Button(response.lowercased()) {
                             viewStore.send(.responseSelected(response))
                         }
-                        .buttonStyle(
-                            RoundedRectangleButtonStyle(
-                                style: viewStore.currentQuestion.response == response
-                                    ? .confirm
-                                    : .dismiss
-                            )
-                        )
+                        .buttonStyle(RoundedRectangleButtonStyle(style: viewStore.currentQuestion.response == response ? .confirm : .dismiss))
                     }
                     .padding(.horizontal)
                     

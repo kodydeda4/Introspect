@@ -30,7 +30,7 @@ struct AssessmentSheetView: View {
                             viewStore.send(.sheetQuestionButtonTapped(index))
                         }
                         .buttonStyle(RoundedRectangleButtonStyle(style: viewStore.questions[index].response == nil ? .dismiss : .confirm))
-                        .shadow(radius: viewStore.index == index ? 1 : 0)
+//                        .foregroundColor(Color.orange.opacity(viewStore.index == index ? 1 : 0))
                     }
                 }
                 Spacer()

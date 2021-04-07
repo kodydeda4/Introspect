@@ -18,21 +18,21 @@ struct RootView: View {
                     AboutView(store: store)
                 }
                 .tabItem {
-                    Label("About", systemImage: "gear")
+                    Label("About", systemImage: "gearshape.fill")
                         .foregroundColor(.accentColor)
                 }
                 NavigationView {
                     AssessmentView(store: store.scope(state: \.assessment, action: Root.Action.assessment))
                 }
                 .tabItem {
-                    Label("Search", systemImage: "magnifyingglass")
+                    Label("Test", systemImage: "doc.plaintext.fill")
                         .foregroundColor(.accentColor)
                 }
                 NavigationView {
-                    ProfileView(store: store)
+                    ResultsView(store: store)
                 }
                 .tabItem {
-                    Label("Profile", systemImage: "person.fill")
+                    Label("Results", systemImage: "person.crop.circle.fill")
                         .foregroundColor(.accentColor)
                 }
             }

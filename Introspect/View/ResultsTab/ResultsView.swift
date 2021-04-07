@@ -8,18 +8,19 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct ProfileView: View {
+struct ResultsView: View {
     let store: Store<Root.State, Root.Action>
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            Text("Profile \(viewStore.completedAssessments.count)")
+            Text("Results \(viewStore.completedAssessments.count)")
+                .navigationBarTitle("Results")
         }
     }
 }
 
-struct ProfileView_Previews: PreviewProvider {
+struct ResultsView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(store: Root.defaultStore)
+        ResultsView(store: Root.defaultStore)
     }
 }

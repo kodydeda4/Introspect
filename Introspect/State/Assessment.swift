@@ -107,7 +107,6 @@ extension Assessment {
                     print("Never gets here")
                 }
                 
-                
                 if state.index == 0 {
                     state.progress = .firstQuestion
                     

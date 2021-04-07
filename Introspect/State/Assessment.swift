@@ -17,6 +17,7 @@ struct Assessment {
         var currentQuestion: Question = Question.allCases.first!
         var showingSheetView = false
         var changingQuestion = false
+        var testJustSubmitted = false
         
         enum Progress {
             case notYetStarted
@@ -54,7 +55,7 @@ struct Assessment {
                 return .finished
                 
             } else {
-                return .notYetStarted
+                return state.progress
             }
         }
         
@@ -72,7 +73,7 @@ struct Assessment {
                 return .finished
                 
             } else {
-                return .notYetStarted
+                return state.progress
             }
         }
         
@@ -87,7 +88,7 @@ struct Assessment {
                 return .lastQuestion
                 
             } else {
-                return .notYetStarted
+                return state.progress
             }
         }
     }
@@ -109,7 +110,7 @@ extension Assessment {
                     state.currentQuestion.response = response
                     state.questions[state.index] = state.currentQuestion
                     
-                    state.changingQuestion.toggle()
+                    state.changingQuestion = true
 
                     return Effect(value: .nextButtonTapped)
                         .delay(for: 1.0, scheduler: DispatchQueue.main)
@@ -134,7 +135,7 @@ extension Assessment {
                 return .none
                                 
             case .nextButtonTapped:
-                state.changingQuestion.toggle()
+                state.changingQuestion = false
                 
                 switch state.progress {
                 

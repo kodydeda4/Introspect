@@ -13,7 +13,24 @@ struct AboutView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            Text("About")
+            NavigationView {
+                Form {
+                    Section(header: Text("UNCW Fall 2021")) {
+                        Text("CSC 455 - Database Design & Implementation")
+                        Text("Dr Ferner")
+                    }
+                    Section(header: Text("Team Members")) {
+                        ForEach([
+                            "Kody Deda",
+                            "Alex Chisolm",
+                            "Basam Ahmed",
+                        ], id: \.self) {
+                            Text($0)
+                        }
+                    }
+                }
+                .navigationBarTitle("About")
+            }
         }
     }
 }

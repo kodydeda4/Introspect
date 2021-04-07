@@ -65,6 +65,7 @@ struct AssessmentQuestionView: View {
                     
                     //.disabled(viewStore.testStatus == .lastQuestion)
                 }
+                .disabled(viewStore.changingQuestion)
             }
             .padding()
             .navigationBarHidden(true)

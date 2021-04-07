@@ -7,6 +7,7 @@
 
 import SwiftUI
 import ComposableArchitecture
+import Progress_Bar
 
 struct AssessmentQuestionView: View {
     let store: Store<Assessment.State, Assessment.Action>
@@ -14,31 +15,28 @@ struct AssessmentQuestionView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             VStack(alignment: .leading) {
+                
+                // Progressbar
                 VStack(alignment: .trailing) {
                     Button(action: { viewStore.send(.showSheetView) }) {
                         Text("\(viewStore.questions.filter({ $0.response != nil}).count)/\(viewStore.questions.count) Complete")
                             .bold()
                     }
-                    HStack(spacing: 0) {
-                        ForEach(viewStore.questions) {
-                            if $0.response == nil {
-                                Rectangle()
-                                    .foregroundColor(Color(.secondarySystemBackground))
-                            } else {
-                                Rectangle()
-                                    .foregroundColor(.accentColor)
-                            }
-                        }
-                    }
-                    .frame(height: 10)
-                    .background(Color(.secondarySystemBackground))
-                    .clipShape(Capsule())
+                    LinearProgress(
+                        percentage: viewStore.percentCompleted,
+                        backgroundColor: Color(.secondarySystemBackground),
+                        foregroundColor: LinearGradient(gradient: Gradient(colors: [.accentColor]), startPoint: .leading, endPoint: .trailing)
+                    )
+                   .frame(height: 10)
                 }
+                
+                // Question
                 Text(viewStore.currentQuestion.content)
                     .font(.title)
                     .bold()
                     .padding()
                 
+                // Responses
                 ForEach(viewStore.currentQuestion.responses, id: \.self) { response in
                     Button(response.lowercased()) {
                         viewStore.send(.responseButtonTapped(response))
@@ -47,6 +45,7 @@ struct AssessmentQuestionView: View {
                 }
                 .padding(.horizontal)
                 
+                // Navbuttons
                 Spacer()
                 HStack {
                     Button("Back") {
@@ -55,15 +54,12 @@ struct AssessmentQuestionView: View {
                     .buttonStyle(RoundedRectangleButtonStyle(style: .dismiss))
                     .disabled(viewStore.progress == .firstQuestion)
                     
-                    Button("Next") {
+                    Button(viewStore.progress == .lastQuestion ? "Finish" : "Next") {
                         viewStore.send(.nextButtonTapped)
                     }
                     .buttonStyle(
-                        //RoundedRectangleButtonStyle(style: viewStore.testStatus == .lastQuestion ? .dismiss : .confirm)
                         RoundedRectangleButtonStyle(style: .confirm)
                     )
-                    
-                    //.disabled(viewStore.testStatus == .lastQuestion)
                 }
                 .disabled(viewStore.changingQuestion)
             }

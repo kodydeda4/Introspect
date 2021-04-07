@@ -16,6 +16,7 @@
 		33008249261CF2D300A9427C /* Assessment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33008248261CF2D300A9427C /* Assessment.swift */; };
 		3300824E261CF52200A9427C /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3300824D261CF52200A9427C /* Question.swift */; };
 		33008255261CFF3800A9427C /* ButtonStyle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33008254261CFF3800A9427C /* ButtonStyle+Extensions.swift */; };
+		332C1ECE261E248B001F43B6 /* Progress-Bar in Frameworks */ = {isa = PBXBuildFile; productRef = 332C1ECD261E248B001F43B6 /* Progress-Bar */; };
 		335AEFF2261D31310048ED51 /* AssessmentStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335AEFF1261D31310048ED51 /* AssessmentStartView.swift */; };
 		33742F1E261D2B71002B769C /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F1D261D2B71002B769C /* Root.swift */; };
 		33742F22261D2BFB002B769C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F21261D2BFB002B769C /* RootView.swift */; };
@@ -53,6 +54,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3300823B261CECB400A9427C /* ComposableArchitecture in Frameworks */,
+				332C1ECE261E248B001F43B6 /* Progress-Bar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +183,7 @@
 			name = Introspect;
 			packageProductDependencies = (
 				3300823A261CECB400A9427C /* ComposableArchitecture */,
+				332C1ECD261E248B001F43B6 /* Progress-Bar */,
 			);
 			productName = Introspect;
 			productReference = 33008226261CEC7800A9427C /* Introspect.app */;
@@ -211,6 +214,7 @@
 			mainGroup = 3300821D261CEC7700A9427C;
 			packageReferences = (
 				33008239261CECB400A9427C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				332C1ECC261E248B001F43B6 /* XCRemoteSwiftPackageReference "Progress-Bar-SwifttUI" */,
 			);
 			productRefGroup = 33008227261CEC7800A9427C /* Products */;
 			projectDirPath = "";
@@ -450,6 +454,14 @@
 				minimumVersion = 0.17.0;
 			};
 		};
+		332C1ECC261E248B001F43B6 /* XCRemoteSwiftPackageReference "Progress-Bar-SwifttUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AmeddahAchraf/Progress-Bar-SwifttUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -457,6 +469,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 33008239261CECB400A9427C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
+		};
+		332C1ECD261E248B001F43B6 /* Progress-Bar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 332C1ECC261E248B001F43B6 /* XCRemoteSwiftPackageReference "Progress-Bar-SwifttUI" */;
+			productName = "Progress-Bar";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

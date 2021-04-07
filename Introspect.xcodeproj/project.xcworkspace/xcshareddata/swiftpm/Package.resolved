@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "Progress-Bar",
+        "repositoryURL": "https://github.com/AmeddahAchraf/Progress-Bar-SwifttUI",
+        "state": {
+          "branch": null,
+          "revision": "35dd5ffb369fa522519c819170e171d0a76dbbea",
+          "version": "1.0.4"
+        }
+      },
+      {
         "package": "swift-case-paths",
         "repositoryURL": "https://github.com/pointfreeco/swift-case-paths",
         "state": {

@@ -39,7 +39,57 @@ struct Assessment {
     }
     
     struct Environment {
-        // environment
+        func getProgress(_ state: Assessment.State) -> Assessment.State.Progress {
+            if state.index == 0 {
+                return .firstQuestion
+                
+            } else if state.index < state.questions.count - 1 {
+                return .active
+                
+            } else if state.progress != .lastQuestion
+                        && state.index == state.questions.count - 1 {
+                return .lastQuestion
+
+            } else if state.progress == .lastQuestion && state.questions.filter({ $0.response == nil }).count == 0 {
+                return .finished
+                
+            } else {
+                return .notYetStarted
+            }
+        }
+        
+        func getProgressIndexButtonTapped(_ state: Assessment.State) -> Assessment.State.Progress {
+            if state.index == 0 {
+                return .firstQuestion
+                
+            } else if state.index < state.questions.count - 1 {
+                return .active
+                
+            } else if state.progress != .lastQuestion && state.index == state.questions.count - 1 {
+                return .lastQuestion
+
+            } else if state.progress == .lastQuestion && state.questions.filter({ $0.response == nil }).count == 0 {
+                return .finished
+                
+            } else {
+                return .notYetStarted
+            }
+        }
+        
+        func getProgressBackButtonTapped(_ state: Assessment.State) -> Assessment.State.Progress {
+            if state.index == 0 {
+                return .firstQuestion
+                
+            } else if state.index < state.questions.count - 1 {
+                return .active
+                
+            } else if state.index == state.questions.count - 1 {
+                return .lastQuestion
+                
+            } else {
+                return .notYetStarted
+            }
+        }
     }
 }
 
@@ -78,18 +128,9 @@ extension Assessment {
                     state.progress = .lastQuestion
                     
                 default:
-                    print("back button tapped")
+                    print("backButtonTapped")
                 }
-                
-                if state.index == 0 {
-                    state.progress = .firstQuestion
-                    
-                } else if state.index < state.questions.count - 1 {
-                    state.progress = .active
-                    
-                } else if state.index == state.questions.count - 1 {
-                    state.progress = .lastQuestion
-                }
+                state.progress = environment.getProgressBackButtonTapped(state)
                 return .none
                                 
             case .nextButtonTapped:
@@ -101,23 +142,11 @@ extension Assessment {
                     state.index += 1
                     state.currentQuestion = state.questions[state.index]
                     
-                case .notYetStarted, .lastQuestion, .finished:
-                    print("Just return the effect")
+                default:
+                    print("nextButtonTapped")
                 }
                 
-                if state.index == 0 {
-                    state.progress = .firstQuestion
-                    
-                } else if state.index < state.questions.count - 1 {
-                    state.progress = .active
-                    
-                } else if state.progress != .lastQuestion
-                            && state.index == state.questions.count - 1 {
-                    state.progress = .lastQuestion
-
-                } else if state.progress == .lastQuestion && state.questions.filter({ $0.response == nil }).count == 0 {
-                    state.progress = .finished
-                }
+                state.progress = environment.getProgress(state)
                 return .none
 
                 
@@ -143,20 +172,7 @@ extension Assessment {
                 state.currentQuestion = state.questions[state.index]
 
                 state.showingSheetView = false
-
-                if state.index == 0 {
-                    state.progress = .firstQuestion
-                    
-                } else if state.index < state.questions.count - 1 {
-                    state.progress = .active
-                    
-                } else if state.progress != .lastQuestion && state.index == state.questions.count - 1 {
-                    state.progress = .lastQuestion
-
-                } else if state.progress == .lastQuestion && state.questions.filter({ $0.response == nil }).count == 0 {
-                    state.progress = .finished
-                    
-                }
+                state.progress = environment.getProgressIndexButtonTapped(state)
                 return .none
                 
             }

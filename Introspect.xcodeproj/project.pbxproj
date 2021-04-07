@@ -137,9 +137,9 @@
 			isa = PBXGroup;
 			children = (
 				33008244261CECFB00A9427C /* AssessmentView.swift */,
+				335AEFF1261D31310048ED51 /* AssessmentStartView.swift */,
 				33742F25261D2DE9002B769C /* AssessmentQuestionView.swift */,
 				33742F28261D2E11002B769C /* AssessmentFinishedView.swift */,
-				335AEFF1261D31310048ED51 /* AssessmentStartView.swift */,
 			);
 			path = AssessmentTab;
 			sourceTree = "<group>";

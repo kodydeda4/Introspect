@@ -17,15 +17,21 @@ struct AssessmentStartView: View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 VStack {
-                    Text("Start")
-                        .font(.title)
-                        .bold()
-                        .padding()
+                    Text("Myer Briggs Test")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
                     
+                    Text("Description about Test")
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.gray)
+                        .padding(.top, 1)
+                        
+
                     Button("Start Test") {
                         viewStore.send(.startTestButtonTapped)
                     }
                     .buttonStyle(RoundedRectangleButtonStyle(style: .confirm))
+                    .padding()
                 }
                 .padding()
             }

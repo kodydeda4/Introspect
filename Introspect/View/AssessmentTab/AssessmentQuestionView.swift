@@ -65,7 +65,14 @@ struct AssessmentQuestionView: View {
                             viewStore.send(.nextQuestionButtonTapped)
                             
                         }
-                        .buttonStyle(RoundedRectangleButtonStyle(style: .confirm))
+                        .buttonStyle(
+                            RoundedRectangleButtonStyle(
+                                style: viewStore.questions.filter { $0.selectedResponse == nil }.count != 0 && viewStore.questionNumber + 1 == viewStore.questions.count
+                                    ? .dismiss
+                                    : .confirm
+                            )
+                        )
+                        .disabled(viewStore.questions.filter { $0.selectedResponse == nil }.count != 0 && viewStore.questionNumber + 1 == viewStore.questions.count)
                     }
                 }
                 .padding()

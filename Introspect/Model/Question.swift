@@ -18,7 +18,7 @@ struct Question: Equatable, Identifiable, CaseIterable {
 extension Question {
     static var allCases: [Question] = [
         Question(
-            content: "What's your favorite color?",
+            content: "Favorite color?",
             responses: [
                 "Red",
                 "Blue",

@@ -15,20 +15,7 @@ struct AssessmentQuestionView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             VStack(alignment: .leading) {
-                
-                // Progressbar
-                VStack(alignment: .trailing) {
-                    Button(action: { viewStore.send(.showSheetView) }) {
-                        Text("\(viewStore.questions.filter({ $0.response != nil}).count)/\(viewStore.questions.count) Complete")
-                            .bold()
-                    }
-                    LinearProgress(
-                        percentage: viewStore.percentCompleted,
-                        backgroundColor: Color(.secondarySystemBackground),
-                        foregroundColor: LinearGradient(gradient: Gradient(colors: [.accentColor]), startPoint: .leading, endPoint: .trailing)
-                    )
-                   .frame(height: 10)
-                }
+                MyProgressbar(percentage: viewStore.percentCompleted, action: { viewStore.send(.showSheetView) })
                 
                 // Question
                 Text(viewStore.currentQuestion.content)

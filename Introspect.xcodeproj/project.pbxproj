@@ -17,6 +17,7 @@
 		3300824E261CF52200A9427C /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3300824D261CF52200A9427C /* Question.swift */; };
 		33008255261CFF3800A9427C /* ButtonStyle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33008254261CFF3800A9427C /* ButtonStyle+Extensions.swift */; };
 		332C1ECE261E248B001F43B6 /* Progress-Bar in Frameworks */ = {isa = PBXBuildFile; productRef = 332C1ECD261E248B001F43B6 /* Progress-Bar */; };
+		332C1ED1261E2A6B001F43B6 /* MyProgressbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332C1ED0261E2A6B001F43B6 /* MyProgressbar.swift */; };
 		335AEFF2261D31310048ED51 /* AssessmentStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335AEFF1261D31310048ED51 /* AssessmentStartView.swift */; };
 		33742F1E261D2B71002B769C /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F1D261D2B71002B769C /* Root.swift */; };
 		33742F22261D2BFB002B769C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F21261D2BFB002B769C /* RootView.swift */; };
@@ -38,6 +39,7 @@
 		33008248261CF2D300A9427C /* Assessment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assessment.swift; sourceTree = "<group>"; };
 		3300824D261CF52200A9427C /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		33008254261CFF3800A9427C /* ButtonStyle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ButtonStyle+Extensions.swift"; sourceTree = "<group>"; };
+		332C1ED0261E2A6B001F43B6 /* MyProgressbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProgressbar.swift; sourceTree = "<group>"; };
 		335AEFF1261D31310048ED51 /* AssessmentStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentStartView.swift; sourceTree = "<group>"; };
 		33742F1D261D2B71002B769C /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
 		33742F21261D2BFB002B769C /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 		33008240261CECD400A9427C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				332C1ED0261E2A6B001F43B6 /* MyProgressbar.swift */,
 				33008254261CFF3800A9427C /* ButtonStyle+Extensions.swift */,
 			);
 			path = Common;
@@ -256,6 +259,7 @@
 				33742F29261D2E11002B769C /* AssessmentFinishedView.swift in Sources */,
 				335AEFF2261D31310048ED51 /* AssessmentStartView.swift in Sources */,
 				33742F26261D2DE9002B769C /* AssessmentQuestionView.swift in Sources */,
+				332C1ED1261E2A6B001F43B6 /* MyProgressbar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

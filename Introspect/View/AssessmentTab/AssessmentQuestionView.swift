@@ -20,7 +20,7 @@ struct AssessmentQuestionView: View {
                 Text(viewStore.currentQuestion.content)
                     .font(.title)
                     .bold()
-                    .padding()
+                    .padding(.vertical)
                 
                 // Responses
                 ForEach(viewStore.currentQuestion.responses, id: \.self) { response in
@@ -29,7 +29,7 @@ struct AssessmentQuestionView: View {
                     }
                     .buttonStyle(RoundedRectangleButtonStyle(style: viewStore.currentQuestion.response == response ? .confirm : .dismiss))
                 }
-                .padding(.horizontal)
+                //.padding(.horizontal)
                 
                 // Navbuttons
                 Spacer()

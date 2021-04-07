@@ -25,7 +25,7 @@ struct RoundedRectangleButtonStyle: ButtonStyle {
             case .confirm:
                 return Color.white
             case .dismiss:
-                return Color.accentColor
+                return Color.white
             }
         }
     }

@@ -17,6 +17,7 @@ struct Assessment {
         var currentQuestion: Question = Question.allCases.first!
         var showingSheetView = false
         var changingQuestion = false
+        
         var percentCompleted: CGFloat {
             let done = CGFloat(questions.filter { $0.response != nil }.count)
             let all  = CGFloat(questions.count)
@@ -34,7 +35,7 @@ struct Assessment {
     
     enum Action: Equatable {
         case startButtonTapped
-        case responseButtonTapped(String)
+        case responseButtonTapped(Question.Response)
         case backButtonTapped
         case nextButtonTapped
         case submitButtonTapped

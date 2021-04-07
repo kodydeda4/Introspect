@@ -29,7 +29,7 @@ struct AssessmentStartView: View {
                 Button("Start Test") {
                     viewStore.send(.startButtonTapped)
                 }
-                .buttonStyle(RoundedRectangleButtonStyle(style: .confirm))
+                .buttonStyle(RoundedRectangleButtonStyle(color: .accentColor))
                 .padding()
             }
             .padding()

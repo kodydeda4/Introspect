@@ -24,12 +24,12 @@ struct AssessmentFinishedView: View {
                         Button("Go Back") {
                             viewStore.send(.backButtonTapped)
                         }
-                        .buttonStyle(RoundedRectangleButtonStyle(style: .dismiss))
+                        .buttonStyle(RoundedRectangleButtonStyle())
                         
                         Button("Submit") {
                             viewStore.send(.submitButtonTapped)
                         }
-                        .buttonStyle(RoundedRectangleButtonStyle(style: .confirm))
+                        .buttonStyle(RoundedRectangleButtonStyle(color: .accentColor))
                     }
                 }
                 .padding()

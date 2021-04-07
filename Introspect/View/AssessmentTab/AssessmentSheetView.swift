@@ -13,27 +13,34 @@ struct AssessmentSheetView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            VStack {
-                Text("Questions")
-                    .font(.title)
-                    .bold()
+            ScrollView {
+                VStack {
+                    Text("Questions")
+                        .font(.title)
+                        .bold()
                     
-                Divider()
-                    .padding()
-
-                LazyVGrid(
-                    columns: [GridItem](repeating: .init(.flexible()), count: 4),
-                    spacing: 20
-                ) {
-                    ForEach(0..<viewStore.questions.count) { index in
-                        Button(index.description) {
-                            viewStore.send(.sheetQuestionButtonTapped(index))
+                    Divider()
+                        .padding()
+                    
+                    LazyVGrid(
+                        columns: [GridItem](repeating: .init(.flexible()), count: 4),
+                        spacing: 20
+                    ) {
+                        ForEach(0..<viewStore.questions.count) { index in
+                            Button(index.description) {
+                                viewStore.send(.sheetQuestionButtonTapped(index))
+                            }
+                            .buttonStyle(
+                                RoundedRectangleButtonStyle(
+                                    color: viewStore.questions[index].response == nil
+                                        ? Color(.secondarySystemBackground)
+                                        : .accentColor
+                                )
+                            )
                         }
-                        .buttonStyle(RoundedRectangleButtonStyle(style: viewStore.questions[index].response == nil ? .dismiss : .confirm))
-//                        .foregroundColor(Color.orange.opacity(viewStore.index == index ? 1 : 0))
                     }
+                    Spacer()
                 }
-                Spacer()
             }
             .padding()
         }

@@ -23,13 +23,10 @@ struct AssessmentQuestionView: View {
                     .padding(.vertical)
                 
                 // Responses
-                ForEach(viewStore.currentQuestion.responses, id: \.self) { response in
-                    Button(response) {
-                        viewStore.send(.responseButtonTapped(response))
-                    }
-                    .buttonStyle(RoundedRectangleButtonStyle(style: viewStore.currentQuestion.response == response ? .confirm : .dismiss))
+                ForEach(Question.Response.allCases) { response in
+                    Button(response.rawValue) { viewStore.send(.responseButtonTapped(response)) }
+                        .buttonStyle(RoundedRectangleButtonStyle(color: response.buttonColor))
                 }
-                //.padding(.horizontal)
                 
                 // Navbuttons
                 Spacer()
@@ -37,14 +34,14 @@ struct AssessmentQuestionView: View {
                     Button("Back") {
                         viewStore.send(.backButtonTapped)
                     }
-                    .buttonStyle(RoundedRectangleButtonStyle(style: .dismiss))
+                    .buttonStyle(RoundedRectangleButtonStyle())
                     .disabled(viewStore.progress == .firstQuestion)
                     .opacity(viewStore.progress == .firstQuestion ? 0.60 : 1.0)
                     
                     Button(viewStore.progress == .lastQuestion ? "Finish" : "Next") {
                         viewStore.send(.nextButtonTapped)
                     }
-                    .buttonStyle(RoundedRectangleButtonStyle(style: .confirm))
+                    .buttonStyle(RoundedRectangleButtonStyle(color: .accentColor))
                 }
                 .disabled(viewStore.changingQuestion)
             }

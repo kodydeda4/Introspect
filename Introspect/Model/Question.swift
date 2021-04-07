@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Question: Equatable, Identifiable, CaseIterable {
     var id: String { content }
@@ -35,19 +36,32 @@ struct Question: Equatable, Identifiable, CaseIterable {
         case percieving
     }
     
+
     var content: String
-    var response: String?
+    var response: Response?
     
-    let responses: [String] = [
-        "Strongly Agree",
-        "Agree",
-        "Somewhat Agree",
-        "Undecided",
-        "Somewhat Disagree",
-        "Disagree",
-        "Strongly Disagree"
-    ]
-    
+    enum Response: String, Identifiable, CaseIterable {
+        var id: Response { self }
+        case stronglyAgree    = "Strongly Agree"
+        case agree            = "Agree"
+        case somewhatAgree    = "Somewhat Agree"
+        case undecided        = "Undecided"
+        case somewhatDisagree = "Somewhat Disagree"
+        case disagree         = "Disagree"
+        case stronglyDisagree = "Strongly Disagree"
+        
+        var buttonColor: Color {
+            switch self {
+            case .stronglyAgree    : return Color.green.opacity(0.9)
+            case .agree            : return Color.green.opacity(0.7)
+            case .somewhatAgree    : return Color.green.opacity(0.6)
+            case .undecided        : return .gray
+            case .somewhatDisagree : return Color.orange.opacity(0.6)
+            case .disagree         : return Color.orange.opacity(0.7)
+            case .stronglyDisagree : return Color.orange.opacity(0.9)
+            }
+        }
+    }
     init(tendsToward: Spectrum, _ content: String) {
         self.content = content
         self.tendsToward = tendsToward
@@ -60,7 +74,7 @@ extension Question {
         Question(tendsToward: .introversion, "Seeing other people cry can easily make you feel like you want to cry too."),
         Question(tendsToward: .introversion, "You often make a backup plan for a backup plan."),
         Question(tendsToward: .introversion, "You usually stay calm, even under a lot of pressure."),
-        Question(tendsToward: .introversion, "At social events, you rarely try to introduce yourself to new people and mostly talk to the ones you alr,eady know."),
+        Question(tendsToward: .introversion, "At social events, you rarely try to introduce yourself to new people and mostly talk to the ones you already know."),
         Question(tendsToward: .introversion, "You prefer to completely finish one project before starting another."),
         Question(tendsToward: .introversion, "You prefer to completely finish one project before starting another."),
         Question(tendsToward: .introversion, "You like to use organizing tools like schedules and lists."),
@@ -68,7 +82,7 @@ extension Question {
         Question(tendsToward: .introversion, "You feel comfortable just walking up to someone you find interesting and striking up a conversation."),
         Question(tendsToward: .introversion, "You are not too interested in discussing various interpretations and analyses of creative works."),
         Question(tendsToward: .introversion, "You are more inclined to follow your head than your heart."),
-        Question(tendsToward: .introversion, "You usually prefer just doing what you feel like at any given moment instead of planning a particular da,ily routine."),
+        Question(tendsToward: .introversion, "You usually prefer just doing what you feel like at any given moment instead of planning a particular daily routine."),
         Question(tendsToward: .introversion, "You rarely worry about whether you make a good impression on people you meet."),
         Question(tendsToward: .introversion, "You enjoy participating in group activities."),
         Question(tendsToward: .introversion, "You like books and movies that make you come up with your own interpretation of the ending."),

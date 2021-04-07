@@ -10,14 +10,13 @@ import ComposableArchitecture
 
 struct Assessment {
     struct State: Equatable {
-        var progress : Progress   = .notYetStarted
+        var progress : Progress = .notYetStarted
         var questions: [Question] = Question.allCases
         
         var index = 0
         var currentQuestion: Question = Question.allCases.first!
         var showingSheetView = false
         var changingQuestion = false
-        var testJustSubmitted = false
         
         enum Progress {
             case notYetStarted
@@ -47,8 +46,7 @@ struct Assessment {
             } else if state.index < state.questions.count - 1 {
                 return .active
                 
-            } else if state.progress != .lastQuestion
-                        && state.index == state.questions.count - 1 {
+            } else if state.progress != .lastQuestion && state.index == state.questions.count - 1 {
                 return .lastQuestion
 
             } else if state.progress == .lastQuestion && state.questions.filter({ $0.response == nil }).count == 0 {

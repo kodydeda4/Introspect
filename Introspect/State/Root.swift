@@ -34,7 +34,7 @@ extension Root {
             switch action {
             case let .assessment(subaction):
                 switch subaction {
-                case .submitTestButtonTapped:
+                case .submitButtonTapped:
                     state.completedAssessments.append(state.assessment)
                     state.assessment = Assessment.State()
                 default:

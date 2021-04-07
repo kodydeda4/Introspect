@@ -16,8 +16,8 @@ struct AssessmentQuestionView: View {
             NavigationView {
                 VStack(alignment: .leading) {
                     VStack(alignment: .trailing) {
-                        Button(action: { viewStore.send(.enableSheet) }) {
-                            Text("\(viewStore.questionNumber+1)/\(viewStore.questions.count) Complete")
+                        Button(action: { viewStore.send(.showSheetView) }) {
+                            Text("\(viewStore.questionIndex+1)/\(viewStore.questions.count) Complete")
                             .bold()
                         }
                         HStack(spacing: 0) {
@@ -42,7 +42,7 @@ struct AssessmentQuestionView: View {
                                         
                     ForEach(viewStore.currentQuestion.responses, id: \.self) { response in
                         Button(response.lowercased()) {
-                            viewStore.send(.optionSelected(response))
+                            viewStore.send(.responseSelected(response))
                         }
                         .buttonStyle(
                             RoundedRectangleButtonStyle(
@@ -53,31 +53,28 @@ struct AssessmentQuestionView: View {
                         )
                     }
                     .padding(.horizontal)
+                    
                     Spacer()
                     HStack {
                         Button("Back") {
-                            viewStore.send(.previousQuestionButtonTapped)
+                            viewStore.send(.backButtonTapped)
                         }
                         .buttonStyle(RoundedRectangleButtonStyle(style: .dismiss))
-                        .disabled(viewStore.questionNumber == 0)
+                        .disabled(viewStore.testStatus == .firstQuestion)
 
                         Button("Next") {
-                            viewStore.send(.nextQuestionButtonTapped)
-                            
+                            viewStore.send(.nextButtonTapped)
                         }
                         .buttonStyle(
-                            RoundedRectangleButtonStyle(
-                                style: viewStore.questions.filter { $0.selectedResponse == nil }.count != 0 && viewStore.questionNumber + 1 == viewStore.questions.count
-                                    ? .dismiss
-                                    : .confirm
-                            )
+                            //RoundedRectangleButtonStyle(style: viewStore.testStatus == .lastQuestion ? .dismiss : .confirm)
+                            RoundedRectangleButtonStyle(style: .confirm)
                         )
-                        .disabled(viewStore.questions.filter { $0.selectedResponse == nil }.count != 0 && viewStore.questionNumber + 1 == viewStore.questions.count)
+                        //.disabled(viewStore.testStatus == .lastQuestion)
                     }
                 }
                 .padding()
                 .navigationBarHidden(true)
-                .sheet(isPresented: viewStore.binding(get: \.sheet, send: .disableSheet)) {
+                .sheet(isPresented: viewStore.binding(get: \.showingSheetView, send: .hideSheetView)) {
                     AssessmentSheetView(store: store)
                 }
 
@@ -85,6 +82,7 @@ struct AssessmentQuestionView: View {
         }
     }
 }
+
 struct AssessmentQuestionView_Previews: PreviewProvider {
     static var previews: some View {
         AssessmentQuestionView(store: Assessment.defaultStore)

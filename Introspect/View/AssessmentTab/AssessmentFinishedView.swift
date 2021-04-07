@@ -22,12 +22,12 @@ struct AssessmentFinishedView: View {
                     
                     HStack {
                         Button("Go Back") {
-                            viewStore.send(.toggleTestFinished)
+                            viewStore.send(.backButtonTapped)
                         }
                         .buttonStyle(RoundedRectangleButtonStyle(style: .dismiss))
                         
                         Button("Submit") {
-                            viewStore.send(.submitTestButtonTapped)
+                            viewStore.send(.submitButtonTapped)
                         }
                         .buttonStyle(RoundedRectangleButtonStyle(style: .confirm))
                     }

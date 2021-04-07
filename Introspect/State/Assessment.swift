@@ -10,24 +10,41 @@ import ComposableArchitecture
 
 struct Assessment {
     struct State: Equatable {
-        var questionNumber = 0
+        var questionIndex = 0
         var questions: [Question] = Question.allCases
         var currentQuestion: Question = Question.allCases.first!
-        var testFinished = false
-        var testStarted = false
-        var sheet = false
+        
+        var testStatus: TestStatus = .notYetStarted
+        
+//        var unansweredQuestions : Int { questions.filter { $0.selectedResponse == nil }.count }
+//        var firstQuestion : Bool { questionIndex == 0 }
+//        var lastQuestion  : Bool { unansweredQuestions == 1 && questionIndex == questions.count - 1 }
+        
+        var showingSheetView = false
+        
+        enum TestStatus {
+            case notYetStarted
+            case firstQuestion
+            case active
+            case lastQuestion
+            case finished
+        }
     }
     
     enum Action: Equatable {
-        case optionSelected(String)
-        case updateCurrentQuestion(Int)
-        case previousQuestionButtonTapped
-        case nextQuestionButtonTapped
-        case toggleTestFinished
-        case submitTestButtonTapped
         case startTestButtonTapped
-        case disableSheet
-        case enableSheet
+        case updateCurrentQuestion(Int)
+        
+        case responseSelected(String)
+        
+        case backButtonTapped
+        case nextButtonTapped
+        
+//        case toggleTestFinished
+        case submitButtonTapped
+        
+        case hideSheetView
+        case showSheetView
     }
     
     struct Environment {
@@ -40,64 +57,64 @@ extension Assessment {
         Reducer { state, action, environment in
             switch action {
             
-            case let .optionSelected(option):
+            case let .responseSelected(option):
                 if option != state.currentQuestion.selectedResponse {
                     state.currentQuestion.selectedResponse = option
-                    state.questions[state.questionNumber].selectedResponse = option
-                    return Effect(value: .nextQuestionButtonTapped)
+                    state.questions[state.questionIndex].selectedResponse = option
+                    return Effect(value: .nextButtonTapped)
                         .delay(for: 0.5, scheduler: DispatchQueue.main)
                         .eraseToEffect()
                     
                 } else {
                     state.currentQuestion.selectedResponse = nil
-                    state.questions[state.questionNumber].selectedResponse = nil
+                    state.questions[state.questionIndex].selectedResponse = nil
                     return .none
                 }
                 
-            case .previousQuestionButtonTapped:
-                if state.questionNumber > 0 {
-                    state.questionNumber -= 1
-                    state.currentQuestion = state.questions[state.questionNumber]
+            case .backButtonTapped:
+                if state.questionIndex > 0 {
+                    state.questionIndex -= 1
+                    state.currentQuestion = state.questions[state.questionIndex]
                 }
                 return .none
                 
                 
-            case .nextQuestionButtonTapped:
-                if state.questionNumber + 1 < state.questions.count {
-                    state.questionNumber += 1
-                    state.currentQuestion = state.questions[state.questionNumber]
-                    return .none
-                } else {
-                    if state.questions.filter({ $0.selectedResponse == nil }).isEmpty {
-                        return Effect(value: .toggleTestFinished)
-                    } else {
-                        return .none
+            case .nextButtonTapped:
+                switch state.testStatus {
+                
+                case .lastQuestion:
+                    state.testStatus = .finished
+                    
+                default:
+                    state.questionIndex += 1
+                    state.currentQuestion = state.questions[state.questionIndex]
+
+                    if state.questionIndex == state.questions.count - 1 {
+                        state.testStatus = .lastQuestion
                     }
-            }
+                }
+                return .none
                 
             case .startTestButtonTapped:
-                state.testStarted.toggle()
+                state.testStatus = .active
                 return .none
-            
-            case .toggleTestFinished:
-                state.testFinished.toggle()
-                return .none
-                
-            case .submitTestButtonTapped:
+
+            case .submitButtonTapped:
+                state.testStatus = .finished
                 return .none
                 
-            case .disableSheet:
-                state.sheet = false
+            case .hideSheetView:
+                state.showingSheetView = false
                 return .none
                 
-            case .enableSheet:
-                state.sheet = true
+            case .showSheetView:
+                state.showingSheetView = true
                 return .none
                 
             case let .updateCurrentQuestion(int):
-                state.questionNumber = int
-                state.currentQuestion = state.questions[state.questionNumber]
-                return Effect(value: .disableSheet)
+                state.questionIndex = int
+                state.currentQuestion = state.questions[state.questionIndex]
+                return Effect(value: .hideSheetView)
             }
         }
         .debug()

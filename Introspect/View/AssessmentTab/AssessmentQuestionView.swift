@@ -39,13 +39,12 @@ struct AssessmentQuestionView: View {
                     }
                     .buttonStyle(RoundedRectangleButtonStyle(style: .dismiss))
                     .disabled(viewStore.progress == .firstQuestion)
+                    .opacity(viewStore.progress == .firstQuestion ? 0.60 : 1.0)
                     
                     Button(viewStore.progress == .lastQuestion ? "Finish" : "Next") {
                         viewStore.send(.nextButtonTapped)
                     }
-                    .buttonStyle(
-                        RoundedRectangleButtonStyle(style: .confirm)
-                    )
+                    .buttonStyle(RoundedRectangleButtonStyle(style: .confirm))
                 }
                 .disabled(viewStore.changingQuestion)
             }

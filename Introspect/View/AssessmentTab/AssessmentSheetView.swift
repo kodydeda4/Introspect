@@ -45,3 +45,4 @@ struct AssessmentSheetView_Previews: PreviewProvider {
         AssessmentSheetView(store: Assessment.defaultStore)
     }
 }
+

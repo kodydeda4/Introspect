@@ -57,11 +57,11 @@ extension Assessment {
                 case false:
                     state.currentQuestion.response = response
                     state.questions[state.index] = state.currentQuestion
+                    
                     return Effect(value: .nextButtonTapped)
                         .delay(for: 1.0, scheduler: DispatchQueue.main)
                         .eraseToEffect()
                 }
-
                 
             case .backButtonTapped:
                 switch state.progress {
@@ -90,21 +90,14 @@ extension Assessment {
                 return .none
                                 
             case .nextButtonTapped:
-                
                 switch state.progress {
                 
-                case .notYetStarted:
-                    print("Never gets here")
-                    
                 case .firstQuestion, .active:
                     state.index += 1
                     state.currentQuestion = state.questions[state.index]
                     
-                case .lastQuestion:
+                case .notYetStarted, .lastQuestion, .finished:
                     print("Just return the effect")
-                    
-                case .finished:
-                    print("Never gets here")
                 }
                 
                 if state.index == 0 {
@@ -113,12 +106,12 @@ extension Assessment {
                 } else if state.index < state.questions.count - 1 {
                     state.progress = .active
                     
-                } else if state.progress != .lastQuestion && state.index == state.questions.count - 1 {
+                } else if state.progress != .lastQuestion
+                            && state.index == state.questions.count - 1 {
                     state.progress = .lastQuestion
 
                 } else if state.progress == .lastQuestion && state.questions.filter({ $0.response == nil }).count == 0 {
                     state.progress = .finished
-                    
                 }
                 return .none
 

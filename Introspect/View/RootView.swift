@@ -13,16 +13,29 @@ struct RootView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-//            TabView {
-//                AboutView(store: store)
-//                    .tabItem { Label("About", systemImage: "gear").foregroundColor(.accentColor) }
-                AssessmentView(store: store.scope(state: \.assessment, action: Root.Action.assessment))
-            
-                    
-//                    .tabItem { Label("Search", systemImage: "magnifyingglass").foregroundColor(.accentColor) }
-//                ProfileView(store: store)
-//                    .tabItem { Label("Profile", systemImage: "heart").foregroundColor(.accentColor) }
-//            }
+            TabView {
+                NavigationView {
+                    AboutView(store: store)
+                }
+                .tabItem {
+                    Label("About", systemImage: "gear")
+                        .foregroundColor(.accentColor)
+                }
+                NavigationView {
+                    AssessmentView(store: store.scope(state: \.assessment, action: Root.Action.assessment))
+                }
+                .tabItem {
+                    Label("Search", systemImage: "magnifyingglass")
+                        .foregroundColor(.accentColor)
+                }
+                NavigationView {
+                    ProfileView(store: store)
+                }
+                .tabItem {
+                    Label("Profile", systemImage: "person.fill")
+                        .foregroundColor(.accentColor)
+                }
+            }
         }
     }
 }

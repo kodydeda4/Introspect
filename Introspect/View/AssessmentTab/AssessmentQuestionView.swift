@@ -26,6 +26,33 @@ struct AssessmentQuestionView: View {
                         .frame(height: geo.size.height * 0.25, alignment: .topLeading)
                         
                     
+                    //Debug Info
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Spacer()
+                        Text(viewStore.currentQuestion.tendsToward.rawValue)
+                            .font(.title)
+                            .bold()
+                            .padding(.vertical)
+                            .foregroundColor(.green)
+
+                        Text(viewStore.currentQuestion.tendsToward.opposite.rawValue)
+                            .font(.title)
+                            .bold()
+                            .padding(.vertical)
+                            .foregroundColor(.orange)
+                            Spacer()
+                        }
+                        Text("introversion \(viewStore.introversion.description)")
+                        Text("extroversion \(viewStore.extroversion.description)")
+                        Text("sensing \(viewStore.sensing.description))")
+                        Text("intuition \(viewStore.intuition.description))")
+                        Text("thinking \(viewStore.thinking.description))")
+                        Text("feeling \(viewStore.feeling.description))")
+                        Text("judging \(viewStore.judging.description))")
+                        Text("percieving \(viewStore.percieving.description))")
+                    }
+
                     //Spacer()
                     HStack {
                         Spacer()
@@ -50,23 +77,6 @@ struct AssessmentQuestionView: View {
                         Spacer()
                     }
                     .frame(height: geo.size.height * 0.25)
-                    
-                    VStack(alignment: .leading) {
-                        Text("\(viewStore.currentQuestion.tendsToward.rawValue) | \(viewStore.currentQuestion.tendsToward.opposite.rawValue)")
-                        Text("------------------------------")
-                        Text("introversion \(viewStore.introversion.description)")
-                        Text("extroversion \(viewStore.extroversion.description)")
-                        Text("sensing \(viewStore.sensing.description))")
-                        Text("thinking \(viewStore.thinking.description))")
-                        Text("feeling \(viewStore.feeling.description))")
-                        Text("judging \(viewStore.judging.description))")
-                        Text("percieving \(viewStore.percieving.description))")
-                    }
-                    
-//                    Progressbar(percentage: viewStore.percentCompleted, action: { viewStore.send(.showSheetView) })
-//                    Progressbar(percentage: viewStore.percentCompleted, action: { viewStore.send(.showSheetView) })
-//                    Progressbar(percentage: viewStore.percentCompleted, action: { viewStore.send(.showSheetView) })
-//                    Progressbar(percentage: viewStore.percentCompleted, action: { viewStore.send(.showSheetView) })
                     
                     //                HStack {
                     //                    Button("Back") {

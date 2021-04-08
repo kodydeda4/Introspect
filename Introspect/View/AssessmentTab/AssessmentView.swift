@@ -30,3 +30,4 @@ struct AssessmentView_Previews: PreviewProvider {
         AssessmentView(store: Assessment.defaultStore)
     }
 }
+

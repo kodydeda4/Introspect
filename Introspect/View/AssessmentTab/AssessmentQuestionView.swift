@@ -29,9 +29,9 @@ struct AssessmentQuestionView: View {
                     //Spacer()
                     HStack {
                         Spacer()
-                        Text("Agree")
-                            .opacity((viewStore.changingQuestion && ![.stronglyAgree, .somewhatAgree, .agree].contains(viewStore.currentQuestion.response) ? 0.1 : 1))
-                            .animation(.default, value: [.stronglyAgree].contains(viewStore.currentQuestion.response))
+//                        Text("Agree")
+//                            .opacity((viewStore.changingQuestion && ![.stronglyAgree, .somewhatAgree, .agree].contains(viewStore.currentQuestion.response) ? 0.1 : 1))
+//                            .animation(.default, value: [.stronglyAgree].contains(viewStore.currentQuestion.response))
                         
                         ForEach(Question.Response.allCases) { response in
                             Button(action: { viewStore.send(.responseButtonTapped(response)) }) {
@@ -39,17 +39,35 @@ struct AssessmentQuestionView: View {
                                     .foregroundColor(response.buttonColor)
                                 
                             }
-                            .opacity((viewStore.changingQuestion && viewStore.currentQuestion.response != response) ? 0.1 : 1)
+                            .opacity((viewStore.changingQuestion && viewStore.currentQuestion.response != response) ? 0.25 : 1)
                             .animation(.default, value: viewStore.changingQuestion && viewStore.currentQuestion.response != response)
-                            .frame(width: 25)
+//                            .frame(width: 25)
                             
                         }
-                        Text("Disagree")
-                            .opacity((viewStore.changingQuestion && ![.stronglyDisagree, .somewhatDisagree, .disagree].contains(viewStore.currentQuestion.response) ? 0.1 : 1))
-                            .animation(.spring(), value: [.stronglyAgree].contains(viewStore.currentQuestion.response))
+//                        Text("Disagree")
+//                            .opacity((viewStore.changingQuestion && ![.stronglyDisagree, .somewhatDisagree, .disagree].contains(viewStore.currentQuestion.response) ? 0.1 : 1))
+//                            .animation(.spring(), value: [.stronglyAgree].contains(viewStore.currentQuestion.response))
                         Spacer()
                     }
                     .frame(height: geo.size.height * 0.25)
+                    
+                    VStack(alignment: .leading) {
+                        Text("\(viewStore.currentQuestion.tendsToward.rawValue) | \(viewStore.currentQuestion.tendsToward.opposite.rawValue)")
+                        Text("------------------------------")
+                        Text("introversion \(viewStore.introversion.description)")
+                        Text("extroversion \(viewStore.extroversion.description)")
+                        Text("sensing \(viewStore.sensing.description))")
+                        Text("thinking \(viewStore.thinking.description))")
+                        Text("feeling \(viewStore.feeling.description))")
+                        Text("judging \(viewStore.judging.description))")
+                        Text("percieving \(viewStore.percieving.description))")
+                    }
+                    
+//                    Progressbar(percentage: viewStore.percentCompleted, action: { viewStore.send(.showSheetView) })
+//                    Progressbar(percentage: viewStore.percentCompleted, action: { viewStore.send(.showSheetView) })
+//                    Progressbar(percentage: viewStore.percentCompleted, action: { viewStore.send(.showSheetView) })
+//                    Progressbar(percentage: viewStore.percentCompleted, action: { viewStore.send(.showSheetView) })
+                    
                     //                HStack {
                     //                    Button("Back") {
                     //                        viewStore.send(.backButtonTapped)

@@ -14,7 +14,7 @@ struct AssessmentFinishedView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             NavigationView {
-                VStack {
+                ScrollView {
                     Text("Done!")
                         .font(.title)
                         .bold()

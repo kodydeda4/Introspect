@@ -40,22 +40,22 @@ struct Question: Equatable, Identifiable, CaseIterable {
     var content: String
     var response: Response?
     
-    enum Response: String, Identifiable, CaseIterable {
+    enum Response: Int, Identifiable, CaseIterable {
         var id: Response { self }
-        case stronglyAgree    = "Strongly Agree"
-        case agree            = "Agree"
-        case somewhatAgree    = "Somewhat Agree"
-        case undecided        = "Undecided"
-        case somewhatDisagree = "Somewhat Disagree"
-        case disagree         = "Disagree"
-        case stronglyDisagree = "Strongly Disagree"
+        case stronglyAgree    =  3
+        case agree            =  2
+        case somewhatAgree    =  1
+        case undecided        =  0
+        case somewhatDisagree = -1
+        case disagree         = -2
+        case stronglyDisagree = -3
         
         var buttonColor: Color {
             switch self {
             case .stronglyAgree    : return Color.green.opacity(0.9)
             case .agree            : return Color.green.opacity(0.7)
             case .somewhatAgree    : return Color.green.opacity(0.6)
-            case .undecided        : return .gray
+            case .undecided        : return Color.gray.opacity(0.6)
             case .somewhatDisagree : return Color.orange.opacity(0.6)
             case .disagree         : return Color.orange.opacity(0.7)
             case .stronglyDisagree : return Color.orange.opacity(0.9)
@@ -75,7 +75,6 @@ extension Question {
         Question(tendsToward: .introversion, "You often make a backup plan for a backup plan."),
         Question(tendsToward: .introversion, "You usually stay calm, even under a lot of pressure."),
         Question(tendsToward: .introversion, "At social events, you rarely try to introduce yourself to new people and mostly talk to the ones you already know."),
-        Question(tendsToward: .introversion, "You prefer to completely finish one project before starting another."),
         Question(tendsToward: .introversion, "You prefer to completely finish one project before starting another."),
         Question(tendsToward: .introversion, "You like to use organizing tools like schedules and lists."),
         Question(tendsToward: .introversion, "Even a small mistake can cause you to doubt your overall abilities and knowledge."),

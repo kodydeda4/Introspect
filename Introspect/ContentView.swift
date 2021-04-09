@@ -10,24 +10,9 @@ import SwiftUI
 enum SQLAction: String, Identifiable, CaseIterable {
     var id: SQLAction { self }
     
-    enum QueryType {
-        case selection
-        case other
-    }
-    
     case createUsersTable = "Create users Table"
     case createPostsTable = "Create posts Table"
     case addAliceUser     = "Insert alice into users Table"
-    
-    var queryType: QueryType {
-        switch self {
-        case .createUsersTable, .createPostsTable:
-            return .selection
-            
-        case .addAliceUser:
-            return .other
-        }
-    }
     
     var code: String {
         switch self {

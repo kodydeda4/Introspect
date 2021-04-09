@@ -12,8 +12,8 @@ struct IntrospectApp: App {
     
     var body: some Scene {
         WindowGroup {
-            //RootView(store: Root.defaultStore)
-            ContentView()
+            RootView(store: Root.defaultStore)
+            
             //ExampleView(store: Example.defaultStore)
         }
     }

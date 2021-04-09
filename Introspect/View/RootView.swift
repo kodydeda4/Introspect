@@ -35,6 +35,14 @@ struct RootView: View {
                     Label("Results", systemImage: "person.crop.circle.fill")
                         .foregroundColor(.accentColor)
                 }
+                NavigationView {
+                    ContentView()
+                }
+                .tabItem {
+                    Label("SQL", systemImage: "text.book.closed.fill")
+                        .foregroundColor(.accentColor)
+                }
+
             }
         }
     }

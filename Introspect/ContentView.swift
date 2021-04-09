@@ -64,42 +64,15 @@ struct ContentView: View {
     
     @State var selectedSQLAction: SQLAction = .createUsersTable
     
-    //    VStack(alignment: .leading) {
-    //        ForEach(SQLAction.allCases.filter { $0.queryType == .selection }) { action in
-    //            Section(header: Text(action.rawValue)) {
-    //                Text(action.code)
-    //            }
-    //        }
-    //    }
-
-    
-    
     var body: some View {
-        ScrollView {
+        Form {
             ForEach(SQLAction.allCases) { action in
-                VStack(alignment: .leading) {
-                    
-                    Text(action.rawValue)
-                        .font(.title2)
-                        .bold()
-                        .foregroundColor(.primary)
-                    
+                Section(header: Text(action.rawValue)) {
                     Text(action.code)
-                        .foregroundColor(.accentColor)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color(.secondarySystemBackground))
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                    
-                    
                 }
-                .padding()
-                //.padding(.horizontal)
-                //.padding(.vertical, 8)
-                
             }
         }
-        .navigationBarHidden(true)
+        .navigationBarTitle("SQL Queries")
     }
 }
 

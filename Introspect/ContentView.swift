@@ -69,6 +69,7 @@ struct ContentView: View {
             ForEach(SQLAction.allCases) { action in
                 Section(header: Text(action.rawValue)) {
                     Text(action.code)
+                        .padding(.vertical)
                 }
             }
         }

@@ -25,6 +25,9 @@
 		33742F29261D2E11002B769C /* AssessmentFinishedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F28261D2E11002B769C /* AssessmentFinishedView.swift */; };
 		33742F2E261D2E6C002B769C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F2D261D2E6C002B769C /* AboutView.swift */; };
 		33742F31261D2E96002B769C /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F30261D2E96002B769C /* ResultsView.swift */; };
+		3380139C2620840D00F76D0E /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 3380139B2620840D00F76D0E /* SQLite */; };
+		338013A52620849B00F76D0E /* MySQLStripped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338013A42620849B00F76D0E /* MySQLStripped.swift */; };
+		338013A92620883E00F76D0E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338013A82620883E00F76D0E /* ContentView.swift */; };
 		33F5FA16261D357F00DC1986 /* AssessmentSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F5FA15261D357F00DC1986 /* AssessmentSheetView.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +50,8 @@
 		33742F28261D2E11002B769C /* AssessmentFinishedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentFinishedView.swift; sourceTree = "<group>"; };
 		33742F2D261D2E6C002B769C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		33742F30261D2E96002B769C /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
+		338013A42620849B00F76D0E /* MySQLStripped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySQLStripped.swift; sourceTree = "<group>"; };
+		338013A82620883E00F76D0E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		33F5FA15261D357F00DC1986 /* AssessmentSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentSheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3380139C2620840D00F76D0E /* SQLite in Frameworks */,
 				3300823B261CECB400A9427C /* ComposableArchitecture in Frameworks */,
 				332C1ECE261E248B001F43B6 /* Progress-Bar in Frameworks */,
 			);
@@ -83,6 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				33008229261CEC7800A9427C /* IntrospectApp.swift */,
+				338013A82620883E00F76D0E /* ContentView.swift */,
+				338013A42620849B00F76D0E /* MySQLStripped.swift */,
 				33008241261CECEE00A9427C /* Example.swift */,
 				3300823D261CECC100A9427C /* State */,
 				3300823F261CECC800A9427C /* View */,
@@ -187,6 +195,7 @@
 			packageProductDependencies = (
 				3300823A261CECB400A9427C /* ComposableArchitecture */,
 				332C1ECD261E248B001F43B6 /* Progress-Bar */,
+				3380139B2620840D00F76D0E /* SQLite */,
 			);
 			productName = Introspect;
 			productReference = 33008226261CEC7800A9427C /* Introspect.app */;
@@ -218,6 +227,7 @@
 			packageReferences = (
 				33008239261CECB400A9427C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				332C1ECC261E248B001F43B6 /* XCRemoteSwiftPackageReference "Progress-Bar-SwifttUI" */,
+				3380139A2620840D00F76D0E /* XCRemoteSwiftPackageReference "SQLite" */,
 			);
 			productRefGroup = 33008227261CEC7800A9427C /* Products */;
 			projectDirPath = "";
@@ -246,11 +256,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				33742F22261D2BFB002B769C /* RootView.swift in Sources */,
+				338013A52620849B00F76D0E /* MySQLStripped.swift in Sources */,
 				3300824E261CF52200A9427C /* Question.swift in Sources */,
 				33742F2E261D2E6C002B769C /* AboutView.swift in Sources */,
 				33008255261CFF3800A9427C /* ButtonStyle+Extensions.swift in Sources */,
 				33742F31261D2E96002B769C /* ResultsView.swift in Sources */,
 				33742F1E261D2B71002B769C /* Root.swift in Sources */,
+				338013A92620883E00F76D0E /* ContentView.swift in Sources */,
 				33008245261CECFB00A9427C /* AssessmentView.swift in Sources */,
 				3300822A261CEC7800A9427C /* IntrospectApp.swift in Sources */,
 				33F5FA16261D357F00DC1986 /* AssessmentSheetView.swift in Sources */,
@@ -466,6 +478,14 @@
 				minimumVersion = 1.0.4;
 			};
 		};
+		3380139A2620840D00F76D0E /* XCRemoteSwiftPackageReference "SQLite" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.12.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -478,6 +498,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 332C1ECC261E248B001F43B6 /* XCRemoteSwiftPackageReference "Progress-Bar-SwifttUI" */;
 			productName = "Progress-Bar";
+		};
+		3380139B2620840D00F76D0E /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3380139A2620840D00F76D0E /* XCRemoteSwiftPackageReference "SQLite" */;
+			productName = SQLite;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

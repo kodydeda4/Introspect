@@ -15,17 +15,13 @@ struct AssessmentFinishedView: View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 ScrollView {
-                    
                     PersonalityTypeView(personalityType: viewStore.assessmentResult.personalityType)
                     
-                
                     Text("Done!")
                         .font(.title)
                         .bold()
                         .padding()
-                    
-                    DebugView(store: store)
-                    
+                                        
                     HStack {
                         Button("Go Back") {
                             viewStore.send(.backButtonTapped)
@@ -37,6 +33,8 @@ struct AssessmentFinishedView: View {
                         }
                         .buttonStyle(RoundedRectangleButtonStyle(color: .accentColor))
                     }
+                    DebugView(store: store)
+
                 }
                 .padding()
             }

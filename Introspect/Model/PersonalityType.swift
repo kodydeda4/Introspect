@@ -29,7 +29,7 @@ enum PersonalityType: String, Equatable, CaseIterable, Identifiable {
     case entrepreneur = "ESTP"
     case entertainer  = "ESFP"
     
-    var title: String {
+    var name: String {
         switch self {
         case .architect    : return "Architect"
         case .logician     : return "Logician"

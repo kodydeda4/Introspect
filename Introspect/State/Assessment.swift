@@ -17,7 +17,7 @@ struct Assessment {
         var currentQuestionIndex   = 0
         var showingSheetView       = false
         var changingQuestion       = false
-        var assessmentResult       = PersonalityType()
+        var assessmentResult       = AssessmentResult()
         
         var percentCompleted: CGFloat {
             let complete = CGFloat(questions.filter { $0.response != nil }.count)

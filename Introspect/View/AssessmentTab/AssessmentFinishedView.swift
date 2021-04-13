@@ -15,12 +15,19 @@ struct AssessmentFinishedView: View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 ScrollView {
+                    
+                    Text(viewStore.assessmentResult.personalityType.title)
+                        .font(.title)
+                        .bold()
+                    
+                    Text(viewStore.assessmentResult.personalityType.description)
+                    
+                    
                     Text("Done!")
                         .font(.title)
                         .bold()
                         .padding()
                     
-                    Text(viewStore.assessmentResult.personalityType)
                     DebugView(store: store)
                     
                     HStack {

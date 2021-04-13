@@ -27,7 +27,7 @@
 		33742F2E261D2E6C002B769C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F2D261D2E6C002B769C /* AboutView.swift */; };
 		33742F31261D2E96002B769C /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F30261D2E96002B769C /* ResultsView.swift */; };
 		3380139C2620840D00F76D0E /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 3380139B2620840D00F76D0E /* SQLite */; };
-		338013A92620883E00F76D0E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338013A82620883E00F76D0E /* ContentView.swift */; };
+		338013A92620883E00F76D0E /* SQLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338013A82620883E00F76D0E /* SQLView.swift */; };
 		33F5FA16261D357F00DC1986 /* AssessmentSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F5FA15261D357F00DC1986 /* AssessmentSheetView.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +51,7 @@
 		33742F28261D2E11002B769C /* AssessmentFinishedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentFinishedView.swift; sourceTree = "<group>"; };
 		33742F2D261D2E6C002B769C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		33742F30261D2E96002B769C /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
-		338013A82620883E00F76D0E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		338013A82620883E00F76D0E /* SQLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLView.swift; sourceTree = "<group>"; };
 		33F5FA15261D357F00DC1986 /* AssessmentSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentSheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,7 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				33008229261CEC7800A9427C /* IntrospectApp.swift */,
-				338013A82620883E00F76D0E /* ContentView.swift */,
+				338013A82620883E00F76D0E /* SQLView.swift */,
 				33008241261CECEE00A9427C /* Example.swift */,
 				3300823D261CECC100A9427C /* State */,
 				3300823F261CECC800A9427C /* View */,
@@ -261,7 +261,7 @@
 				33008255261CFF3800A9427C /* ButtonStyle+Extensions.swift in Sources */,
 				33742F31261D2E96002B769C /* ResultsView.swift in Sources */,
 				33742F1E261D2B71002B769C /* Root.swift in Sources */,
-				338013A92620883E00F76D0E /* ContentView.swift in Sources */,
+				338013A92620883E00F76D0E /* SQLView.swift in Sources */,
 				336DDC26262489B2008D0C20 /* SQL.swift in Sources */,
 				33008245261CECFB00A9427C /* AssessmentView.swift in Sources */,
 				3300822A261CEC7800A9427C /* IntrospectApp.swift in Sources */,

@@ -67,51 +67,51 @@ struct SQL {
                 """
             case .twoTableJoin:
                 return """
-                not yet implemented
+                -- not yet implemented
                 """
             case .threeTableJoin:
                 return """
-                not yet implemented
+                -- not yet implemented
                 """
 
             case .selfJoin:
                 return """
-                not yet implemented
+                -- not yet implemented
                 """
 
             case .aggregateFunction:
                 return """
-                not yet implemented
+                -- not yet implemented
                 """
 
             case .aggregateFunctionExtended:
                 return """
-                not yet implemented
+                -- not yet implemented
                 """
 
             case .textBasedSearch:
                 return """
-                not yet implemented
+                -- not yet implemented
                 """
 
             case .subQuery:
                 return """
-                not yet implemented
+                -- not yet implemented
                 """
 
             case .storedFunction:
                 return """
-                not yet implemented
+                -- not yet implemented
                 """
 
             case .storedProcedure:
                 return """
-                not yet implemented
+                -- not yet implemented
                 """
 
             case .trigger:
                 return """
-                not yet implemented
+                -- not yet implemented
                 """
 
             }

@@ -36,7 +36,7 @@ struct RootView: View {
                         .foregroundColor(.accentColor)
                 }
                 NavigationView {
-                    ContentView()
+                    SQLView()
                 }
                 .tabItem {
                     Label("SQL", systemImage: "text.book.closed.fill")

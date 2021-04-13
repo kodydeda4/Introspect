@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  SQLView.swift
 //  Introspect
 //
 //  Created by Kody Deda on 4/9/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct SQLView: View {
     let f = SQL.init()
     
     @State var selectedSQLAction: SQL.Query = .createUsersTable
@@ -25,8 +25,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct SQLView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        SQLView()
     }
 }

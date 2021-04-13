@@ -16,30 +16,31 @@ struct TypesView: View {
             ScrollView {
                 VStack(alignment: .leading) {
                     ForEach(PersonalityType.Group.allCases) { group in
+                        Divider()
                         Text(group.rawValue)
                             .font(.title)
+                            .bold()
+                        
                         ScrollView(.horizontal) {
                             HStack {
                                 ForEach(PersonalityType.allCases.filter { $0.group == group }) { type in
                                     PersonalityTypeView(type: type)
+                                        .padding(.vertical)
+                                        .shadow(color: Color.black.opacity(0.2), radius: 10, y: 1)
                                         .frame(height: 250)
-                                        .padding(.vertical)
-                                        .shadow(color: Color.black.opacity(0.2), radius: 20)
-                                        .padding(.vertical)
-                                        
                                 }
                             }
-                            .padding(.horizontal)
-                            
                         }
-                        
-                        
+                        Text(group.description)
+                            .font(.body)
+                            .foregroundColor(.secondary)
+                            .padding(.vertical)
                     }
                     
                 }
-                .padding()
+
             }
-            //.padding()
+            .padding()
             .navigationTitle("Personality Types")
             .toolbar {
                 Button("Sort") {
@@ -65,8 +66,6 @@ struct PersonalityTypeView: View {
     
     var body: some View {
         ZStack {
-                    //            RadialGradient(gradient: Gradient(colors: [gradientColor, Color(.black)]), center: .center, startRadius: 50, endRadius: 500)
-
             LinearGradient(gradient: Gradient(stops: [.init(color: gradientColor, location: 0), .init(color: Color(.systemBackground), location: 1)]), startPoint: .top, endPoint: .bottom)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .padding()
@@ -74,7 +73,7 @@ struct PersonalityTypeView: View {
             Image(type.imageURL)
                 .resizable()
                 .scaledToFit()
-                .shadow(radius: 1.5, y: 2)
+                .shadow(radius: 2)
             
             VStack {
                 Spacer()
@@ -90,7 +89,7 @@ struct PersonalityTypeView: View {
                     Spacer()
                 }
                 .padding(6)
-                .padding([.leading, .bottom], 4)
+                .padding([.leading, .bottom], 6)
                 .frame(maxWidth: .infinity)
                 .background(Color(.secondarySystemBackground))
             }

@@ -32,7 +32,7 @@ struct Assessment {
             let all  = CGFloat(questions.count)
             return done / all
         }
-
+        
         enum Progress {
             case notYetStarted
             case firstQuestion

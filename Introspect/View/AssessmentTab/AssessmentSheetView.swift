@@ -15,12 +15,12 @@ struct AssessmentSheetView: View {
         WithViewStore(store) { viewStore in
             ScrollView {
                 VStack {
-                    Text("Questions")
-                        .font(.title)
-                        .bold()
-                    
-                    Divider()
-                        .padding()
+                    HStack {
+                        Text("Questions")
+                            .font(.title)
+                            .bold()
+                            .padding()
+                    }
                     
                     LazyVGrid(
                         columns: [GridItem](repeating: .init(.flexible()), count: 4),

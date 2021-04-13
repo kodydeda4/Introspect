@@ -14,7 +14,6 @@ struct AssessmentQuestionView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             VStack(alignment: .leading) {
-                
                 Progressbar(percentage: viewStore.percentCompleted, action: { viewStore.send(.showSheetView) })
                 
                 Text(viewStore.currentQuestion.content)
@@ -23,8 +22,18 @@ struct AssessmentQuestionView: View {
                     .padding(.vertical)
                     .frame(height: 300, alignment: .topLeading)
                 
-                buttons
-                debugView
+                HStack {
+                    ForEach(Question.Response.allCases) { response in
+                        Button(action: { viewStore.send(.responseButtonTapped(response)) }) {
+                            Circle()
+                                .foregroundColor(response.buttonColor)
+                                .opacity((viewStore.changingQuestion && viewStore.currentQuestion.response != response) ? 0.25 : 1)
+                                .animation(.default, value: viewStore.changingQuestion && viewStore.currentQuestion.response != response)
+                        }
+                    }
+                }
+                
+                DebugView(store: store)
             }
             .padding()
             .navigationBarHidden(true)
@@ -33,23 +42,13 @@ struct AssessmentQuestionView: View {
             }
         }
     }
+}
+
+
+struct DebugView: View {
+    let store: Store<Assessment.State, Assessment.Action>
     
-    var buttons: some View {
-        WithViewStore(store) { viewStore in
-            HStack {
-                ForEach(Question.Response.allCases) { response in
-                    Button(action: { viewStore.send(.responseButtonTapped(response)) }) {
-                        Circle()
-                            .foregroundColor(response.buttonColor)
-                            .opacity((viewStore.changingQuestion && viewStore.currentQuestion.response != response) ? 0.25 : 1)
-                            .animation(.default, value: viewStore.changingQuestion && viewStore.currentQuestion.response != response)
-                    }
-                }
-            }
-        }
-    }
-    
-    var debugView: some View {
+    var body: some View {
         WithViewStore(store) { viewStore in
             VStack {
                 HStack {
@@ -86,6 +85,13 @@ struct AssessmentQuestionView: View {
         }
     }
 }
+
+struct DebugView_Previews: PreviewProvider {
+    static var previews: some View {
+        DebugView(store: Assessment.defaultStore)
+    }
+}
+
 
 struct AssessmentQuestionView_Previews: PreviewProvider {
     static var previews: some View {

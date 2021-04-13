@@ -20,6 +20,9 @@ struct AssessmentFinishedView: View {
                         .bold()
                         .padding()
                     
+                    Text(viewStore.assessmentResult.personalityType)
+                    DebugView(store: store)
+                    
                     HStack {
                         Button("Go Back") {
                             viewStore.send(.backButtonTapped)

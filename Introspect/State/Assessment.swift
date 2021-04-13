@@ -8,16 +8,6 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct AssessmentResult: Equatable {
-    var introversion           = 0
-    var extroversion           = 0
-    var sensing                = 0
-    var intuition              = 0
-    var thinking               = 0
-    var feeling                = 0
-    var judging                = 0
-    var percieving             = 0
-}
 
 struct Assessment {
     struct State: Equatable {
@@ -27,11 +17,12 @@ struct Assessment {
         var currentQuestionIndex   = 0
         var showingSheetView       = false
         var changingQuestion       = false
-        var assessmentResult       = AssessmentResult()
+        var assessmentResult       = PersonalityType()
+        
         var percentCompleted: CGFloat {
-            let done = CGFloat(questions.filter { $0.response != nil }.count)
+            let complete = CGFloat(questions.filter { $0.response != nil }.count)
             let all  = CGFloat(questions.count)
-            return done / all
+            return complete / all
         }
         
         enum Progress {
@@ -118,83 +109,85 @@ extension Assessment {
                 state.progress = .firstQuestion
                 return .none
                 
-            case let .responseButtonTapped(response):
-                switch state.currentQuestion.response == response {
-                case true:
+            case let .responseButtonTapped(selection):
+                switch state.currentQuestion.response != selection {
+                
+                case false:
                     state.currentQuestion.response = nil
                     state.questions[state.currentQuestionIndex] = state.currentQuestion
                     
                     return .none
                     
-                case false:
-                    state.currentQuestion.response = response
+                case true:
+                    state.currentQuestion.response = selection
                     state.questions[state.currentQuestionIndex] = state.currentQuestion
                     state.changingQuestion = true
                     
                     switch state.currentQuestion.tendsToward {
                     
                     case .introversion:
-                        switch response {
+                        switch selection {
                         case .stronglyAgree, .agree, .somewhatAgree, .undecided:
-                            state.assessmentResult.introversion += response.rawValue
+                            state.assessmentResult.introversion += selection.rawValue
                         case .somewhatDisagree, .disagree, .stronglyDisagree:
-                            state.assessmentResult.extroversion += -response.rawValue
+                            state.assessmentResult.extroversion += -selection.rawValue
                         }
 
                     case .extroversion:
-                        switch response {
+                        switch selection {
                         case .stronglyAgree, .agree, .somewhatAgree, .undecided:
-                            state.assessmentResult.extroversion += response.rawValue
+                            state.assessmentResult.extroversion += selection.rawValue
                         case .somewhatDisagree, .disagree, .stronglyDisagree:
-                            state.assessmentResult.introversion += -response.rawValue
+                            state.assessmentResult.introversion += -selection.rawValue
                         }
                         
                     case .sensing:
-                        switch response {
+                        switch selection {
                         case .stronglyAgree, .agree, .somewhatAgree, .undecided:
-                            state.assessmentResult.sensing += response.rawValue
+                            state.assessmentResult.sensing += selection.rawValue
+                            
                         case .somewhatDisagree, .disagree, .stronglyDisagree:
-                            state.assessmentResult.intuition += -response.rawValue
+                            state.assessmentResult.intuition += -selection.rawValue
                         }
                         
                     case .intuition:
-                        switch response {
+                        switch selection {
                         case .stronglyAgree, .agree, .somewhatAgree, .undecided:
-                            state.assessmentResult.intuition += response.rawValue
+                            state.assessmentResult.intuition += selection.rawValue
                         case .somewhatDisagree, .disagree, .stronglyDisagree:
-                            state.assessmentResult.sensing += -response.rawValue
+                            state.assessmentResult.sensing += -selection.rawValue
                         }
 
                     case .thinking:
-                        switch response {
+                        switch selection {
                         case .stronglyAgree, .agree, .somewhatAgree, .undecided:
-                            state.assessmentResult.thinking += response.rawValue
+                            state.assessmentResult.thinking += selection.rawValue
                         case .somewhatDisagree, .disagree, .stronglyDisagree:
-                            state.assessmentResult.feeling += -response.rawValue
+                            state.assessmentResult.feeling += -selection.rawValue
                         }
                         
                     case .feeling:
-                        switch response {
+                        switch selection {
                         case .stronglyAgree, .agree, .somewhatAgree, .undecided:
-                            state.assessmentResult.feeling += response.rawValue
+                            state.assessmentResult.feeling += selection.rawValue
                         case .somewhatDisagree, .disagree, .stronglyDisagree:
-                            state.assessmentResult.thinking += -response.rawValue
+                            state.assessmentResult.thinking += -selection.rawValue
                         }
 
                     case .judging:
-                        switch response {
+                        switch selection {
                         case .stronglyAgree, .agree, .somewhatAgree, .undecided:
-                            state.assessmentResult.judging += response.rawValue
+                            state.assessmentResult.judging += selection.rawValue
                         case .somewhatDisagree, .disagree, .stronglyDisagree:
-                            state.assessmentResult.percieving += -response.rawValue
+                            state.assessmentResult.percieving += -selection.rawValue
                         }
 
                     case .percieving:
-                        switch response {
+                        switch selection {
                         case .stronglyAgree, .agree, .somewhatAgree, .undecided:
-                            state.assessmentResult.percieving += response.rawValue
+                            state.assessmentResult.percieving += selection.rawValue
                         case .somewhatDisagree, .disagree, .stronglyDisagree:
-                            state.assessmentResult.judging += -response.rawValue
+                            state.assessmentResult.judging += -selection.rawValue
                         }
                     }
 

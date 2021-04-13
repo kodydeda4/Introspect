@@ -8,37 +8,12 @@
 import Foundation
 import SwiftUI
 
+
+
 struct Question: Equatable, Identifiable, CaseIterable {
     var id: String { content }
     
-    var tendsToward  : Spectrum
-    
-    enum Spectrum: String, Identifiable, CaseIterable {
-        var id: Spectrum { self }
-        case introversion
-        case extroversion
-        case sensing
-        case intuition
-        case thinking
-        case feeling
-        case judging
-        case percieving
-        
-        var opposite: Spectrum {
-            switch self {
-            case .introversion : return .extroversion
-            case .extroversion : return .introversion
-            case .sensing      : return .intuition
-            case .intuition    : return .sensing
-            case .thinking     : return .feeling
-            case .feeling      : return .thinking
-            case .judging      : return .percieving
-            case .percieving   : return .judging
-            }
-        }
-    }
-    
-
+    var tendsToward: PersonalitySpectrum
     var content: String
     var response: Response?
     
@@ -64,7 +39,7 @@ struct Question: Equatable, Identifiable, CaseIterable {
             }
         }
     }
-    init(tendsToward: Spectrum, _ content: String, response: Response? = nil) {
+    init(tendsToward: PersonalitySpectrum, _ content: String, response: Response? = nil) {
         self.content = content
         self.tendsToward = tendsToward
         self.response = response
@@ -74,23 +49,21 @@ struct Question: Equatable, Identifiable, CaseIterable {
 extension Question {
     static var allCases: [Question] = [
         Question(tendsToward: .introversion, "You spend a lot of your free time exploring various random topics that pique your interest."),
-        Question(tendsToward: .introversion, "Seeing other people cry can easily make you feel like you want to cry too."),
-//        Question(tendsToward: .extroversion, "You often make a backup plan for a backup plan."),
+//        Question(tendsToward: .introversion, "Seeing other people cry can easily make you feel like you want to cry too."),
+        Question(tendsToward: .extroversion, "You often make a backup plan for a backup plan."),
 //        Question(tendsToward: .extroversion, "You usually stay calm, even under a lot of pressure."),
-//        Question(tendsToward: .sensing, "At social events, you rarely try to introduce yourself to new people and mostly talk to the ones you already know."),
+        Question(tendsToward: .sensing, "At social events, you rarely try to introduce yourself to new people and mostly talk to the ones you already know."),
 //        Question(tendsToward: .sensing, "You prefer to completely finish one project before starting another."),
-//        Question(tendsToward: .intuition, "You like to use organizing tools like schedules and lists."),
+        Question(tendsToward: .intuition, "You like to use organizing tools like schedules and lists."),
 //        Question(tendsToward: .intuition, "Even a small mistake can cause you to doubt your overall abilities and knowledge."),
-//        Question(tendsToward: .thinking, "You feel comfortable just walking up to someone you find interesting and striking up a conversation."),
+        Question(tendsToward: .thinking, "You feel comfortable just walking up to someone you find interesting and striking up a conversation."),
 //        Question(tendsToward: .thinking, "You are not too interested in discussing various interpretations and analyses of creative works."),
-//        Question(tendsToward: .feeling, "You are more inclined to follow your head than your heart."),
+        Question(tendsToward: .feeling, "You are more inclined to follow your head than your heart."),
 //        Question(tendsToward: .feeling, "You usually prefer just doing what you feel like at any given moment instead of planning a particular daily routine."),
-//        Question(tendsToward: .judging, "You rarely worry about whether you make a good impression on people you meet."),
+        Question(tendsToward: .judging, "You rarely worry about whether you make a good impression on people you meet."),
 //        Question(tendsToward: .judging, "You enjoy participating in group activities."),
-//        Question(tendsToward: .percieving, "You like books and movies that make you come up with your own interpretation of the ending."),
+        Question(tendsToward: .percieving, "You like books and movies that make you come up with your own interpretation of the ending."),
 //        Question(tendsToward: .percieving, "Your happiness comes more from helping others accomplish things than your own accomplishments."),
-        //MARK:-
-        
 //        Question(tendsToward: .introversion, "You are interested in so many things that you find it difficult to choose what to try next."),
 //        Question(tendsToward: .introversion, "You are prone to worrying that things will take a turn for the worse."),
 //        Question(tendsToward: .introversion, "You avoid leadership roles in group settings."),

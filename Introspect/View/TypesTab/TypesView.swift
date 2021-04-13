@@ -17,6 +17,7 @@ struct TypesView: View {
                 VStack(alignment: .leading) {
                     ForEach(PersonalityType.Group.allCases) { group in
                         Divider()
+                        
                         Text(group.rawValue)
                             .font(.title)
                             .bold()
@@ -24,23 +25,27 @@ struct TypesView: View {
                         ScrollView(.horizontal) {
                             HStack {
                                 ForEach(PersonalityType.allCases.filter { $0.group == group }) { type in
-                                    PersonalityTypeView(type: type)
+                                    NavigationLink(destination: Text(type.name)) {
+                                        PersonalityTypeView(type: type)
                                         .padding(.vertical)
                                         .shadow(color: Color.black.opacity(0.2), radius: 10, y: 1)
-                                        .frame(height: 250)
+                                        .frame(height: 300)
+                                    }
                                 }
                             }
                         }
+                        
+                        
                         Text(group.description)
                             .font(.body)
                             .foregroundColor(.secondary)
-                            .padding(.vertical)
+                            .padding(.vertical, 5)
+                            .padding(.bottom)
                     }
-                    
                 }
 
             }
-            .padding()
+            .padding([.vertical, .leading])
             .navigationTitle("Personality Types")
             .toolbar {
                 Button("Sort") {
@@ -85,6 +90,7 @@ struct PersonalityTypeView: View {
                         
                         Text(type.name)
                             .bold()
+                            .foregroundColor(.primary)
                     }
                     Spacer()
                 }

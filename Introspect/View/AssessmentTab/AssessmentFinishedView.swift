@@ -16,13 +16,9 @@ struct AssessmentFinishedView: View {
             NavigationView {
                 ScrollView {
                     
-                    Text(viewStore.assessmentResult.personalityType.title)
-                        .font(.title)
-                        .bold()
+                    PersonalityTypeView(personalityType: viewStore.assessmentResult.personalityType)
                     
-                    Text(viewStore.assessmentResult.personalityType.description)
-                    
-                    
+                
                     Text("Done!")
                         .font(.title)
                         .bold()

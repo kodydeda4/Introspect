@@ -8,6 +8,55 @@
 import SwiftUI
 import ComposableArchitecture
 
+
+private struct DebugView: View {
+    let store: Store<Assessment.State, Assessment.Action>
+    
+    var body: some View {
+        WithViewStore(store) { viewStore in
+            VStack {
+                HStack {
+                    Text(viewStore.currentQuestion.tendsToward.rawValue)
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(.green)
+                    
+                    Text(viewStore.currentQuestion.tendsToward.opposite.rawValue)
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(.orange)
+                }
+                
+                HStack {
+                    TextField("", text: .constant("\(viewStore.introversion.description) Introversion"))
+                    TextField("", text: .constant("\(viewStore.extroversion.description) Extroversion"))
+                }
+                HStack {
+                    TextField("", text: .constant("\(viewStore.sensing.description) Sensing"))
+                    TextField("", text: .constant("\(viewStore.intuition.description) Intuition"))
+                }
+                HStack {
+                    TextField("", text: .constant("\(viewStore.thinking.description) Thinking"))
+                    TextField("", text: .constant("\(viewStore.feeling.description) Feeling"))
+                }
+                HStack {
+                    TextField("", text: .constant("\(viewStore.judging.description) Judging"))
+                    TextField("", text: .constant("\(viewStore.percieving.description) Percieving"))
+                }
+            }
+            .padding()
+            .border(Color.red)
+        }
+    }
+}
+
+
+struct DebugView_Previews: PreviewProvider {
+    static var previews: some View {
+        DebugView(store: Assessment.defaultStore)
+    }
+}
+
 struct AssessmentQuestionView: View {
     let store: Store<Assessment.State, Assessment.Action>
     
@@ -23,42 +72,17 @@ struct AssessmentQuestionView: View {
                         .bold()
                         .padding(.vertical)
                         //.frame(height: geo.size.height * 0.25)
-                        .frame(height: geo.size.height * 0.25, alignment: .topLeading)
-                        
+                        .frame(height: geo.size.height * 0.3, alignment: .topLeading)
                     
-                    //Debug Info
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Spacer()
-                        Text(viewStore.currentQuestion.tendsToward.rawValue)
-                            .font(.title)
-                            .bold()
-                            .padding(.vertical)
-                            .foregroundColor(.green)
-
-                        Text(viewStore.currentQuestion.tendsToward.opposite.rawValue)
-                            .font(.title)
-                            .bold()
-                            .padding(.vertical)
-                            .foregroundColor(.orange)
-                            Spacer()
-                        }
-                        Text("introversion \(viewStore.introversion.description)")
-                        Text("extroversion \(viewStore.extroversion.description)")
-                        Text("sensing \(viewStore.sensing.description))")
-                        Text("intuition \(viewStore.intuition.description))")
-                        Text("thinking \(viewStore.thinking.description))")
-                        Text("feeling \(viewStore.feeling.description))")
-                        Text("judging \(viewStore.judging.description))")
-                        Text("percieving \(viewStore.percieving.description))")
-                    }
-
+                    
+                    DebugView(store: store)
+                    
                     //Spacer()
                     HStack {
                         Spacer()
-//                        Text("Agree")
-//                            .opacity((viewStore.changingQuestion && ![.stronglyAgree, .somewhatAgree, .agree].contains(viewStore.currentQuestion.response) ? 0.1 : 1))
-//                            .animation(.default, value: [.stronglyAgree].contains(viewStore.currentQuestion.response))
+                        //                        Text("Agree")
+                        //                            .opacity((viewStore.changingQuestion && ![.stronglyAgree, .somewhatAgree, .agree].contains(viewStore.currentQuestion.response) ? 0.1 : 1))
+                        //                            .animation(.default, value: [.stronglyAgree].contains(viewStore.currentQuestion.response))
                         
                         ForEach(Question.Response.allCases) { response in
                             Button(action: { viewStore.send(.responseButtonTapped(response)) }) {
@@ -68,12 +92,12 @@ struct AssessmentQuestionView: View {
                             }
                             .opacity((viewStore.changingQuestion && viewStore.currentQuestion.response != response) ? 0.25 : 1)
                             .animation(.default, value: viewStore.changingQuestion && viewStore.currentQuestion.response != response)
-//                            .frame(width: 25)
+                            //                            .frame(width: 25)
                             
                         }
-//                        Text("Disagree")
-//                            .opacity((viewStore.changingQuestion && ![.stronglyDisagree, .somewhatDisagree, .disagree].contains(viewStore.currentQuestion.response) ? 0.1 : 1))
-//                            .animation(.spring(), value: [.stronglyAgree].contains(viewStore.currentQuestion.response))
+                        //                        Text("Disagree")
+                        //                            .opacity((viewStore.changingQuestion && ![.stronglyDisagree, .somewhatDisagree, .disagree].contains(viewStore.currentQuestion.response) ? 0.1 : 1))
+                        //                            .animation(.spring(), value: [.stronglyAgree].contains(viewStore.currentQuestion.response))
                         Spacer()
                     }
                     .frame(height: geo.size.height * 0.25)

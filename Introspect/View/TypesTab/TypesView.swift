@@ -10,17 +10,34 @@ import ComposableArchitecture
 
 struct TypesView: View {
     let store: Store<Root.State, Root.Action>
-
+    
     var body: some View {
         WithViewStore(store) { viewStore in
             ScrollView {
-                LazyVGrid(columns: [GridItem](repeating: .init(.flexible()), count: 2)) {
-                    ForEach(PersonalityType.allCases) { type in
-                        PersonalityTypeView(type: type)
-                        .shadow(radius: 10)
-                        .padding(6)
+                VStack(alignment: .leading) {
+                    ForEach(PersonalityType.Group.allCases) { group in
+                        Text(group.rawValue)
+                            .font(.title)
+                        ScrollView(.horizontal) {
+                            HStack {
+                                ForEach(PersonalityType.allCases.filter { $0.group == group }) { type in
+                                    PersonalityTypeView(type: type)
+                                        .frame(height: 250)
+                                        .padding(.vertical)
+                                        .shadow(color: Color.black.opacity(0.2), radius: 20)
+                                        .padding(.vertical)
+                                        
+                                }
+                            }
+                            .padding(.horizontal)
+                            
+                        }
+                        
+                        
                     }
+                    
                 }
+                .padding()
             }
             //.padding()
             .navigationTitle("Personality Types")
@@ -44,10 +61,13 @@ struct PersonalityTypeView: View {
         case .explorer : return Color.orange
         }
     }
+
     
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(stops: [.init(color: gradientColor, location: 0.075), .init(color: .black, location: 1)]), startPoint: .top, endPoint: .bottom)
+                    //            RadialGradient(gradient: Gradient(colors: [gradientColor, Color(.black)]), center: .center, startRadius: 50, endRadius: 500)
+
+            LinearGradient(gradient: Gradient(stops: [.init(color: gradientColor, location: 0), .init(color: Color(.systemBackground), location: 1)]), startPoint: .top, endPoint: .bottom)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .padding()
             
@@ -55,7 +75,7 @@ struct PersonalityTypeView: View {
                 .resizable()
                 .scaledToFit()
                 .shadow(radius: 1.5, y: 2)
-
+            
             VStack {
                 Spacer()
                 HStack {
@@ -77,7 +97,7 @@ struct PersonalityTypeView: View {
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .padding(.horizontal)
         }
-
+        
     }
 }
 

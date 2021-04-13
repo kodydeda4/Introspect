@@ -46,7 +46,7 @@ enum PersonalityType: String, Equatable, CaseIterable, Identifiable {
         case .virtuoso     : return "Virtuoso"
         case .adventurer   : return "Adventurer"
         case .entrepreneur : return "Entrepreneur"
-        case .entertainer  : return "Entertainer "
+        case .entertainer  : return "Entertainer"
         }
     }
     
@@ -69,6 +69,10 @@ enum PersonalityType: String, Equatable, CaseIterable, Identifiable {
         case .entrepreneur : return "An Entrepreneur (ESTP) is someone with the Extraverted, Observant, Thinking, and Prospecting personality traits. They tend to be energetic and action-oriented, deftly navigating whatever is in front of them. They love uncovering life’s opportunities, whether socializing with others or in more personal pursuits."
         case .entertainer  : return "An Entertainer (ESFP) is a person with the Extraverted, Observant, Feeling, and Prospecting personality traits. These people love vibrant experiences, engaging in life eagerly and taking pleasure in discovering the unknown. They can be very social, often encouraging others into shared activities."
         }
+    }
+    
+    var imageURL: String {
+        self.name.lowercased()
     }
 }
 

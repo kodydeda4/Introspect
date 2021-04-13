@@ -19,7 +19,7 @@ struct AssessmentView: View {
             case .finished:
                 AssessmentFinishedView(store: store)
             case .viewingResults:
-                PersonalityTypeView(personalityType: viewStore.personalityType, action: { viewStore.send(.finishedButtonTapped) })
+                AssessmentResultsView(store: store)
             default:
                 AssessmentQuestionView(store: store)
             }

@@ -21,7 +21,6 @@ struct AssessmentResultsView: View {
                     .frame(width: 200)
                 
             
-                
                 HStack {
                     Text(viewStore.personalityType.name)
                         .font(.largeTitle)

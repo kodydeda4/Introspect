@@ -74,6 +74,31 @@ enum PersonalityType: String, Equatable, CaseIterable, Identifiable {
     var imageURL: String {
         self.name.lowercased()
     }
+    
+    enum Group: String, Identifiable, CaseIterable {
+        var id: Group { self }
+        case analyst = "Analyst"
+        case diplomat = "Diplomat"
+        case sentinel = "Sentinel"
+        case explorer = "Explorer"
+    }
+    
+    var group: Group {
+        switch self {
+        
+        case .architect, .logician, .commander, .debater:
+            return .analyst
+            
+        case .advocate, .mediator, .protagonist, .campaigner:
+            return .diplomat
+            
+        case .logistician, .defender, .executive, .consul:
+            return .sentinel
+            
+        case .virtuoso, .adventurer, .entrepreneur, .entertainer:
+            return .explorer
+        }
+    }
 }
 
 

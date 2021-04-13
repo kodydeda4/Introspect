@@ -10,22 +10,20 @@ import ComposableArchitecture
 
 struct Assessment {
     struct State: Equatable {
-        var progress : Progress = .notYetStarted
-        var questions: [Question] = Question.allCases
-        
-        var index = 0
-        var currentQuestion: Question = Question.allCases.first!
-        var showingSheetView = false
-        var changingQuestion = false
-        
-        var introversion = 0
-        var extroversion = 0
-        var sensing = 0
-        var intuition = 0
-        var thinking = 0
-        var feeling = 0
-        var judging = 0
-        var percieving = 0
+        var progress               = Progress.notYetStarted
+        var questions              = Question.allCases
+        var currentQuestion        = Question.allCases.first!
+        var currentQuestionIndex   = 0
+        var showingSheetView       = false
+        var changingQuestion       = false
+        var introversion           = 0
+        var extroversion           = 0
+        var sensing                = 0
+        var intuition              = 0
+        var thinking               = 0
+        var feeling                = 0
+        var judging                = 0
+        var percieving             = 0
 
         var percentCompleted: CGFloat {
             let done = CGFloat(questions.filter { $0.response != nil }.count)
@@ -56,13 +54,13 @@ struct Assessment {
     
     struct Environment {
         func getProgress(_ state: Assessment.State) -> Assessment.State.Progress {
-            if state.index == 0 {
+            if state.currentQuestionIndex == 0 {
                 return .firstQuestion
                 
-            } else if state.index < state.questions.count - 1 {
+            } else if state.currentQuestionIndex < state.questions.count - 1 {
                 return .active
                 
-            } else if state.progress != .lastQuestion && state.index == state.questions.count - 1 {
+            } else if state.progress != .lastQuestion && state.currentQuestionIndex == state.questions.count - 1 {
                 return .lastQuestion
 
             } else if state.progress == .lastQuestion && state.questions.filter({ $0.response == nil }).count == 0 {
@@ -74,13 +72,13 @@ struct Assessment {
         }
         
         func getProgressIndexButtonTapped(_ state: Assessment.State) -> Assessment.State.Progress {
-            if state.index == 0 {
+            if state.currentQuestionIndex == 0 {
                 return .firstQuestion
                 
-            } else if state.index < state.questions.count - 1 {
+            } else if state.currentQuestionIndex < state.questions.count - 1 {
                 return .active
                 
-            } else if state.progress != .lastQuestion && state.index == state.questions.count - 1 {
+            } else if state.progress != .lastQuestion && state.currentQuestionIndex == state.questions.count - 1 {
                 return .lastQuestion
 
             } else if state.progress == .lastQuestion && state.questions.filter({ $0.response == nil }).count == 0 {
@@ -92,13 +90,13 @@ struct Assessment {
         }
         
         func getProgressBackButtonTapped(_ state: Assessment.State) -> Assessment.State.Progress {
-            if state.index == 0 {
+            if state.currentQuestionIndex == 0 {
                 return .firstQuestion
                 
-            } else if state.index < state.questions.count - 1 {
+            } else if state.currentQuestionIndex < state.questions.count - 1 {
                 return .active
                 
-            } else if state.index == state.questions.count - 1 {
+            } else if state.currentQuestionIndex == state.questions.count - 1 {
                 return .lastQuestion
                 
             } else {
@@ -121,14 +119,13 @@ extension Assessment {
                 switch state.currentQuestion.response == response {
                 case true:
                     state.currentQuestion.response = nil
-                    state.questions[state.index] = state.currentQuestion
-                    
+                    state.questions[state.currentQuestionIndex] = state.currentQuestion
                     
                     return .none
                     
                 case false:
                     state.currentQuestion.response = response
-                    state.questions[state.index] = state.currentQuestion
+                    state.questions[state.currentQuestionIndex] = state.currentQuestion
                     state.changingQuestion = true
                     
                     switch state.currentQuestion.tendsToward {
@@ -207,12 +204,12 @@ extension Assessment {
             case .backButtonTapped:
                 switch state.progress {
                 case .active, .lastQuestion:
-                    state.index -= 1
-                    state.currentQuestion = state.questions[state.index]
+                    state.currentQuestionIndex -= 1
+                    state.currentQuestion = state.questions[state.currentQuestionIndex]
                     
                 case .finished:
                     state.currentQuestion.response = nil
-                    state.questions[state.index] = state.currentQuestion
+                    state.questions[state.currentQuestionIndex] = state.currentQuestion
                     state.progress = .lastQuestion
                     
                 default:
@@ -227,8 +224,8 @@ extension Assessment {
                 switch state.progress {
                 
                 case .firstQuestion, .active:
-                    state.index += 1
-                    state.currentQuestion = state.questions[state.index]
+                    state.currentQuestionIndex += 1
+                    state.currentQuestion = state.questions[state.currentQuestionIndex]
                     
                 default:
                     print("nextButtonTapped")
@@ -250,9 +247,9 @@ extension Assessment {
                 return .none
                 
             case let .sheetQuestionButtonTapped(int):
-                state.questions[state.index].response = state.currentQuestion.response
-                state.index = int
-                state.currentQuestion = state.questions[state.index]
+                state.questions[state.currentQuestionIndex].response = state.currentQuestion.response
+                state.currentQuestionIndex = int
+                state.currentQuestion = state.questions[state.currentQuestionIndex]
 
                 state.showingSheetView = false
                 state.progress = environment.getProgressIndexButtonTapped(state)

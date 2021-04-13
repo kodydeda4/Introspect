@@ -14,6 +14,7 @@ struct AssessmentQuestionView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             VStack(alignment: .leading) {
+                
                 Progressbar(percentage: viewStore.percentCompleted, action: { viewStore.send(.showSheetView) })
                 
                 Text(viewStore.currentQuestion.content)
@@ -23,24 +24,8 @@ struct AssessmentQuestionView: View {
                     .frame(height: 300, alignment: .topLeading)
                 
                 ButtonsView(store: store)
+                
                 DebugView(store: store)
-                
-                //                HStack {
-                //                    Button("Back") {
-                //                        viewStore.send(.backButtonTapped)
-                //                    }
-                //                    .buttonStyle(RoundedRectangleButtonStyle())
-                //                    .disabled(viewStore.progress == .firstQuestion)
-                //                    .opacity(viewStore.progress == .firstQuestion ? 0.60 : 1.0)
-                //
-                //                    Button(viewStore.progress == .lastQuestion ? "Finish" : "Next") {
-                //                        viewStore.send(.nextButtonTapped)
-                //                    }
-                //                    .buttonStyle(RoundedRectangleButtonStyle(color: .accentColor))
-                //                }
-                //                .padding(.vertical)
-                //                .disabled(viewStore.changingQuestion)
-                
             }
             .padding()
             .navigationBarHidden(true)

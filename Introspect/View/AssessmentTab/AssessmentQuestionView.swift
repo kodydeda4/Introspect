@@ -23,9 +23,8 @@ struct AssessmentQuestionView: View {
                     .padding(.vertical)
                     .frame(height: 300, alignment: .topLeading)
                 
-                ButtonsView(store: store)
-                
-                DebugView(store: store)
+                buttons
+                debugView
             }
             .padding()
             .navigationBarHidden(true)
@@ -34,58 +33,23 @@ struct AssessmentQuestionView: View {
             }
         }
     }
-}
-
-struct AssessmentQuestionView_Previews: PreviewProvider {
-    static var previews: some View {
-        AssessmentQuestionView(store: Assessment.defaultStore)
-    }
-}
-
-private struct ButtonsView: View {
-    let store: Store<Assessment.State, Assessment.Action>
     
-    var body: some View {
+    var buttons: some View {
         WithViewStore(store) { viewStore in
-            
             HStack {
-                Spacer()
-                //                        Text("Agree")
-                //                            .opacity((viewStore.changingQuestion && ![.stronglyAgree, .somewhatAgree, .agree].contains(viewStore.currentQuestion.response) ? 0.1 : 1))
-                //                            .animation(.default, value: [.stronglyAgree].contains(viewStore.currentQuestion.response))
-                
                 ForEach(Question.Response.allCases) { response in
                     Button(action: { viewStore.send(.responseButtonTapped(response)) }) {
                         Circle()
                             .foregroundColor(response.buttonColor)
-                        
+                            .opacity((viewStore.changingQuestion && viewStore.currentQuestion.response != response) ? 0.25 : 1)
+                            .animation(.default, value: viewStore.changingQuestion && viewStore.currentQuestion.response != response)
                     }
-                    .opacity((viewStore.changingQuestion && viewStore.currentQuestion.response != response) ? 0.25 : 1)
-                    .animation(.default, value: viewStore.changingQuestion && viewStore.currentQuestion.response != response)
-                    //                            .frame(width: 25)
-                    
                 }
-                //                        Text("Disagree")
-                //                            .opacity((viewStore.changingQuestion && ![.stronglyDisagree, .somewhatDisagree, .disagree].contains(viewStore.currentQuestion.response) ? 0.1 : 1))
-                //                            .animation(.spring(), value: [.stronglyAgree].contains(viewStore.currentQuestion.response))
-                Spacer()
             }
         }
     }
-}
-
-struct ButtonsView_Previews: PreviewProvider {
-    static var previews: some View {
-        ButtonsView(store: Assessment.defaultStore)
-    }
-}
-
-
-// MARK:- DebugView
-private struct DebugView: View {
-    let store: Store<Assessment.State, Assessment.Action>
     
-    var body: some View {
+    var debugView: some View {
         WithViewStore(store) { viewStore in
             VStack {
                 HStack {
@@ -101,20 +65,20 @@ private struct DebugView: View {
                 }
                 
                 HStack {
-                    TextField("", text: .constant("\(viewStore.introversion.description) Introversion"))
-                    TextField("", text: .constant("\(viewStore.extroversion.description) Extroversion"))
+                    TextField("", text: .constant("\(viewStore.assessmentResult.introversion.description) Introversion"))
+                    TextField("", text: .constant("\(viewStore.assessmentResult.extroversion.description) Extroversion"))
                 }
                 HStack {
-                    TextField("", text: .constant("\(viewStore.sensing.description) Sensing"))
-                    TextField("", text: .constant("\(viewStore.intuition.description) Intuition"))
+                    TextField("", text: .constant("\(viewStore.assessmentResult.sensing.description) Sensing"))
+                    TextField("", text: .constant("\(viewStore.assessmentResult.intuition.description) Intuition"))
                 }
                 HStack {
-                    TextField("", text: .constant("\(viewStore.thinking.description) Thinking"))
-                    TextField("", text: .constant("\(viewStore.feeling.description) Feeling"))
+                    TextField("", text: .constant("\(viewStore.assessmentResult.thinking.description) Thinking"))
+                    TextField("", text: .constant("\(viewStore.assessmentResult.feeling.description) Feeling"))
                 }
                 HStack {
-                    TextField("", text: .constant("\(viewStore.judging.description) Judging"))
-                    TextField("", text: .constant("\(viewStore.percieving.description) Percieving"))
+                    TextField("", text: .constant("\(viewStore.assessmentResult.judging.description) Judging"))
+                    TextField("", text: .constant("\(viewStore.assessmentResult.percieving.description) Percieving"))
                 }
             }
             .padding()
@@ -123,9 +87,10 @@ private struct DebugView: View {
     }
 }
 
-
-struct DebugView_Previews: PreviewProvider {
+struct AssessmentQuestionView_Previews: PreviewProvider {
     static var previews: some View {
-        DebugView(store: Assessment.defaultStore)
+        AssessmentQuestionView(store: Assessment.defaultStore)
     }
 }
+
+

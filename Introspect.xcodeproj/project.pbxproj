@@ -16,7 +16,6 @@
 		33008249261CF2D300A9427C /* Assessment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33008248261CF2D300A9427C /* Assessment.swift */; };
 		3300824E261CF52200A9427C /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3300824D261CF52200A9427C /* Question.swift */; };
 		33008255261CFF3800A9427C /* ButtonStyle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33008254261CFF3800A9427C /* ButtonStyle+Extensions.swift */; };
-		3329941B2625C18B00618E7E /* AssessmentResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3329941A2625C18B00618E7E /* AssessmentResult.swift */; };
 		332994202625CE4B00618E7E /* PersonalityTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3329941F2625CE4B00618E7E /* PersonalityTypeView.swift */; };
 		332994232625CEB600618E7E /* PersonalityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332994222625CEB600618E7E /* PersonalityType.swift */; };
 		332C1ECE261E248B001F43B6 /* Progress-Bar in Frameworks */ = {isa = PBXBuildFile; productRef = 332C1ECD261E248B001F43B6 /* Progress-Bar */; };
@@ -45,7 +44,6 @@
 		33008248261CF2D300A9427C /* Assessment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assessment.swift; sourceTree = "<group>"; };
 		3300824D261CF52200A9427C /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		33008254261CFF3800A9427C /* ButtonStyle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ButtonStyle+Extensions.swift"; sourceTree = "<group>"; };
-		3329941A2625C18B00618E7E /* AssessmentResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentResult.swift; sourceTree = "<group>"; };
 		3329941F2625CE4B00618E7E /* PersonalityTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalityTypeView.swift; sourceTree = "<group>"; };
 		332994222625CEB600618E7E /* PersonalityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalityType.swift; sourceTree = "<group>"; };
 		332C1ED0261E2A6B001F43B6 /* Progressbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progressbar.swift; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 			children = (
 				336DDC25262489B2008D0C20 /* SQL.swift */,
 				3300824D261CF52200A9427C /* Question.swift */,
-				3329941A2625C18B00618E7E /* AssessmentResult.swift */,
 				332994222625CEB600618E7E /* PersonalityType.swift */,
 			);
 			path = Model;
@@ -274,7 +271,6 @@
 			files = (
 				33742F22261D2BFB002B769C /* RootView.swift in Sources */,
 				3300824E261CF52200A9427C /* Question.swift in Sources */,
-				3329941B2625C18B00618E7E /* AssessmentResult.swift in Sources */,
 				33742F2E261D2E6C002B769C /* AboutView.swift in Sources */,
 				33008255261CFF3800A9427C /* ButtonStyle+Extensions.swift in Sources */,
 				33742F31261D2E96002B769C /* ResultsView.swift in Sources */,

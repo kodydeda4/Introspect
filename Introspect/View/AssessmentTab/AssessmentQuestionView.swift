@@ -64,20 +64,20 @@ struct DebugView: View {
                 }
                 
                 HStack {
-                    TextField("", text: .constant("\(viewStore.assessmentResult.introversion.description) Introversion"))
-                    TextField("", text: .constant("\(viewStore.assessmentResult.extroversion.description) Extroversion"))
+                    TextField("", text: .constant("\(viewStore.introversion.description) Introversion"))
+                    TextField("", text: .constant("\(viewStore.extroversion.description) Extroversion"))
                 }
                 HStack {
-                    TextField("", text: .constant("\(viewStore.assessmentResult.sensing.description) Sensing"))
-                    TextField("", text: .constant("\(viewStore.assessmentResult.intuition.description) Intuition"))
+                    TextField("", text: .constant("\(viewStore.sensing.description) Sensing"))
+                    TextField("", text: .constant("\(viewStore.intuition.description) Intuition"))
                 }
                 HStack {
-                    TextField("", text: .constant("\(viewStore.assessmentResult.thinking.description) Thinking"))
-                    TextField("", text: .constant("\(viewStore.assessmentResult.feeling.description) Feeling"))
+                    TextField("", text: .constant("\(viewStore.thinking.description) Thinking"))
+                    TextField("", text: .constant("\(viewStore.feeling.description) Feeling"))
                 }
                 HStack {
-                    TextField("", text: .constant("\(viewStore.assessmentResult.judging.description) Judging"))
-                    TextField("", text: .constant("\(viewStore.assessmentResult.percieving.description) Percieving"))
+                    TextField("", text: .constant("\(viewStore.judging.description) Judging"))
+                    TextField("", text: .constant("\(viewStore.percieving.description) Percieving"))
                 }
             }
             .padding()

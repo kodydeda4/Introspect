@@ -15,8 +15,6 @@ struct AssessmentFinishedView: View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 ScrollView {
-                    PersonalityTypeView(personalityType: viewStore.assessmentResult.personalityType)
-                    
                     Text("Done!")
                         .font(.title)
                         .bold()
@@ -28,8 +26,8 @@ struct AssessmentFinishedView: View {
                         }
                         .buttonStyle(RoundedRectangleButtonStyle())
                         
-                        Button("Submit") {
-                            viewStore.send(.submitButtonTapped)
+                        Button("View Results") {
+                            viewStore.send(.viewResultsButtonTapped)
                         }
                         .buttonStyle(RoundedRectangleButtonStyle(color: .accentColor))
                     }

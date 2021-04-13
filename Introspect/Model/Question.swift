@@ -8,8 +8,6 @@
 import Foundation
 import SwiftUI
 
-
-
 struct Question: Equatable, Identifiable, CaseIterable {
     var id: String { content }
     

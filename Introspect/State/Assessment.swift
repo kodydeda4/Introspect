@@ -17,7 +17,28 @@ struct Assessment {
         var currentQuestionIndex   = 0
         var showingSheetView       = false
         var changingQuestion       = false
-        var assessmentResult       = AssessmentResult()
+        var introversion           = 0
+        var extroversion           = 0
+        var sensing                = 0
+        var intuition              = 0
+        var thinking               = 0
+        var feeling                = 0
+        var judging                = 0
+        var percieving             = 0
+        
+        var personalityType: PersonalityType {
+            let ie = introversion > extroversion ? PersonalitySpectrum.introversion : PersonalitySpectrum.extroversion
+            let sn = sensing      > intuition    ? PersonalitySpectrum.sensing      : PersonalitySpectrum.intuition
+            let tf = thinking     > feeling      ? PersonalitySpectrum.thinking     : PersonalitySpectrum.feeling
+            let jp = judging      > percieving   ? PersonalitySpectrum.judging      : PersonalitySpectrum.percieving
+            
+            let str = [ie, sn, tf, jp]
+                .map(\.letter)
+                .joined()
+
+            return PersonalityType(rawValue: str)!
+        }
+
         
         var percentCompleted: CGFloat {
             let complete = CGFloat(questions.filter { $0.response != nil }.count)
@@ -31,6 +52,7 @@ struct Assessment {
             case active
             case lastQuestion
             case finished
+            case viewingResults
         }
     }
     
@@ -39,7 +61,8 @@ struct Assessment {
         case responseButtonTapped(Question.Response)
         case backButtonTapped
         case nextButtonTapped
-        case submitButtonTapped
+        case viewResultsButtonTapped
+        case finishedButtonTapped
 
         case hideSheetView
         case showSheetView
@@ -128,66 +151,66 @@ extension Assessment {
                     case .introversion:
                         switch selection {
                         case .stronglyAgree, .agree, .somewhatAgree, .undecided:
-                            state.assessmentResult.introversion += selection.rawValue
+                            state.introversion += selection.rawValue
                         case .somewhatDisagree, .disagree, .stronglyDisagree:
-                            state.assessmentResult.extroversion += -selection.rawValue
+                            state.extroversion += -selection.rawValue
                         }
 
                     case .extroversion:
                         switch selection {
                         case .stronglyAgree, .agree, .somewhatAgree, .undecided:
-                            state.assessmentResult.extroversion += selection.rawValue
+                            state.extroversion += selection.rawValue
                         case .somewhatDisagree, .disagree, .stronglyDisagree:
-                            state.assessmentResult.introversion += -selection.rawValue
+                            state.introversion += -selection.rawValue
                         }
                         
                     case .sensing:
                         switch selection {
                         case .stronglyAgree, .agree, .somewhatAgree, .undecided:
-                            state.assessmentResult.sensing += selection.rawValue
+                            state.sensing += selection.rawValue
                             
                         case .somewhatDisagree, .disagree, .stronglyDisagree:
-                            state.assessmentResult.intuition += -selection.rawValue
+                            state.intuition += -selection.rawValue
                         }
                         
                     case .intuition:
                         switch selection {
                         case .stronglyAgree, .agree, .somewhatAgree, .undecided:
-                            state.assessmentResult.intuition += selection.rawValue
+                            state.intuition += selection.rawValue
                         case .somewhatDisagree, .disagree, .stronglyDisagree:
-                            state.assessmentResult.sensing += -selection.rawValue
+                            state.sensing += -selection.rawValue
                         }
 
                     case .thinking:
                         switch selection {
                         case .stronglyAgree, .agree, .somewhatAgree, .undecided:
-                            state.assessmentResult.thinking += selection.rawValue
+                            state.thinking += selection.rawValue
                         case .somewhatDisagree, .disagree, .stronglyDisagree:
-                            state.assessmentResult.feeling += -selection.rawValue
+                            state.feeling += -selection.rawValue
                         }
                         
                     case .feeling:
                         switch selection {
                         case .stronglyAgree, .agree, .somewhatAgree, .undecided:
-                            state.assessmentResult.feeling += selection.rawValue
+                            state.feeling += selection.rawValue
                         case .somewhatDisagree, .disagree, .stronglyDisagree:
-                            state.assessmentResult.thinking += -selection.rawValue
+                            state.thinking += -selection.rawValue
                         }
 
                     case .judging:
                         switch selection {
                         case .stronglyAgree, .agree, .somewhatAgree, .undecided:
-                            state.assessmentResult.judging += selection.rawValue
+                            state.judging += selection.rawValue
                         case .somewhatDisagree, .disagree, .stronglyDisagree:
-                            state.assessmentResult.percieving += -selection.rawValue
+                            state.percieving += -selection.rawValue
                         }
 
                     case .percieving:
                         switch selection {
                         case .stronglyAgree, .agree, .somewhatAgree, .undecided:
-                            state.assessmentResult.percieving += selection.rawValue
+                            state.percieving += selection.rawValue
                         case .somewhatDisagree, .disagree, .stronglyDisagree:
-                            state.assessmentResult.judging += -selection.rawValue
+                            state.judging += -selection.rawValue
                         }
                     }
 
@@ -230,8 +253,8 @@ extension Assessment {
                 state.progress = environment.getProgress(state)
                 return .none
 
-            case .submitButtonTapped:
-                state.progress = .finished
+            case .viewResultsButtonTapped:
+                state.progress = .viewingResults
                 return .none
                 
             case .hideSheetView:
@@ -249,6 +272,10 @@ extension Assessment {
 
                 state.showingSheetView = false
                 state.progress = environment.getProgressIndexButtonTapped(state)
+                return .none
+                
+            case .finishedButtonTapped:
+                //implemented in root.state
                 return .none
             }
         }

@@ -29,10 +29,10 @@ struct RootView: View {
                         .foregroundColor(.accentColor)
                 }
                 NavigationView {
-                    ResultsView(store: store)
+                    TypesView(store: store)
                 }
                 .tabItem {
-                    Label("Results", systemImage: "person.crop.circle.fill")
+                    Label("Types", systemImage: "person.3.fill")
                         .foregroundColor(.accentColor)
                 }
                 NavigationView {

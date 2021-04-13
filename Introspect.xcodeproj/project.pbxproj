@@ -30,6 +30,8 @@
 		33742F31261D2E96002B769C /* TypesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F30261D2E96002B769C /* TypesView.swift */; };
 		3380139C2620840D00F76D0E /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 3380139B2620840D00F76D0E /* SQLite */; };
 		338013A92620883E00F76D0E /* SQLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338013A82620883E00F76D0E /* SQLView.swift */; };
+		33857AC4262650A800AD4973 /* FancyScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 33857AC3262650A800AD4973 /* FancyScrollView */; };
+		33857AC7262650CA00AD4973 /* SelectedTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33857AC6262650CA00AD4973 /* SelectedTypeView.swift */; };
 		33F5FA16261D357F00DC1986 /* AssessmentSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F5FA15261D357F00DC1986 /* AssessmentSheetView.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +58,7 @@
 		33742F2D261D2E6C002B769C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		33742F30261D2E96002B769C /* TypesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesView.swift; sourceTree = "<group>"; };
 		338013A82620883E00F76D0E /* SQLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLView.swift; sourceTree = "<group>"; };
+		33857AC6262650CA00AD4973 /* SelectedTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTypeView.swift; sourceTree = "<group>"; };
 		33F5FA15261D357F00DC1986 /* AssessmentSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentSheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +69,7 @@
 			files = (
 				3380139C2620840D00F76D0E /* SQLite in Frameworks */,
 				3300823B261CECB400A9427C /* ComposableArchitecture in Frameworks */,
+				33857AC4262650A800AD4973 /* FancyScrollView in Frameworks */,
 				332C1ECE261E248B001F43B6 /* Progress-Bar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				33742F30261D2E96002B769C /* TypesView.swift */,
+				33857AC6262650CA00AD4973 /* SelectedTypeView.swift */,
 			);
 			path = TypesTab;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 				3300823A261CECB400A9427C /* ComposableArchitecture */,
 				332C1ECD261E248B001F43B6 /* Progress-Bar */,
 				3380139B2620840D00F76D0E /* SQLite */,
+				33857AC3262650A800AD4973 /* FancyScrollView */,
 			);
 			productName = Introspect;
 			productReference = 33008226261CEC7800A9427C /* Introspect.app */;
@@ -242,6 +248,7 @@
 				33008239261CECB400A9427C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				332C1ECC261E248B001F43B6 /* XCRemoteSwiftPackageReference "Progress-Bar-SwifttUI" */,
 				3380139A2620840D00F76D0E /* XCRemoteSwiftPackageReference "SQLite" */,
+				33857AC2262650A800AD4973 /* XCRemoteSwiftPackageReference "FancyScrollView" */,
 			);
 			productRefGroup = 33008227261CEC7800A9427C /* Products */;
 			projectDirPath = "";
@@ -280,6 +287,7 @@
 				33008245261CECFB00A9427C /* AssessmentView.swift in Sources */,
 				3300822A261CEC7800A9427C /* IntrospectApp.swift in Sources */,
 				33F5FA16261D357F00DC1986 /* AssessmentSheetView.swift in Sources */,
+				33857AC7262650CA00AD4973 /* SelectedTypeView.swift in Sources */,
 				33008242261CECEE00A9427C /* Example.swift in Sources */,
 				33008249261CF2D300A9427C /* Assessment.swift in Sources */,
 				33742F29261D2E11002B769C /* AssessmentFinishedView.swift in Sources */,
@@ -502,6 +510,14 @@
 				minimumVersion = 0.12.2;
 			};
 		};
+		33857AC2262650A800AD4973 /* XCRemoteSwiftPackageReference "FancyScrollView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nerdsupremacist/FancyScrollView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -519,6 +535,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3380139A2620840D00F76D0E /* XCRemoteSwiftPackageReference "SQLite" */;
 			productName = SQLite;
+		};
+		33857AC3262650A800AD4973 /* FancyScrollView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33857AC2262650A800AD4973 /* XCRemoteSwiftPackageReference "FancyScrollView" */;
+			productName = FancyScrollView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

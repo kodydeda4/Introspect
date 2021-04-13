@@ -11,21 +11,51 @@ import ComposableArchitecture
 struct TypesView: View {
     let store: Store<Root.State, Root.Action>
     
+    func txt(_ group: PersonalityType.Group) -> String {
+        switch group {
+        
+        case .analyst:
+            return "Independent, imaginative, and strong-willed"
+        case .diplomat:
+            return "Diplomatic, cooperative, and friendly"
+        case .sentinel:
+            return "Practical, hardworking and orderly"
+        case .explorer:
+            return "Spontaneous, utilitarian, and practical"
+        }
+    }
+    
+    func txt2(_ group: PersonalityType.Group) -> String {
+        switch group {
+        
+        case .analyst:
+            return "Analysts often approach things from a utilitarian perspective."
+        case .diplomat:
+            return "Diplomats like to play the role of harmonizers in their workplace and social lives."
+        case .sentinel:
+            return "Sentinels embrace and create order, security, and stability wherever they go."
+        case .explorer:
+            return "Explorers shine in situations that require practicality and the ability to think on your feet."
+        }
+    }
+    
     var body: some View {
         WithViewStore(store) { viewStore in
             ScrollView {
                 VStack(alignment: .leading) {
                     ForEach(PersonalityType.Group.allCases) { group in
                         Divider()
+                            .padding(.horizontal)
                         
                         Text(group.rawValue)
                             .font(.title)
                             .bold()
+                            .padding(.horizontal)
                         
                         ScrollView(.horizontal) {
                             HStack {
                                 ForEach(PersonalityType.allCases.filter { $0.group == group }) { type in
-                                    NavigationLink(destination: Text(type.name)) {
+                                    NavigationLink(destination: SelectedTypeView(type: type)) {
                                         PersonalityTypeView(type: type)
                                         .padding(.vertical)
                                         .shadow(color: Color.black.opacity(0.2), radius: 10, y: 1)
@@ -35,17 +65,23 @@ struct TypesView: View {
                             }
                         }
                         
-                        
-                        Text(group.description)
+                        Text(txt(group))
+                            .font(.title3)
+                            .bold()
+                            .foregroundColor(.secondary)
+                            .padding(.horizontal)
+
+                        Text(txt2(group))
                             .font(.body)
                             .foregroundColor(.secondary)
-                            .padding(.vertical, 5)
+                            .padding(.vertical, 2)
                             .padding(.bottom)
+                            .padding(.horizontal)
                     }
                 }
 
             }
-            .padding([.vertical, .leading])
+            .padding([.vertical])
             .navigationTitle("Personality Types")
             .toolbar {
                 Button("Sort") {

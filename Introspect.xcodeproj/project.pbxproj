@@ -89,7 +89,6 @@
 			isa = PBXGroup;
 			children = (
 				33008229261CEC7800A9427C /* IntrospectApp.swift */,
-				338013A82620883E00F76D0E /* SQLView.swift */,
 				33008241261CECEE00A9427C /* Example.swift */,
 				3300823D261CECC100A9427C /* State */,
 				3300823F261CECC800A9427C /* View */,
@@ -135,6 +134,7 @@
 				33742F35261D2EE4002B769C /* AboutTab */,
 				33742F2B261D2E32002B769C /* AssessmentTab */,
 				33742F33261D2EBE002B769C /* ResultsTab */,
+				332994172625B3CD00618E7E /* SQLTab */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -146,6 +146,14 @@
 				33008254261CFF3800A9427C /* ButtonStyle+Extensions.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		332994172625B3CD00618E7E /* SQLTab */ = {
+			isa = PBXGroup;
+			children = (
+				338013A82620883E00F76D0E /* SQLView.swift */,
+			);
+			path = SQLTab;
 			sourceTree = "<group>";
 		};
 		33742F2B261D2E32002B769C /* AssessmentTab */ = {

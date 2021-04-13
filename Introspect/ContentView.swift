@@ -7,16 +7,14 @@
 
 import SwiftUI
 
-
-
 struct ContentView: View {
-    let f = MySQLStripped.init()
+    let f = SQL.init()
     
-    @State var selectedSQLAction: SQLAction = .createUsersTable
+    @State var selectedSQLAction: SQL.Query = .createUsersTable
     
     var body: some View {
         Form {
-            ForEach(SQLAction.allCases) { action in
+            ForEach(SQL.Query.allCases) { action in
                 Section(header: Text(action.rawValue)) {
                     Text(action.code)
                         .padding(.vertical)

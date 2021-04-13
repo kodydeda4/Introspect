@@ -19,7 +19,7 @@
 		332C1ECE261E248B001F43B6 /* Progress-Bar in Frameworks */ = {isa = PBXBuildFile; productRef = 332C1ECD261E248B001F43B6 /* Progress-Bar */; };
 		332C1ED1261E2A6B001F43B6 /* Progressbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332C1ED0261E2A6B001F43B6 /* Progressbar.swift */; };
 		335AEFF2261D31310048ED51 /* AssessmentStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335AEFF1261D31310048ED51 /* AssessmentStartView.swift */; };
-		336DDC26262489B2008D0C20 /* SQLAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336DDC25262489B2008D0C20 /* SQLAction.swift */; };
+		336DDC26262489B2008D0C20 /* SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336DDC25262489B2008D0C20 /* SQL.swift */; };
 		33742F1E261D2B71002B769C /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F1D261D2B71002B769C /* Root.swift */; };
 		33742F22261D2BFB002B769C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F21261D2BFB002B769C /* RootView.swift */; };
 		33742F26261D2DE9002B769C /* AssessmentQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F25261D2DE9002B769C /* AssessmentQuestionView.swift */; };
@@ -27,7 +27,6 @@
 		33742F2E261D2E6C002B769C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F2D261D2E6C002B769C /* AboutView.swift */; };
 		33742F31261D2E96002B769C /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F30261D2E96002B769C /* ResultsView.swift */; };
 		3380139C2620840D00F76D0E /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 3380139B2620840D00F76D0E /* SQLite */; };
-		338013A52620849B00F76D0E /* MySQLStripped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338013A42620849B00F76D0E /* MySQLStripped.swift */; };
 		338013A92620883E00F76D0E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338013A82620883E00F76D0E /* ContentView.swift */; };
 		33F5FA16261D357F00DC1986 /* AssessmentSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F5FA15261D357F00DC1986 /* AssessmentSheetView.swift */; };
 /* End PBXBuildFile section */
@@ -45,14 +44,13 @@
 		33008254261CFF3800A9427C /* ButtonStyle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ButtonStyle+Extensions.swift"; sourceTree = "<group>"; };
 		332C1ED0261E2A6B001F43B6 /* Progressbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progressbar.swift; sourceTree = "<group>"; };
 		335AEFF1261D31310048ED51 /* AssessmentStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentStartView.swift; sourceTree = "<group>"; };
-		336DDC25262489B2008D0C20 /* SQLAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLAction.swift; sourceTree = "<group>"; };
+		336DDC25262489B2008D0C20 /* SQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQL.swift; sourceTree = "<group>"; };
 		33742F1D261D2B71002B769C /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
 		33742F21261D2BFB002B769C /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		33742F25261D2DE9002B769C /* AssessmentQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentQuestionView.swift; sourceTree = "<group>"; };
 		33742F28261D2E11002B769C /* AssessmentFinishedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentFinishedView.swift; sourceTree = "<group>"; };
 		33742F2D261D2E6C002B769C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		33742F30261D2E96002B769C /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
-		338013A42620849B00F76D0E /* MySQLStripped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySQLStripped.swift; sourceTree = "<group>"; };
 		338013A82620883E00F76D0E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		33F5FA15261D357F00DC1986 /* AssessmentSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentSheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,7 +90,6 @@
 			children = (
 				33008229261CEC7800A9427C /* IntrospectApp.swift */,
 				338013A82620883E00F76D0E /* ContentView.swift */,
-				338013A42620849B00F76D0E /* MySQLStripped.swift */,
 				33008241261CECEE00A9427C /* Example.swift */,
 				3300823D261CECC100A9427C /* State */,
 				3300823F261CECC800A9427C /* View */,
@@ -125,7 +122,7 @@
 		3300823E261CECC500A9427C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				336DDC25262489B2008D0C20 /* SQLAction.swift */,
+				336DDC25262489B2008D0C20 /* SQL.swift */,
 				3300824D261CF52200A9427C /* Question.swift */,
 			);
 			path = Model;
@@ -259,14 +256,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				33742F22261D2BFB002B769C /* RootView.swift in Sources */,
-				338013A52620849B00F76D0E /* MySQLStripped.swift in Sources */,
 				3300824E261CF52200A9427C /* Question.swift in Sources */,
 				33742F2E261D2E6C002B769C /* AboutView.swift in Sources */,
 				33008255261CFF3800A9427C /* ButtonStyle+Extensions.swift in Sources */,
 				33742F31261D2E96002B769C /* ResultsView.swift in Sources */,
 				33742F1E261D2B71002B769C /* Root.swift in Sources */,
 				338013A92620883E00F76D0E /* ContentView.swift in Sources */,
-				336DDC26262489B2008D0C20 /* SQLAction.swift in Sources */,
+				336DDC26262489B2008D0C20 /* SQL.swift in Sources */,
 				33008245261CECFB00A9427C /* AssessmentView.swift in Sources */,
 				3300822A261CEC7800A9427C /* IntrospectApp.swift in Sources */,
 				33F5FA16261D357F00DC1986 /* AssessmentSheetView.swift in Sources */,

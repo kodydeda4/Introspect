@@ -23,8 +23,10 @@ struct SelectedTypeView: View {
         }
     }
     
-    @State var scale: CGFloat = 0.75
-    @State var opacity: Double = 0
+    @State var imageScale: CGFloat = 0.75
+    @State var imageOpacity: Double = 0
+    @State var textOpacity: Double = 0
+    var imageAnimationDuration = 0.5
 
     var body: some View {
         FancyScrollView(
@@ -50,25 +52,33 @@ struct SelectedTypeView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .padding(.vertical)
-                            .scaleEffect(scale)
-
-                        Text(type.rawValue)
-                            .bold()
-                            .foregroundColor(Color(.lightText))
+                            .scaleEffect(imageScale)
                         
-                        Text(type.name)
-                            .font(.largeTitle)
-                            .bold()
-
-                        Text(type.description)
-                            .font(.caption)
+                        VStack(alignment: .leading) {
+                            Text(type.rawValue)
+                                .bold()
+                                .foregroundColor(Color(.lightText))
+                            
+                            Text(type.name)
+                                .font(.largeTitle)
+                                .bold()
+                            
+                            Text(type.description)
+                                .font(.caption)
+                        }
+                        .opacity(textOpacity)
+                        .onAppear {
+                            withAnimation(Animation.easeInOut(duration: imageAnimationDuration).delay(imageAnimationDuration)) {
+                                textOpacity = 1
+                            }
+                        }
                     }
-                    
-                    .opacity(opacity)
+                    .scaleEffect(imageScale)
+                    .opacity(imageOpacity)
                     .onAppear {
-                        withAnimation(Animation.easeInOut(duration: 0.75)) {
-                            scale = 1
-                            opacity = 1
+                        withAnimation(Animation.easeInOut(duration: imageAnimationDuration)) {
+                            imageScale = 1
+                            imageOpacity = 1
                         }
                     }
                     .foregroundColor(.white)

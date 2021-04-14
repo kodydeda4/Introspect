@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-
-import SwiftUI
 import ComposableArchitecture
 
 struct AssessmentStartView: View {
@@ -38,6 +36,6 @@ struct AssessmentStartView: View {
 }
 struct AssessmentStartView_Previews: PreviewProvider {
     static var previews: some View {
-        AssessmentFinishedView(store: Assessment.defaultStore)
+        AssessmentStartView(store: Assessment.defaultStore)
     }
 }

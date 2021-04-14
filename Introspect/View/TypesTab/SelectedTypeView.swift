@@ -8,7 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 import FancyScrollView
-
+import DynamicColor
 
 struct SelectedTypeView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -23,54 +23,73 @@ struct SelectedTypeView: View {
         }
     }
     
-    
+    @State var scale: CGFloat = 0.75
+    @State var opacity: Double = 0
+
     var body: some View {
         FancyScrollView(
             title: "",
-            headerHeight: 350,
+            headerHeight: 400,
             scrollUpHeaderBehavior: .parallax,
             scrollDownHeaderBehavior: .offset,
             header: {
                 ZStack {
-                    LinearGradient(gradient: Gradient(stops: [.init(color: gradientColor, location: 0), .init(color: Color(.systemBackground), location: 1)]), startPoint: .top, endPoint: .bottom)
+//                    LinearGradient(
+//                        gradient: Gradient(stops: [
+//                            .init(color: gradientColor, location: 0),
+//                            .init(color: Color(DynamicColor(gradientColor).tinted().cgColor), location: 0.5)
+//                        ]),
+//                        startPoint: .topLeading,
+//                        endPoint: .bottom
+//                    )
+                    Color(DynamicColor(gradientColor).tinted().cgColor)
+                                        
+                    VStack(alignment: .leading) {
+                        Spacer()
+                        Image(type.imageSelectedURL)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .padding(.vertical)
+                            .scaleEffect(scale)
+
+                        Text(type.rawValue)
+                            .bold()
+                            .foregroundColor(Color(.lightText))
+                        
+                        Text(type.name)
+                            .font(.largeTitle)
+                            .bold()
+
+                        Text(type.description)
+                            .font(.caption)
+                    }
                     
-                    
-                    Image(type.imageURL)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .shadow(radius: 10)
-                        .frame(width: 300)
-                        .offset(x: -50, y: 50)
+                    .opacity(opacity)
+                    .onAppear {
+                        withAnimation(Animation.easeInOut(duration: 0.75)) {
+                            scale = 1
+                            opacity = 1
+                        }
+                    }
+                    .foregroundColor(.white)
+                    .padding()
                 }
             }
         ) {
             VStack(alignment: .leading) {
-                
-                HStack {
-                    Text(type.name)
-                        .font(.largeTitle)
-                        .bold()
-                        .foregroundColor(.accentColor)
-                    
-                    Text(type.rawValue)
-                        .font(.largeTitle)
-                        .bold()
-                        .foregroundColor(.secondary)
-                }
-                .background(Color(.systemBackground))
-                Divider()
-                
-                Text(type.description)
+                Text(
+                    """
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    """
+                )
                     .foregroundColor(.secondary)
-                //.padding()
-                //.background(RoundedRectangle(cornerRadius: 20).foregroundColor(Color(.secondarySystemBackground)))
             }
             .padding()
         }
         .gesture(
             DragGesture()
                 .onEnded {
-                    if $0.translation.width > 100 {
+                    if $0.translation.width > 60 {
                         self.presentationMode.wrappedValue.dismiss()
                     }
                 }

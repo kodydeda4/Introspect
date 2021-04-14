@@ -21,6 +21,7 @@
 		332C1ECE261E248B001F43B6 /* Progress-Bar in Frameworks */ = {isa = PBXBuildFile; productRef = 332C1ECD261E248B001F43B6 /* Progress-Bar */; };
 		332C1ED1261E2A6B001F43B6 /* Progressbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332C1ED0261E2A6B001F43B6 /* Progressbar.swift */; };
 		335AEFF2261D31310048ED51 /* AssessmentStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335AEFF1261D31310048ED51 /* AssessmentStartView.swift */; };
+		336A122C2627247300511F80 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 336A122B2627247300511F80 /* DynamicColor */; };
 		336DDC26262489B2008D0C20 /* SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336DDC25262489B2008D0C20 /* SQL.swift */; };
 		33742F1E261D2B71002B769C /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F1D261D2B71002B769C /* Root.swift */; };
 		33742F22261D2BFB002B769C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F21261D2BFB002B769C /* RootView.swift */; };
@@ -68,6 +69,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3380139C2620840D00F76D0E /* SQLite in Frameworks */,
+				336A122C2627247300511F80 /* DynamicColor in Frameworks */,
 				3300823B261CECB400A9427C /* ComposableArchitecture in Frameworks */,
 				33857AC4262650A800AD4973 /* FancyScrollView in Frameworks */,
 				332C1ECE261E248B001F43B6 /* Progress-Bar in Frameworks */,
@@ -216,6 +218,7 @@
 				332C1ECD261E248B001F43B6 /* Progress-Bar */,
 				3380139B2620840D00F76D0E /* SQLite */,
 				33857AC3262650A800AD4973 /* FancyScrollView */,
+				336A122B2627247300511F80 /* DynamicColor */,
 			);
 			productName = Introspect;
 			productReference = 33008226261CEC7800A9427C /* Introspect.app */;
@@ -249,6 +252,7 @@
 				332C1ECC261E248B001F43B6 /* XCRemoteSwiftPackageReference "Progress-Bar-SwifttUI" */,
 				3380139A2620840D00F76D0E /* XCRemoteSwiftPackageReference "SQLite" */,
 				33857AC2262650A800AD4973 /* XCRemoteSwiftPackageReference "FancyScrollView" */,
+				336A122A2627247300511F80 /* XCRemoteSwiftPackageReference "DynamicColor" */,
 			);
 			productRefGroup = 33008227261CEC7800A9427C /* Products */;
 			projectDirPath = "";
@@ -502,6 +506,14 @@
 				minimumVersion = 1.0.4;
 			};
 		};
+		336A122A2627247300511F80 /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "http://github.com/yannickl/DynamicColor";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 		3380139A2620840D00F76D0E /* XCRemoteSwiftPackageReference "SQLite" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
@@ -530,6 +542,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 332C1ECC261E248B001F43B6 /* XCRemoteSwiftPackageReference "Progress-Bar-SwifttUI" */;
 			productName = "Progress-Bar";
+		};
+		336A122B2627247300511F80 /* DynamicColor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 336A122A2627247300511F80 /* XCRemoteSwiftPackageReference "DynamicColor" */;
+			productName = DynamicColor;
 		};
 		3380139B2620840D00F76D0E /* SQLite */ = {
 			isa = XCSwiftPackageProductDependency;

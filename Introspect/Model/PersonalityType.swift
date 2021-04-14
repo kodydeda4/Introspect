@@ -52,27 +52,30 @@ enum PersonalityType: String, Equatable, CaseIterable, Identifiable {
     
     var description: String {
         switch self {
-        case .architect    : return "An Architect (INTJ) is a person with the Introverted, Intuitive, Thinking, and Judging personality traits. These thoughtful tacticians love perfecting the details of life, applying creativity and rationality to everything they do. Their inner world is often a private, complex one."
-        case .logician     : return "A Logician (INTP) is someone with the Introverted, Intuitive, Thinking, and Prospecting personality traits. These flexible thinkers enjoy taking an unconventional approach to many aspects of life. They often seek out unlikely paths, mixing willingness to experiment with personal creativity."
-        case .commander    : return "A Commander (ENTJ) is someone with the Extraverted, Intuitive, Thinking, and Judging personality traits. They are decisive people who love momentum and accomplishment. They gather information to construct their creative visions but rarely hesitate for long before acting on them."
-        case .debater      : return "A Debater (ENTP) is a person with the Extraverted, Intuitive, Thinking, and Prospecting personality traits. They tend to be bold and creative, deconstructing and rebuilding ideas with great mental agility. They pursue their goals vigorously despite any resistance they might encounter."
-        case .advocate     : return "An Advocate (INFJ) is someone with the Introverted, Intuitive, Feeling, and Judging personality traits. They tend to approach life with deep thoughtfulness and imagination. Their inner vision, personal values, and a quiet, principled version of humanism guide them in all things."
-        case .mediator     : return "A Mediator (INFP) is someone who possesses the Introverted, Intuitive, Feeling, and Prospecting personality traits. These rare personality types tend to be quiet, open-minded, and imaginative, and they apply a caring and creative approach to everything they do."
-        case .protagonist  : return "A Protagonist (ENFJ) is a person with the Extraverted, Intuitive, Feeling, and Judging personality traits. These warm, forthright types love helping others, and they tend to have strong ideas and values. They back their perspective with the creative energy to achieve their goals."
-        case .campaigner   : return "A Campaigner (ENFP) is someone with the Extraverted, Intuitive, Feeling, and Prospecting personality traits. These people tend to embrace big ideas and actions that reflect their sense of hope and goodwill toward others. Their vibrant energy can flow in many directions."
-        case .logistician  : return "A Logistician (ISTJ) is someone with the Introverted, Observant, Thinking, and Judging personality traits. These people tend to be reserved yet willful, with a rational outlook on life. They compose their actions carefully and carry them out with methodical purpose."
-        case .defender     : return "A Defender (ISFJ) is someone with the Introverted, Observant, Feeling, and Judging personality traits. These people tend to be warm and unassuming in their own steady way. They’re efficient and responsible, giving careful attention to practical details in their daily lives."
-        case .executive    : return "An Executive (ESTJ) is someone with the Extraverted, Observant, Thinking, and Judging personality traits. They possess great fortitude, emphatically following their own sensible judgment. They often serve as a stabilizing force among others, able to offer solid direction amid adversity."
-        case .consul       : return "A Consul (ESFJ) is a person with the Extraverted, Observant, Feeling, and Judging personality traits. They are attentive and people-focused, and they enjoy taking part in their social community. Their achievements are guided by decisive values, and they willingly offer guidance to others."
-        case .virtuoso     : return "A Virtuoso (ISTP) is someone with the Introverted, Observant, Thinking, and Prospecting personality traits. They tend to have an individualistic mindset, pursuing goals without needing much external connection. They engage in life with inquisitiveness and personal skill, varying their approach as needed."
-        case .adventurer   : return "An Adventurer (ISFP) is a person with the Introverted, Observant, Feeling, and Prospecting personality traits. They tend to have open minds, approaching life, new experiences, and people with grounded warmth. Their ability to stay in the moment helps them uncover exciting potentials."
-        case .entrepreneur : return "An Entrepreneur (ESTP) is someone with the Extraverted, Observant, Thinking, and Prospecting personality traits. They tend to be energetic and action-oriented, deftly navigating whatever is in front of them. They love uncovering life’s opportunities, whether socializing with others or in more personal pursuits."
-        case .entertainer  : return "An Entertainer (ESFP) is a person with the Extraverted, Observant, Feeling, and Prospecting personality traits. These people love vibrant experiences, engaging in life eagerly and taking pleasure in discovering the unknown. They can be very social, often encouraging others into shared activities."
+        case .architect    : return "Imaginative and strategic thinkers, with a plan for everything."
+        case .logician     : return "Innovative inventors with an unquenchable thirst for knowledge."
+        case .commander    : return "Bold, imaginative, and strong-willed leaders, always finding a way - or making one."
+        case .debater      : return "Smart and curious thinkers who cannot resist an intellectual challenge."
+        case .advocate     : return "Quiet and mystical, yet very inspiring and tireless idealists."
+        case .mediator     : return "Poetic, kind, and altruistic people, always eager to help a good cause."
+        case .protagonist  : return "Charismatic and inspiring leaders, able to mesmerize their listeners."
+        case .campaigner   : return "Enthusiastic, creative and sociable free spirits, who can always find a reason to smile."
+        case .logistician  : return "Practical and fact-minded individuals, whose reliabilty cannot be doubted."
+        case .defender     : return "Very dedicated and warm protectors, always ready to defend their loved ones."
+        case .executive    : return "Excellent administrators, unsurpassed at managing things - or people."
+        case .consul       : return "Extraordinarily caring, social and popular people, always eager to help."
+        case .virtuoso     : return "Bold and practical experimenters, masters of all kinds of tools."
+        case .adventurer   : return "Flexible and charming artists, always ready to explore and experience something new."
+        case .entrepreneur : return "Smart, energetic and very perceptive people, who truly enjoy living on the edge."
+        case .entertainer  : return "Spontaneous, energetic and enthusiastic people - life is never boring around them."
         }
     }
     
     var imageURL: String {
         self.name.lowercased()
+    }
+    var imageSelectedURL: String {
+        "\(self.name.lowercased())_selected"
     }
     
     enum Group: String, Identifiable, CaseIterable {

@@ -29,7 +29,7 @@ struct RootView: View {
                         .foregroundColor(.accentColor)
                 }
                 NavigationView {
-                    TypesView(store: store)
+                    PersonalityTypesView(store: store)
                 }
                 .tabItem {
                     Label("Types", systemImage: "person.3.fill")

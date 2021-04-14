@@ -29,7 +29,7 @@
 		33742F26261D2DE9002B769C /* AssessmentQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F25261D2DE9002B769C /* AssessmentQuestionView.swift */; };
 		33742F29261D2E11002B769C /* AssessmentFinishedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F28261D2E11002B769C /* AssessmentFinishedView.swift */; };
 		33742F2E261D2E6C002B769C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F2D261D2E6C002B769C /* AboutView.swift */; };
-		33742F31261D2E96002B769C /* TypesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F30261D2E96002B769C /* TypesView.swift */; };
+		33742F31261D2E96002B769C /* PersonalityTypesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33742F30261D2E96002B769C /* PersonalityTypesView.swift */; };
 		3380139C2620840D00F76D0E /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 3380139B2620840D00F76D0E /* SQLite */; };
 		338013A92620883E00F76D0E /* SQLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338013A82620883E00F76D0E /* SQLView.swift */; };
 		33857AC4262650A800AD4973 /* FancyScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 33857AC3262650A800AD4973 /* FancyScrollView */; };
@@ -59,7 +59,7 @@
 		33742F25261D2DE9002B769C /* AssessmentQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentQuestionView.swift; sourceTree = "<group>"; };
 		33742F28261D2E11002B769C /* AssessmentFinishedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentFinishedView.swift; sourceTree = "<group>"; };
 		33742F2D261D2E6C002B769C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
-		33742F30261D2E96002B769C /* TypesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesView.swift; sourceTree = "<group>"; };
+		33742F30261D2E96002B769C /* PersonalityTypesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalityTypesView.swift; sourceTree = "<group>"; };
 		338013A82620883E00F76D0E /* SQLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLView.swift; sourceTree = "<group>"; };
 		33857AC6262650CA00AD4973 /* SelectedTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTypeView.swift; sourceTree = "<group>"; };
 		33F5FA15261D357F00DC1986 /* AssessmentSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentSheetView.swift; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 		33742F33261D2EBE002B769C /* PersonalityTypesTab */ = {
 			isa = PBXGroup;
 			children = (
-				33742F30261D2E96002B769C /* TypesView.swift */,
+				33742F30261D2E96002B769C /* PersonalityTypesView.swift */,
 				33857AC6262650CA00AD4973 /* SelectedTypeView.swift */,
 			);
 			path = PersonalityTypesTab;
@@ -288,7 +288,7 @@
 				3300824E261CF52200A9427C /* Question.swift in Sources */,
 				33742F2E261D2E6C002B769C /* AboutView.swift in Sources */,
 				33008255261CFF3800A9427C /* ButtonStyle+Extensions.swift in Sources */,
-				33742F31261D2E96002B769C /* TypesView.swift in Sources */,
+				33742F31261D2E96002B769C /* PersonalityTypesView.swift in Sources */,
 				33742F1E261D2B71002B769C /* Root.swift in Sources */,
 				338013A92620883E00F76D0E /* SQLView.swift in Sources */,
 				336DDC26262489B2008D0C20 /* SQL.swift in Sources */,

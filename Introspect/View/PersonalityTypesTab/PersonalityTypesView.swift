@@ -8,7 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct TypesView: View {
+struct PersonalityTypesView: View {
     let store: Store<Root.State, Root.Action>
     
     var body: some View {
@@ -89,8 +89,8 @@ struct TypesView: View {
 }
 
 
-struct TypesViewView_Previews: PreviewProvider {
+struct PersonalityTypesViewView_Previews: PreviewProvider {
     static var previews: some View {
-        TypesView(store: Root.defaultStore)
+        PersonalityTypesView(store: Root.defaultStore)
     }
 }

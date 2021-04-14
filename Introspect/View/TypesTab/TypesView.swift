@@ -36,14 +36,12 @@ struct TypesView: View {
                                 }
                             }
                         }
-                        
                         Text(group.description)
                             .font(.body)
                             .foregroundColor(.secondary)
                             .padding()
                     }
                 }
-                
             }
             .padding([.vertical])
             .navigationTitle("Personality Types")
@@ -59,7 +57,7 @@ struct TypesView: View {
 struct PersonalityTypeView: View {
     let type: PersonalityType
     
-    var gradientColor: Color {
+    var groupColor: Color {
         switch type.group {
         case .analyst  : return Color.purple
         case .diplomat : return Color.green
@@ -68,12 +66,18 @@ struct PersonalityTypeView: View {
         }
     }
     
-    
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(stops: [.init(color: gradientColor, location: 0), .init(color: Color(.systemBackground), location: 1)]), startPoint: .top, endPoint: .bottom)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .padding()
+            LinearGradient(
+                gradient: Gradient(stops: [
+                    .init(color: groupColor, location: 0),
+                    .init(color: Color(.systemBackground), location: 1)
+                ]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .padding()
             
             Image(type.imageURL)
                 .resizable()

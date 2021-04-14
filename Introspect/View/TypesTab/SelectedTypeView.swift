@@ -23,10 +23,9 @@ struct SelectedTypeView: View {
         }
     }
     
-    @State var imageScale: CGFloat = 0.75
-    @State var imageOpacity: Double = 0
-    @State var textOpacity: Double = 0
-    var imageAnimationDuration = 0.6
+    @State var doneAnimatingImage: Bool = false
+    @State var doneAnimatingText: Bool = false
+    var animDuration = 0.6
 
     var body: some View {
         FancyScrollView(
@@ -44,7 +43,7 @@ struct SelectedTypeView: View {
 //                        startPoint: .topLeading,
 //                        endPoint: .bottom
 //                    )
-                    Color(DynamicColor(gradientColor).tinted().cgColor)
+                    gradientColor
                                         
                     VStack(alignment: .leading) {
                         Spacer()
@@ -52,7 +51,7 @@ struct SelectedTypeView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .padding()
-                            .scaleEffect(imageScale)
+                            .scaleEffect(doneAnimatingImage ? 1 : 0)
                         
                         VStack(alignment: .leading) {
                             Text(type.rawValue)
@@ -66,20 +65,15 @@ struct SelectedTypeView: View {
                             Text(type.description)
                                 .font(.caption)
                         }
-                        .opacity(textOpacity)
-                        .onAppear {
-                            withAnimation(Animation.easeInOut(duration: imageAnimationDuration).delay(imageAnimationDuration)) {
-                                textOpacity = 1
-                            }
-                        }
+                        .opacity(doneAnimatingText ? 1 : 0)
+                        .animation(Animation.easeInOut(duration: animDuration*0.75).delay(animDuration), value: doneAnimatingText)
                     }
-                    .scaleEffect(imageScale)
-                    .opacity(imageOpacity)
+                    .scaleEffect(doneAnimatingImage ? 1 : 0)
+                    .opacity(doneAnimatingImage ? 1 : 0)
+                    .animation(Animation.spring(), value: doneAnimatingImage)
                     .onAppear {
-                        withAnimation(Animation.easeInOut(duration: imageAnimationDuration)) {
-                            imageScale = 1
-                            imageOpacity = 1
-                        }
+                        doneAnimatingImage.toggle()
+                        doneAnimatingText.toggle()
                     }
                     .foregroundColor(.white)
                     .padding()
@@ -87,11 +81,7 @@ struct SelectedTypeView: View {
             }
         ) {
             VStack(alignment: .leading) {
-                Text(
-                    """
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    """
-                )
+                Text(String.loremIpsum)
                     .foregroundColor(.secondary)
             }
             .padding()

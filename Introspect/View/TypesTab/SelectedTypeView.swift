@@ -26,7 +26,7 @@ struct SelectedTypeView: View {
     @State var imageScale: CGFloat = 0.75
     @State var imageOpacity: Double = 0
     @State var textOpacity: Double = 0
-    var imageAnimationDuration = 0.5
+    var imageAnimationDuration = 0.6
 
     var body: some View {
         FancyScrollView(
@@ -51,7 +51,7 @@ struct SelectedTypeView: View {
                         Image(type.imageSelectedURL)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .padding(.vertical)
+                            .padding()
                             .scaleEffect(imageScale)
                         
                         VStack(alignment: .leading) {

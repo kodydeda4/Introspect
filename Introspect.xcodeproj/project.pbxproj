@@ -146,7 +146,7 @@
 				33742F21261D2BFB002B769C /* RootView.swift */,
 				33742F35261D2EE4002B769C /* AboutTab */,
 				33742F2B261D2E32002B769C /* AssessmentTab */,
-				33742F33261D2EBE002B769C /* TypesTab */,
+				33742F33261D2EBE002B769C /* PersonalityTypesTab */,
 				332994172625B3CD00618E7E /* SQLTab */,
 			);
 			path = View;
@@ -183,13 +183,13 @@
 			path = AssessmentTab;
 			sourceTree = "<group>";
 		};
-		33742F33261D2EBE002B769C /* TypesTab */ = {
+		33742F33261D2EBE002B769C /* PersonalityTypesTab */ = {
 			isa = PBXGroup;
 			children = (
 				33742F30261D2E96002B769C /* TypesView.swift */,
 				33857AC6262650CA00AD4973 /* SelectedTypeView.swift */,
 			);
-			path = TypesTab;
+			path = PersonalityTypesTab;
 			sourceTree = "<group>";
 		};
 		33742F35261D2EE4002B769C /* AboutTab */ = {

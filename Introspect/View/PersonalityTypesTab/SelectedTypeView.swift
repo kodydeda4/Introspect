@@ -73,7 +73,10 @@ struct SelectedTypeView: View {
             }
         ) {
             VStack(alignment: .leading) {
-                Text(String.loremIpsum)
+                Text(type.headline)
+                    .font(.headline)
+                    .bold()
+                Text(type.bodyText)
                     .foregroundColor(.secondary)
             }
             .padding()

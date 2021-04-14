@@ -58,25 +58,9 @@ struct TypesView: View {
 struct PersonalityTypeView: View {
     let type: PersonalityType
     
-    var groupColor: Color {
-        switch type.group {
-        case .analyst  : return Color.purple
-        case .diplomat : return Color.green
-        case .sentinel : return Color.blue
-        case .explorer : return Color.orange
-        }
-    }
-    
     var body: some View {
         ZStack {
-            LinearGradient(
-                gradient: Gradient(stops: [
-                    .init(color: groupColor, location: 0),
-                    .init(color: Color(.systemBackground), location: 1)
-                ]),
-                startPoint: .top,
-                endPoint: .bottom
-            )
+            type.group.associatedColor
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .padding()
             

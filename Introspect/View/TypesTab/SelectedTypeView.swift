@@ -35,15 +35,7 @@ struct SelectedTypeView: View {
             scrollDownHeaderBehavior: .offset,
             header: {
                 ZStack {
-//                    LinearGradient(
-//                        gradient: Gradient(stops: [
-//                            .init(color: gradientColor, location: 0),
-//                            .init(color: Color(DynamicColor(gradientColor).tinted().cgColor), location: 0.5)
-//                        ]),
-//                        startPoint: .topLeading,
-//                        endPoint: .bottom
-//                    )
-                    gradientColor
+                    type.group.associatedColor
                                         
                     VStack(alignment: .leading) {
                         Spacer()

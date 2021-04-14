@@ -33,6 +33,7 @@ struct TypesView: View {
                                             .shadow(color: Color.black.opacity(0.2), radius: 11.5, y: 1)
                                             .frame(height: 225)
                                     }
+                                    
                                 }
                             }
                         }

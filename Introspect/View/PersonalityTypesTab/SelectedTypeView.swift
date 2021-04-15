@@ -35,7 +35,6 @@ struct SelectedTypeView: View {
                         .foregroundColor(.white)
                     
                     Text(type.description)
-                        .font(.caption)
                         .foregroundColor(.white)
                 }
                 .animation(Animation.spring(), value: animating)
@@ -46,7 +45,6 @@ struct SelectedTypeView: View {
         ) {
             VStack(alignment: .leading) {
                 Text(type.headline)
-                    .font(.title3)
                     .bold()
                 
                 Divider()

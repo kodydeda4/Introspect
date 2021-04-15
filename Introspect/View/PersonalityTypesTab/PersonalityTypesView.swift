@@ -18,18 +18,13 @@ struct PersonalityTypesView: View {
                     Divider()
                         .padding(.horizontal)
                     
-                    Text(group.rawValue + " (" + group.txt + ")")
-                        .font(.title2)
+                    Text(group.rawValue)
+                        .font(.title)
                         .bold()
                         .padding(.horizontal)
                         .padding(.bottom, 1)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    Text(group.description)
-                        .font(.body)
-                        .foregroundColor(.secondary)
-                        .padding(.horizontal)
-                        .frame(maxWidth: .infinity, alignment: .leading)
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
@@ -61,10 +56,25 @@ struct PersonalityTypesView: View {
                             }
                         }
                         .padding(16)
-                        .padding(.bottom)
                     }
+                    
+                    Text(group.txt)
+                        .font(.headline)
+                        .opacity(0.8)
+                        .padding(.horizontal)
+                        .padding(.bottom, 1)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+
+                    
+                    Text(group.description)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .padding([.horizontal, .bottom])
+                        .frame(maxWidth: .infinity, alignment: .leading)
+
                 }
             }
+            .animation(.spring())
             .navigationTitle("Personality Types")
             .toolbar {
                 Button("Sort") {
@@ -79,10 +89,10 @@ fileprivate extension PersonalityType.Group {
     var txt: String {
         switch self {
         
-        case .analyst  : return "NT"
-        case .diplomat : return "NF"
-        case .sentinel : return "SJ"
-        case .explorer : return "SP"
+        case .analyst  : return "Intuitive Thinking"
+        case .diplomat : return "Intuitive Feeling"
+        case .sentinel : return "Sensing Judging"
+        case .explorer : return "Sensing Percieving"
             
         }
     }

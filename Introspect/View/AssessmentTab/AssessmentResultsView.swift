@@ -13,14 +13,12 @@ struct AssessmentResultsView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            
             VStack {
-                Image(viewStore.personalityType.imageURL)
+                Image(viewStore.personalityType.name.lowercased())
                     .resizable()
                     .scaledToFit()
                     .frame(width: 200)
                 
-            
                 HStack {
                     Text(viewStore.personalityType.name)
                         .font(.largeTitle)
@@ -34,7 +32,7 @@ struct AssessmentResultsView: View {
                 }
                 .padding()
                 
-                Text(viewStore.personalityType.description)
+                Text("description")//Text(viewStore.personalityType.description)
                     .foregroundColor(.secondary)
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 20).foregroundColor(Color(.secondarySystemBackground)))
@@ -52,11 +50,9 @@ struct AssessmentResultsView: View {
     }
 }
 
+
 struct PersonalityTypeView_Previews: PreviewProvider {
     static var previews: some View {
-        //        ForEach(PersonalityType.allCases) {
-        //            PersonalityTypeView(personalityType: $0)
-        //        }
         AssessmentResultsView(store: Assessment.defaultStore)
     }
 }

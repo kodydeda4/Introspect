@@ -16,7 +16,7 @@ struct PersonalityTypeCardView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .padding(.leading)
             
-            Image(type.imageURL)
+            Image(type.name.lowercased())
                 .resizable()
                 .scaledToFit()
             

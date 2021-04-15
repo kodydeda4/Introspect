@@ -51,8 +51,9 @@ struct PersonalityTypesView: View {
                                     .background(Color(.secondarySystemGroupedBackground))
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                     .frame(height: 225)
-                                    .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                                    .shadow(radius: 6)
                                 }
+                                
                             }
                         }
                         .padding(16)
@@ -74,7 +75,6 @@ struct PersonalityTypesView: View {
 
                 }
             }
-            .animation(.spring())
             .navigationTitle("Personality Types")
             .toolbar {
                 Button("Sort") {

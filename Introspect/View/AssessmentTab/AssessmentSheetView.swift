@@ -17,7 +17,7 @@ struct AssessmentSheetView: View {
                 Text("Questions")
                     .font(.title)
                     .bold()
-                    .padding()
+                    .padding(.top)
                 
                 LazyVGrid(columns: [GridItem](repeating: .init(.flexible()), count: 4)) {
                     ForEach(0..<viewStore.questions.count) { index in
@@ -26,16 +26,14 @@ struct AssessmentSheetView: View {
                         }
                         .buttonStyle(
                             RoundedRectangleButtonStyle(
-                                color: viewStore.questions[index].response == nil
-                                    ? Color(.secondarySystemBackground)
-                                    : .accentColor
+                                color: viewStore.questions[index].response == nil ? Color(.secondarySystemBackground) : .accentColor
                             )
                         )
                     }
                 }
+                .padding()
             }
             .frame(alignment: .top)
-            .padding()
         }
     }
 }

@@ -14,7 +14,7 @@ struct RoundedRectangleButtonStyle: ButtonStyle {
         RoundedRectangle(cornerRadius: 10)
             .frame(height: 50)
             .foregroundColor(color)
-            .overlay(configuration.label.foregroundColor(.white))
+            .overlay(configuration.label.foregroundColor(color == Color(.secondarySystemBackground) ? .secondary : .white))
             .scaleEffect(configuration.isPressed ? 0.95 : 1)
     }
 }

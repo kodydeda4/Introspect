@@ -13,13 +13,16 @@ struct AssessmentQuestionView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            VStack(alignment: .leading) {
-                Progressbar(percentage: viewStore.percentCompleted, action: { viewStore.send(.showSheetView) })
+            VStack(spacing: 16) {
+                
+                Progressbar(
+                    percentage: viewStore.percentCompleted,
+                    action: { viewStore.send(.showSheetView) }
+                )
                 
                 Text(viewStore.currentQuestion.content)
                     .font(.title)
                     .bold()
-                    .padding(.vertical)
                     .frame(height: 300, alignment: .topLeading)
                 
                 HStack {
@@ -32,6 +35,7 @@ struct AssessmentQuestionView: View {
                         }
                     }
                 }
+                
                 AssessmentDebugView(store: store)
             }
             .padding()

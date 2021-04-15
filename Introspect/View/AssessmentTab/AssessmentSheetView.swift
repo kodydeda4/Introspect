@@ -14,34 +14,27 @@ struct AssessmentSheetView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             ScrollView {
-                VStack {
-                    HStack {
-                        Text("Questions")
-                            .font(.title)
-                            .bold()
-                            .padding()
-                    }
-                    
-                    LazyVGrid(
-                        columns: [GridItem](repeating: .init(.flexible()), count: 4),
-                        spacing: 20
-                    ) {
-                        ForEach(0..<viewStore.questions.count) { index in
-                            Button(index.description) {
-                                viewStore.send(.sheetQuestionButtonTapped(index))
-                            }
-                            .buttonStyle(
-                                RoundedRectangleButtonStyle(
-                                    color: viewStore.questions[index].response == nil
-                                        ? Color(.secondarySystemBackground)
-                                        : .accentColor
-                                )
-                            )
+                Text("Questions")
+                    .font(.title)
+                    .bold()
+                    .padding()
+                
+                LazyVGrid(columns: [GridItem](repeating: .init(.flexible()), count: 4)) {
+                    ForEach(0..<viewStore.questions.count) { index in
+                        Button(index.description) {
+                            viewStore.send(.sheetQuestionButtonTapped(index))
                         }
+                        .buttonStyle(
+                            RoundedRectangleButtonStyle(
+                                color: viewStore.questions[index].response == nil
+                                    ? Color(.secondarySystemBackground)
+                                    : .accentColor
+                            )
+                        )
                     }
-                    Spacer()
                 }
             }
+            .frame(alignment: .top)
             .padding()
         }
     }

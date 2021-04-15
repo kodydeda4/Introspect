@@ -14,7 +14,7 @@ struct AssessmentStartView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             VStack {
-                Text("Myer Briggs Test")
+                Text("Myer Briggs")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                 

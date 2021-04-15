@@ -71,6 +71,8 @@ struct SelectedTypeView_Previews: PreviewProvider {
     }
 }
 
+
+
 // MARK:- PersonalityType Text-Blurbs
 
 fileprivate extension PersonalityType {

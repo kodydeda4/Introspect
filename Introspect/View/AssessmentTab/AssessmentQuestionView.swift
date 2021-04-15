@@ -29,7 +29,7 @@ struct AssessmentQuestionView: View {
                     ForEach(Question.Response.allCases) { response in
                         Button(action: { viewStore.send(.responseButtonTapped(response)) }) {
                             Circle()
-                                .foregroundColor(response.buttonColor)
+                                .foregroundColor(getColor(response))
                                 .opacity((viewStore.changingQuestion && viewStore.currentQuestion.response != response) ? 0.25 : 1)
                                 .animation(.default, value: viewStore.changingQuestion && viewStore.currentQuestion.response != response)
                         }
@@ -45,9 +45,19 @@ struct AssessmentQuestionView: View {
             }
         }
     }
+    
+    func getColor(_ response: Question.Response) -> Color {
+        switch response {
+        case .stronglyAgree    : return Color.green.opacity(0.9)
+        case .agree            : return Color.green.opacity(0.7)
+        case .somewhatAgree    : return Color.green.opacity(0.6)
+        case .undecided        : return Color.gray.opacity(0.6)
+        case .somewhatDisagree : return Color.orange.opacity(0.6)
+        case .disagree         : return Color.orange.opacity(0.7)
+        case .stronglyDisagree : return Color.orange.opacity(0.9)
+        }
+    }
 }
-
-
 
 
 struct AssessmentQuestionView_Previews: PreviewProvider {

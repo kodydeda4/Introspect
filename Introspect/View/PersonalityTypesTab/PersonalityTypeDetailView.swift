@@ -8,7 +8,7 @@
 import SwiftUI
 import FancyScrollView
 
-struct SelectedTypeView: View {
+struct PersonalityTypeDetailView: View {
     @Environment(\.presentationMode) var presentationMode
     
     let type: PersonalityType
@@ -67,7 +67,7 @@ struct SelectedTypeView: View {
 
 struct SelectedTypeView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectedTypeView(type: PersonalityType.debater)
+        PersonalityTypeDetailView(type: PersonalityType.debater)
     }
 }
 

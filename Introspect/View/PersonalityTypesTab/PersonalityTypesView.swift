@@ -27,10 +27,41 @@ struct PersonalityTypesView: View {
                         ScrollView(.horizontal) {
                             HStack {
                                 ForEach(PersonalityType.allCases.filter { $0.group == group }) { type in
-                                    NavigationLink(destination: SelectedTypeView(type: type)) {
-                                        PersonalityTypeCardView(type: type)
-                                            .padding(.vertical)
-                                            .frame(height: 225)
+                                    NavigationLink(destination: PersonalityTypeDetailView(type: type)) {
+                                        ZStack {
+                                            type.group.associatedColor
+                                                .clipShape(RoundedRectangle(cornerRadius: 20))
+                                                .padding(.leading)
+                                            
+                                            Image(type.name.lowercased())
+                                                .resizable()
+                                                .scaledToFit()
+                                            
+                                            VStack(alignment: .leading) {
+                                                Spacer()
+                                                HStack {
+                                                    VStack(alignment: .leading) {
+                                                        Text(type.rawValue)
+                                                            .font(.caption)
+                                                            .foregroundColor(.secondary)
+                                                        
+                                                        Text(type.name)
+                                                            .bold()
+                                                            .foregroundColor(.primary)
+                                                    }
+                                                    Spacer()
+                                                }
+                                                .padding(6)
+                                                .padding([.leading, .bottom], 6)
+                                                .frame(maxWidth: .infinity)
+                                                .background(Color(.secondarySystemBackground))
+                                            }
+                                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                                            .padding(.leading)
+                                        }
+                                        
+                                        .padding(.vertical)
+                                        .frame(height: 225)
                                     }
                                 }
                             }

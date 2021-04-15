@@ -34,6 +34,7 @@
 		338013A92620883E00F76D0E /* SQLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338013A82620883E00F76D0E /* SQLView.swift */; };
 		33857AC4262650A800AD4973 /* FancyScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 33857AC3262650A800AD4973 /* FancyScrollView */; };
 		33857AC7262650CA00AD4973 /* SelectedTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33857AC6262650CA00AD4973 /* SelectedTypeView.swift */; };
+		33CF35382627BD1F00FB5865 /* PersonalityTypeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CF35372627BD1F00FB5865 /* PersonalityTypeCardView.swift */; };
 		33F5FA16261D357F00DC1986 /* AssessmentSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F5FA15261D357F00DC1986 /* AssessmentSheetView.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		33742F30261D2E96002B769C /* PersonalityTypesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalityTypesView.swift; sourceTree = "<group>"; };
 		338013A82620883E00F76D0E /* SQLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLView.swift; sourceTree = "<group>"; };
 		33857AC6262650CA00AD4973 /* SelectedTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTypeView.swift; sourceTree = "<group>"; };
+		33CF35372627BD1F00FB5865 /* PersonalityTypeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalityTypeCardView.swift; sourceTree = "<group>"; };
 		33F5FA15261D357F00DC1986 /* AssessmentSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentSheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				33742F30261D2E96002B769C /* PersonalityTypesView.swift */,
+				33CF35372627BD1F00FB5865 /* PersonalityTypeCardView.swift */,
 				33857AC6262650CA00AD4973 /* SelectedTypeView.swift */,
 			);
 			path = PersonalityTypesTab;
@@ -286,6 +289,7 @@
 				33742F22261D2BFB002B769C /* RootView.swift in Sources */,
 				336A122F26273AFD00511F80 /* String+Extensions.swift in Sources */,
 				3300824E261CF52200A9427C /* Question.swift in Sources */,
+				33CF35382627BD1F00FB5865 /* PersonalityTypeCardView.swift in Sources */,
 				33742F2E261D2E6C002B769C /* AboutView.swift in Sources */,
 				33008255261CFF3800A9427C /* ButtonStyle+Extensions.swift in Sources */,
 				33742F31261D2E96002B769C /* PersonalityTypesView.swift in Sources */,

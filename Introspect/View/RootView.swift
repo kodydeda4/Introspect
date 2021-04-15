@@ -22,28 +22,27 @@ struct RootView: View {
                         .foregroundColor(.accentColor)
                 }
                 NavigationView {
-                    AssessmentView(store: store.scope(state: \.assessment, action: Root.Action.assessment))
-                }
-                .tabItem {
-                    Label("Test", systemImage: "doc.plaintext.fill")
-                        .foregroundColor(.accentColor)
-                }
-                NavigationView {
                     PersonalityTypesView(store: store)
                 }
                 .background(Color(.systemGroupedBackground))
                 .tabItem {
-                    Label("Types", systemImage: "person.3.fill")
+                    Label("Types", systemImage: "puzzlepiece.fill")
+                        .foregroundColor(.accentColor)
+                }
+                NavigationView {
+                    AssessmentView(store: store.scope(state: \.assessment, action: Root.Action.assessment))
+                }
+                .tabItem {
+                    Label("Assessment", systemImage: "doc.text.below.ecg.fill")
                         .foregroundColor(.accentColor)
                 }
                 NavigationView {
                     SQLView()
                 }
                 .tabItem {
-                    Label("SQL", systemImage: "text.book.closed.fill")
+                    Label("SQL", systemImage: "curlybraces")
                         .foregroundColor(.accentColor)
                 }
-
             }
         }
     }

@@ -6,19 +6,45 @@
 //
 
 import SwiftUI
-import ComposableArchitecture
 import FancyScrollView
-import DynamicColor
 
 struct SelectedTypeView: View {
     @Environment(\.presentationMode) var presentationMode
     
     let type: PersonalityType
+    @State var animating = false
     
     var body: some View {
         FancyScrollView(
             headerHeight: 400,
-            header: { HeaderView(type: type) }
+            header: {
+                VStack(alignment: .leading) {
+                    Spacer()
+                    
+                    Image(type.imageSelectedURL)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding()
+                        .scaleEffect(animating ? 1 : 0)
+                    
+                    Text(type.rawValue)
+                        .bold()
+                        .foregroundColor(Color(.lightText))
+                    
+                    Text(type.name)
+                        .font(.largeTitle)
+                        .bold()
+                        .foregroundColor(.white)
+                    
+                    Text(type.description)
+                        .font(.caption)
+                        .foregroundColor(.white)
+                }
+                .animation(Animation.spring(), value: animating)
+                .padding()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(type.group.associatedColor)
+            }
         ) {
             VStack(alignment: .leading) {
                 Text(type.headline)
@@ -29,10 +55,10 @@ struct SelectedTypeView: View {
                 
                 Text(type.bodyText)
                     .foregroundColor(.secondary)
-                
             }
             .padding()
         }
+        .onAppear { animating.toggle() }
         .gesture(
             DragGesture().onEnded {
                 if $0.translation.width > 60 {
@@ -50,56 +76,6 @@ struct SelectedTypeView_Previews: PreviewProvider {
     }
 }
 
-struct HeaderView: View {
-    var type: PersonalityType
-    @State var doneAnimatingImage: Bool = false
-    @State var doneAnimatingText: Bool = false
-    var animDuration = 0.6
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            Spacer()
-            Image(type.imageSelectedURL)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .padding()
-                .scaleEffect(doneAnimatingImage ? 1 : 0)
-            
-            VStack(alignment: .leading) {
-                Text(type.rawValue)
-                    .bold()
-                    .foregroundColor(Color(.lightText))
-                
-                Text(type.name)
-                    .font(.largeTitle)
-                    .bold()
-                    .foregroundColor(.white)
-                
-                Text(type.description)
-                    .font(.caption)
-                    .foregroundColor(.white)
-            }
-            .opacity(doneAnimatingText ? 1 : 0)
-            .animation(Animation.easeInOut(duration: animDuration * 0.75).delay(animDuration), value: doneAnimatingText)
-        }
-        .scaleEffect(doneAnimatingImage ? 1 : 0)
-        .opacity(doneAnimatingImage ? 1 : 0)
-        .animation(Animation.spring(), value: doneAnimatingImage)
-        .onAppear {
-            doneAnimatingImage.toggle()
-            doneAnimatingText.toggle()
-        }
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(type.group.associatedColor)
-    }
-}
-
-struct HeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        HeaderView(type: PersonalityType.architect)
-    }
-}
 
 
 

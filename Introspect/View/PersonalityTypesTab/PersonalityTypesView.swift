@@ -52,9 +52,6 @@ struct PersonalityTypesView: View {
     }
 }
 
-
-
-
 struct PersonalityTypesView_Previews: PreviewProvider {
     static var previews: some View {
         PersonalityTypesView(store: Root.defaultStore)

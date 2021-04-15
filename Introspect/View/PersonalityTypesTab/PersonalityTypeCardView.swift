@@ -14,7 +14,7 @@ struct PersonalityTypeCardView: View {
         ZStack {
             type.group.associatedColor
                 .clipShape(RoundedRectangle(cornerRadius: 20))
-                .padding()
+                .padding(.leading)
             
             Image(type.imageURL)
                 .resizable()
@@ -40,7 +40,7 @@ struct PersonalityTypeCardView: View {
                 .background(Color(.secondarySystemBackground))
             }
             .clipShape(RoundedRectangle(cornerRadius: 20))
-            .padding(.horizontal)
+            .padding(.leading)
         }
     }
 }

@@ -24,13 +24,10 @@ struct PersonalityTypesView: View {
                         .padding(.horizontal)
                         .padding(.bottom, 1)
                         .frame(maxWidth: .infinity, alignment: .leading)
+
                     
-                    Text(group.description)
-                        .font(.body)
-                        .foregroundColor(.secondary)
-                        .padding(.horizontal)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    
+                
+
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
                             ForEach(PersonalityType.allCases.filter { $0.group == group }) { type in
@@ -61,19 +58,46 @@ struct PersonalityTypesView: View {
                             }
                         }
                         .padding(16)
-                        .padding(.bottom)
                     }
+                    
+                    Text(group.description)
+                        .font(.body)
+                        .foregroundColor(.secondary)
+                        .padding([.top, .horizontal])
+                        .frame(maxWidth: .infinity, alignment: .leading)
+
+                    
+                    Text("-" + group.characterizations)
+                        .font(.subheadline)
+                        .italic()
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .foregroundColor(.secondary)
+                        .opacity(0.9)
+                        .padding(.trailing)
+
                 }
             }
             .navigationTitle("Personality Types")
             .toolbar {
                 Button("Sort") {
-                    
+
                 }
             }
         }
     }
 }
+
+fileprivate extension PersonalityType.Group {
+    var characterizations: String {
+        switch self {
+        case .analyst  : return "Intuitive Thinkers"
+        case .diplomat : return "Intuitive Feeling"
+        case .sentinel : return "Sensing, Judging"
+        case .explorer : return "Sensing, Percieving"
+        }
+    }
+}
+
 
 struct PersonalityTypesView_Previews: PreviewProvider {
     static var previews: some View {

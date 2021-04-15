@@ -78,18 +78,10 @@ enum PersonalityType: String, Equatable, CaseIterable, Identifiable {
     
     var group: Group {
         switch self {
-        
-        case .architect, .logician, .commander, .debater:
-            return .analyst
-            
-        case .advocate, .mediator, .protagonist, .campaigner:
-            return .diplomat
-            
-        case .logistician, .defender, .executive, .consul:
-            return .sentinel
-            
-        case .virtuoso, .adventurer, .entrepreneur, .entertainer:
-            return .explorer
+        case .architect, .logician, .commander, .debater         : return .analyst
+        case .advocate, .mediator, .protagonist, .campaigner     : return .diplomat
+        case .logistician, .defender, .executive, .consul        : return .sentinel
+        case .virtuoso, .adventurer, .entrepreneur, .entertainer : return .explorer
         }
     }
 }

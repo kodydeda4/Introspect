@@ -36,6 +36,7 @@
 		33857AC7262650CA00AD4973 /* SelectedTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33857AC6262650CA00AD4973 /* SelectedTypeView.swift */; };
 		33CF35382627BD1F00FB5865 /* PersonalityTypeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CF35372627BD1F00FB5865 /* PersonalityTypeCardView.swift */; };
 		33F5FA16261D357F00DC1986 /* AssessmentSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F5FA15261D357F00DC1986 /* AssessmentSheetView.swift */; };
+		33F61E6E262859F500959CE0 /* AssessmentDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F61E6D262859F500959CE0 /* AssessmentDebugView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		33857AC6262650CA00AD4973 /* SelectedTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTypeView.swift; sourceTree = "<group>"; };
 		33CF35372627BD1F00FB5865 /* PersonalityTypeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalityTypeCardView.swift; sourceTree = "<group>"; };
 		33F5FA15261D357F00DC1986 /* AssessmentSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentSheetView.swift; sourceTree = "<group>"; };
+		33F61E6D262859F500959CE0 /* AssessmentDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentDebugView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 				33F5FA15261D357F00DC1986 /* AssessmentSheetView.swift */,
 				335AEFF1261D31310048ED51 /* AssessmentStartView.swift */,
 				33742F25261D2DE9002B769C /* AssessmentQuestionView.swift */,
+				33F61E6D262859F500959CE0 /* AssessmentDebugView.swift */,
 				33742F28261D2E11002B769C /* AssessmentFinishedView.swift */,
 				3329941F2625CE4B00618E7E /* AssessmentResultsView.swift */,
 			);
@@ -298,6 +301,7 @@
 				336DDC26262489B2008D0C20 /* SQL.swift in Sources */,
 				33008245261CECFB00A9427C /* AssessmentView.swift in Sources */,
 				3300822A261CEC7800A9427C /* IntrospectApp.swift in Sources */,
+				33F61E6E262859F500959CE0 /* AssessmentDebugView.swift in Sources */,
 				33F5FA16261D357F00DC1986 /* AssessmentSheetView.swift in Sources */,
 				33857AC7262650CA00AD4973 /* SelectedTypeView.swift in Sources */,
 				33008242261CECEE00A9427C /* Example.swift in Sources */,

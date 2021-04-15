@@ -31,7 +31,7 @@ struct AssessmentFinishedView: View {
                         }
                         .buttonStyle(RoundedRectangleButtonStyle(color: .accentColor))
                     }
-                    DebugView(store: store)
+                    AssessmentDebugView(store: store)
 
                 }
                 .padding()

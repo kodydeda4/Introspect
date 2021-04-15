@@ -179,9 +179,9 @@
 				33F5FA15261D357F00DC1986 /* AssessmentSheetView.swift */,
 				335AEFF1261D31310048ED51 /* AssessmentStartView.swift */,
 				33742F25261D2DE9002B769C /* AssessmentQuestionView.swift */,
-				33F61E6D262859F500959CE0 /* AssessmentDebugView.swift */,
 				33742F28261D2E11002B769C /* AssessmentFinishedView.swift */,
 				3329941F2625CE4B00618E7E /* AssessmentResultsView.swift */,
+				33F61E6D262859F500959CE0 /* AssessmentDebugView.swift */,
 			);
 			path = AssessmentTab;
 			sourceTree = "<group>";

@@ -23,7 +23,6 @@ struct AssessmentStartView: View {
                     .foregroundColor(.gray)
                     .padding(.top, 1)
                 
-                
                 Button("Start Test") {
                     viewStore.send(.startButtonTapped)
                 }

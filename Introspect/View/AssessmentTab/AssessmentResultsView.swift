@@ -10,34 +10,12 @@ import ComposableArchitecture
 
 struct AssessmentResultsView: View {
     let store: Store<Assessment.State, Assessment.Action>
+    @State var animating = false
     
     var body: some View {
         WithViewStore(store) { viewStore in
             VStack {
-                Image(viewStore.personalityType.name.lowercased())
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 200)
-                
-                HStack {
-                    Text(viewStore.personalityType.name)
-                        .font(.largeTitle)
-                        .bold()
-                        .foregroundColor(.accentColor)
-                    
-                    Text(viewStore.personalityType.rawValue)
-                        .font(.largeTitle)
-                        .bold()
-                        .foregroundColor(.secondary)
-                }
-                .padding()
-                
-                Text("description")//Text(viewStore.personalityType.description)
-                    .foregroundColor(.secondary)
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 20).foregroundColor(Color(.secondarySystemBackground)))
-                                    
-                Spacer()
+                PersonalityTypeDetailView(type: viewStore.personalityType)
                 
                 Button("Finished") {
                     viewStore.send(.finishedButtonTapped)
@@ -45,7 +23,9 @@ struct AssessmentResultsView: View {
                 .buttonStyle(RoundedRectangleButtonStyle(color: .accentColor))
                 .padding()
             }
-            .padding()
+            .opacity(animating ? 1 : 0)
+            .animation(Animation.easeIn(duration: 1.5), value: animating)
+            .onAppear { animating.toggle() }
         }
     }
 }

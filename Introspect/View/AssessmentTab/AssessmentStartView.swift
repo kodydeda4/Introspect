@@ -18,12 +18,12 @@ struct AssessmentStartView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                 
-                Text("Description about Test")
+                Text("Description about Myer Briggs goes here")
                     .multilineTextAlignment(.center)
                     .foregroundColor(.gray)
                     .padding(.top, 1)
                 
-                Button("Start Test") {
+                Button("Start Assessment") {
                     viewStore.send(.startButtonTapped)
                 }
                 .buttonStyle(RoundedRectangleButtonStyle(color: .accentColor))

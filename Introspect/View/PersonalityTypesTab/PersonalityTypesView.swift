@@ -40,8 +40,9 @@ struct PersonalityTypesView: View {
                                             .resizable()
                                             .scaledToFit()
                                             .padding()
+                                            .shadow(color: Color.black.opacity(0.3), radius: 10, x: -5, y: 5)
                                             .background(type.group.associatedColor)
-
+                                        
                                         Text(type.rawValue)
                                             .font(.caption)
                                             .foregroundColor(.secondary)

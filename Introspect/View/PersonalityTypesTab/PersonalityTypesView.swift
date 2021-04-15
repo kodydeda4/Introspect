@@ -74,6 +74,8 @@ struct PersonalityTypesView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
 
                 }
+                Spacer()
+                    .frame(height: 25)
             }
             .navigationTitle("Personality Types")
             .toolbar {

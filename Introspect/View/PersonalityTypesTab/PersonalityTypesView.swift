@@ -18,7 +18,7 @@ struct PersonalityTypesView: View {
                     Divider()
                         .padding(.horizontal)
                     
-                    Text(group.rawValue)
+                    Text(group.rawValue + " (" + group.txt + ")")
                         .font(.title2)
                         .bold()
                         .padding(.horizontal)
@@ -74,6 +74,20 @@ struct PersonalityTypesView: View {
         }
     }
 }
+
+fileprivate extension PersonalityType.Group {
+    var txt: String {
+        switch self {
+        
+        case .analyst  : return "NT"
+        case .diplomat : return "NF"
+        case .sentinel : return "SJ"
+        case .explorer : return "SP"
+            
+        }
+    }
+}
+
 
 struct PersonalityTypesView_Previews: PreviewProvider {
     static var previews: some View {

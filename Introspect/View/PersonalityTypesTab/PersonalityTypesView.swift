@@ -31,7 +31,7 @@ struct PersonalityTypesView: View {
                         .padding(.horizontal)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    ScrollView(.horizontal) {
+                    ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
                             ForEach(PersonalityType.allCases.filter { $0.group == group }) { type in
                                 NavigationLink(destination: PersonalityTypeDetailView(type: type)) {
@@ -64,7 +64,6 @@ struct PersonalityTypesView: View {
                     }
                 }
             }
-            .background(Color(.systemGroupedBackground))
             .navigationTitle("Personality Types")
             .toolbar {
                 Button("Sort") {

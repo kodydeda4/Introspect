@@ -31,6 +31,7 @@ struct RootView: View {
                 NavigationView {
                     PersonalityTypesView(store: store)
                 }
+                .background(Color(.systemGroupedBackground))
                 .tabItem {
                     Label("Types", systemImage: "person.3.fill")
                         .foregroundColor(.accentColor)

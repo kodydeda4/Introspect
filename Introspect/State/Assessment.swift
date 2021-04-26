@@ -8,7 +8,6 @@
 import SwiftUI
 import ComposableArchitecture
 
-
 struct Assessment {
     struct State: Equatable {
         var progress               = Progress.notYetStarted
@@ -38,7 +37,6 @@ struct Assessment {
 
             return PersonalityType(rawValue: str)!
         }
-
         
         var percentCompleted: CGFloat {
             let complete = CGFloat(questions.filter { $0.response != nil }.count)

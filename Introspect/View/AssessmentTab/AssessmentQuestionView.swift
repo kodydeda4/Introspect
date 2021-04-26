@@ -14,7 +14,6 @@ struct AssessmentQuestionView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             VStack(spacing: 16) {
-                
                 Progressbar(
                     percentage: viewStore.percentCompleted,
                     action: { viewStore.send(.showSheetView) }
@@ -35,6 +34,7 @@ struct AssessmentQuestionView: View {
                         }
                     }
                 }
+                .disabled(viewStore.changingQuestion)
                 
                 AssessmentDebugView(store: store)
             }

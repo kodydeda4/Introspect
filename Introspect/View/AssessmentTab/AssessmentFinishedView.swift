@@ -21,11 +21,6 @@ struct AssessmentFinishedView: View {
                         .padding()
                                         
                     HStack {
-                        Button("Go Back") {
-                            viewStore.send(.backButtonTapped)
-                        }
-                        .buttonStyle(RoundedRectangleButtonStyle())
-                        
                         Button("View Results") {
                             viewStore.send(.viewResultsButtonTapped)
                         }

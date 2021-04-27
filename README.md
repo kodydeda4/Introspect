@@ -35,7 +35,7 @@ Myer Briggs is an iOS app for the Myer Briggs personality test. It uses the pers
 ## 💾 SQL
 
 * SQLite Database
-* Queries enum
+* Queries saved as Swift enum
 
 ![sql](https://user-images.githubusercontent.com/45678211/116250086-6be4d500-a73b-11eb-90e8-0dd7664816c1.png)
 

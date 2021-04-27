@@ -14,19 +14,24 @@ struct AssessmentFinishedView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             NavigationView {
-                ScrollView {
+                VStack {
                     Text("Done!")
                         .font(.title)
                         .bold()
                         .padding()
                                         
                     HStack {
+                        Button("Go Back") {
+                            viewStore.send(.viewResultsButtonTapped)
+                        }
+                        .buttonStyle(RoundedRectangleButtonStyle())
+                        
                         Button("View Results") {
                             viewStore.send(.viewResultsButtonTapped)
                         }
                         .buttonStyle(RoundedRectangleButtonStyle(color: .accentColor))
                     }
-                    AssessmentDebugView(store: store)
+                    //AssessmentDebugView(store: store)
 
                 }
                 .padding()

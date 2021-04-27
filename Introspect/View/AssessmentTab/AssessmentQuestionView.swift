@@ -36,7 +36,7 @@ struct AssessmentQuestionView: View {
                 }
                 .disabled(viewStore.changingQuestion)
                 
-                AssessmentDebugView(store: store)
+                //AssessmentDebugView(store: store)
             }
             .padding()
             .navigationBarHidden(true)

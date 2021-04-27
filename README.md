@@ -4,35 +4,40 @@
 
 ## About Myer Briggs
 
-Myer Briggs is an iOS app for the Myer Briggs personality test.  It uses the personality type icons, information, and test questions from <https://www.16personalities.com>, and is the final project for CSC 455 - Database Design & Implementation.
+Myer Briggs is an iOS app for the Myer Briggs personality test. It uses the personality type icons, information, and test questions from <https://www.16personalities.com>. It is the final project for CSC 455 - Database Design & Implementation.
 
-## 🧩 Types
+## 🧩 16 Types
 
 * 16 Personality Types
 * Tap to learn more
 
-![types_0](https://user-images.githubusercontent.com/45678211/116244086-96339400-a735-11eb-8e3c-a7d8f7256bcc.png)
-![types_1](https://user-images.githubusercontent.com/45678211/116244089-96339400-a735-11eb-962d-ce4eb0496c1a.png)
-![type_selected](https://user-images.githubusercontent.com/45678211/116244085-96339400-a735-11eb-9744-bc23ec2d4b6c.png)
+![analysts_1](https://user-images.githubusercontent.com/45678211/116251217-76ec3500-a73c-11eb-835e-664b5509888c.png)
+![diplomats_1](https://user-images.githubusercontent.com/45678211/116251229-781d6200-a73c-11eb-856c-444c50638f2d.png)
+![sentinels_](https://user-images.githubusercontent.com/45678211/116251233-78b5f880-a73c-11eb-8ceb-48d1fc91809a.png)
+![explorers_1](https://user-images.githubusercontent.com/45678211/116251232-78b5f880-a73c-11eb-9421-83e9309888bf.png)
+
+![analysts_0](https://user-images.githubusercontent.com/45678211/116251212-76ec3500-a73c-11eb-8700-a4233babf08c.png)
+![sentinels_0](https://user-images.githubusercontent.com/45678211/116251236-794e8f00-a73c-11eb-9008-5fd200ad7bcc.png)
+
 
 ## 📖 Assessment
 
-* Take the assessment
-* Progressbar shows percentage complete
-* Easily switch to a different question
+* Animating buttons
+* Progressbar
+* Switch questions with Sheet View
 
-![assessment_start](https://user-images.githubusercontent.com/45678211/116244081-959afd80-a735-11eb-8d6b-86422155ed93.png)
-![assessment_q1](https://user-images.githubusercontent.com/45678211/116244688-283b9c80-a736-11eb-9aa1-1237c8ac4788.png)
-![assessment_q2](https://user-images.githubusercontent.com/45678211/116244690-283b9c80-a736-11eb-90fe-36542fb346e0.png)
-![assessment_sheet](https://user-images.githubusercontent.com/45678211/116244691-283b9c80-a736-11eb-8cfe-e060bab54b30.png)
-![assessment_finished](https://user-images.githubusercontent.com/45678211/116244685-283b9c80-a736-11eb-863e-135afc8b80c9.png)
+
+![assessment_start](https://user-images.githubusercontent.com/45678211/116250084-6b4c3e80-a73b-11eb-83d6-ef9e4ead8a14.png)
+![assessment_q2](https://user-images.githubusercontent.com/45678211/116250081-6b4c3e80-a73b-11eb-8058-d8921f079bff.png)
+![assessment_sheet](https://user-images.githubusercontent.com/45678211/116250082-6b4c3e80-a73b-11eb-8359-421fc20db673.png)
+![assessment_finished](https://user-images.githubusercontent.com/45678211/116250075-6ab3a800-a73b-11eb-9bef-1f8f5b62b266.png)
 
 ## 💾 SQL
 
 * SQLite Database
 * Queries enum
 
-![sql](https://user-images.githubusercontent.com/45678211/116244083-959afd80-a735-11eb-932d-a2ad67c5899d.png)
+![sql](https://user-images.githubusercontent.com/45678211/116250086-6be4d500-a73b-11eb-90e8-0dd7664816c1.png)
 
 ## Team Info
 

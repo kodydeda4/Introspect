@@ -1,6 +1,6 @@
 # 🏛 UNCW CSC 455 | Myer Briggs
 
-![banner](https://user-images.githubusercontent.com/45678211/116248069-7ef6a580-a739-11eb-8d04-63ea9191196c.png)
+![banner](https://user-images.githubusercontent.com/45678211/116263528-70af8600-a747-11eb-9836-778339326539.png)
 
 ## About Myer Briggs
 

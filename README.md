@@ -46,5 +46,5 @@ Myer Briggs is an iOS app for the Myer Briggs personality test. It uses the pers
 |Team Member    | Contact Email              |
 | ------------- | ---------------------------|
 |Kody Deda      | kodydeda4@gmail.com        |
-|Alex           | nil                        |
+|Alex           | alexchisholm343@gmail.com  |
 |BSam           | nil                        |

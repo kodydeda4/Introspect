@@ -1,10 +1,10 @@
 # 🏛 UNCW CSC 455 | Myer Briggs
 
-![banner](https://user-images.githubusercontent.com/45678211/116244070-916ee000-a735-11eb-9add-13a84b9bb87d.png)
+![banner](https://user-images.githubusercontent.com/45678211/116248069-7ef6a580-a739-11eb-8d04-63ea9191196c.png)
 
 ## About Myer Briggs
 
-Myer Briggs is an iOS app for the Myer Briggs personality test.  It uses the personality type icons, information, and test questions from <https://www.16personalities.com>.
+Myer Briggs is an iOS app for the Myer Briggs personality test.  It uses the personality type icons, information, and test questions from <https://www.16personalities.com>, and is the final project for CSC 455 - Database Design & Implementation.
 
 ## 🧩 Types
 
@@ -36,7 +36,7 @@ Myer Briggs is an iOS app for the Myer Briggs personality test.  It uses the per
 
 ## Team Info
 
-![footer](https://user-images.githubusercontent.com/45678211/116244064-8fa51c80-a735-11eb-9221-64d19659f088.png)
+![footer](https://user-images.githubusercontent.com/45678211/116249204-91bdaa00-a73a-11eb-895f-e885b70d89bd.png)
 
 |Team Member    | Contact Email              |
 | ------------- | ---------------------------|

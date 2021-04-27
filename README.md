@@ -1,23 +1,53 @@
-# CSC 455 Group Project
+# 🏛 UNCW CSC 455 | Myer Briggs
 
-Kody Deda | Alex Chisolm | Basam Ahmed
+![banner](https://user-images.githubusercontent.com/45678211/116244070-916ee000-a735-11eb-9add-13a84b9bb87d.png)
 
-## I. Project Overview
+## About Myer Briggs
 
-Our database project is an iOS app for the **Myers-Briggs Type Indicator (MBTI)** assessment.  The app allows users to take multiple assessments and read about differing personality types.
+Myer Briggs is an iOS app for the Myer Briggs personality test.  It uses the personality type icons, information, and test questions from <https://www.16personalities.com>.
 
-Each assessment presents a series of statements, and asks users to respond with how strongly they agree or disagree with them. Each statement is designed to indicate a preference in one of the following categories:
+## 🧩 Types
 
-* **I**ntroversion vs **E**xtraversion
-* **S**ensing vs I**N**tuition
-* **T**hinking vs **F**eeling
-* **J**udging vs **P**erceiving
+* Find new recipes
+* Tap an ingredient to add/remove it from search
+* Tap a recipe to learn more
 
-Once a user has finished taking the assessment, their responses are weighed to produce a four-letter Personality Type such as "INTJ" or "ESFP" and the user is then presented with relevant information about their Personality Type as well as links to any of the other types if they wish to learn more.
+![types_0](https://user-images.githubusercontent.com/45678211/116244086-96339400-a735-11eb-8e3c-a7d8f7256bcc.png)
+![types_1](https://user-images.githubusercontent.com/45678211/116244089-96339400-a735-11eb-962d-ce4eb0496c1a.png)
+![type_selected](https://user-images.githubusercontent.com/45678211/116244085-96339400-a735-11eb-9744-bc23ec2d4b6c.png)
 
-Each assessment is stored and multiple assessments can be taken and saved under different names.
 
-## II. Logical E-R Diagram
+## 📖 Assessment
 
-![image](https://user-images.githubusercontent.com/45678211/114083837-7bc87200-987d-11eb-859a-1fc3f947c149.png)
+* Displays information about a meal
+* Required ingredients are highlighted gray
+* Instructions listed at the bottom
+
+
+![assessment_start](https://user-images.githubusercontent.com/45678211/116244081-959afd80-a735-11eb-8d6b-86422155ed93.png)
+
+## 💾 SQL
+
+* Favorite recipes are stored in the favorites tab
+* Delete them with the Clear All button
+
+![sql](https://user-images.githubusercontent.com/45678211/116244083-959afd80-a735-11eb-932d-a2ad67c5899d.png)
+
+## Team Info
+
+![footer](https://user-images.githubusercontent.com/45678211/116244064-8fa51c80-a735-11eb-9221-64d19659f088.png)
+
+
+|Team Member    | Contact Email              |
+| ------------- | ---------------------------|
+|Kody Deda      | kodydeda4@gmail.com        |
+|Alex   | nil |
+|BSam | nil           |
+
+
+
+
+
+
+
 

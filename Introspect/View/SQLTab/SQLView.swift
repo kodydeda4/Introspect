@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct SQLView: View {
-    //let f = SQL.init()
+    let f = SQL.init()
     
     //@State var selectedSQLAction: SQL.Query = .createUsersTable
     
     var body: some View {
         Form {
-//            ForEach(SQL.Query.allCases) { action in
-//                Section(header: Text(action.rawValue)) {
-//                    Text(action.code)
-//                        .padding(.vertical)
-//                }
-//            }
+            ForEach(SQL.Query.allCases) { action in
+                Section(header: Text(action.rawValue)) {
+                    Text(action.code)
+                        .padding(.vertical)
+                }
+            }
         }
         .navigationBarTitle("SQL Queries")
     }

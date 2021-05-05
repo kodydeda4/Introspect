@@ -16,15 +16,9 @@ struct SQLView2: View {
     var body: some View {
         Form {
             Text(users.joined())
-
+    
             Button("Example") {
                 sql.example()
-            }
-
-            ForEach(SQL.Query.allCases) { query in
-                Button(query.rawValue) {
-                    sql.execute(query)
-                }
             }
         }
     }

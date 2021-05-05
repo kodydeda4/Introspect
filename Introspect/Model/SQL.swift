@@ -22,123 +22,181 @@ struct SQL {
 
     
     func example() {
+        
+        // I. Creating the users Table
+        let users    = Table("users")
+        let id       = Expression<Int64>("id")
+        let email    = Expression<String>("email")
+        let balance  = Expression<Double>("balance")
+        let verified = Expression<Bool>("verified")
+        let name     = Expression<String?>("name")
+
+        do {
+            try db.run(users.create { t in
+                t.column(id, primaryKey: true)
+                t.column(email, unique: true)
+                t.column(name)
+            })
+        } catch {
+            print("creation failed: \(error)")
+        }
+        
+        
+        // I. Creating the posts Table
+        let posts   = Table("posts")
+        let user_id = Expression<Int64>("id")
+
+        do {
+            try db.run(posts.create { t in
+                t.column(user_id, primaryKey: true)
+                t.column(email, unique: true)
+                t.column(name)
+            })
+        } catch {
+            print("creation failed: \(error)")
+        }
+        
+        
+        // II. INSERT - Inserting rows (returns an Int64 representing the row’s ROWID.)
+        do {
+            let rowid1 = try db.run(users.insert(email <- "alice@mac.com", name <- "Alice A."))
+            let rowid2 = try db.run(users.insert(email <- "mike@mac.com", name <- "Mike B."))
+            let rowid3 = try db.run(users.insert(email <- "sarah@mac.com", name <- "Sarah C."))
+            
+            print("inserted id: \(rowid1)")
+            print("inserted id: \(rowid2)")
+            print("inserted id: \(rowid3)")
+            
+        } catch {
+            print("insertion failed: \(error)")
+        }
+        
+        // III. SELECT - Iterating and Accessing Values
+        do {
+            for user in try db.prepare(users) {
+                print("id: \(user[id]), email: \(user[email]), name: \(String(describing: user[name]))")
+            }
+            for user in try db.prepare(users.select(id, email)) {
+                print("id: \(user[id]), email: \(user[email])")
+            }
+        } catch {
+            print("iteration failed: \(error)")
+        }
+        
+        // IV. JOIN
+        let _ = users.join(.inner, posts, on: user_id == users[id])
+        
+
+        
+        
+        
+        
     }
     
-    enum Query: String, Identifiable, CaseIterable {
-        var id: Query { self }
-
-        case createTables              = "Create Tables"
-        case twoTableJoin              = "2-Table Join"
-        case threeTableJoin            = "3-Table Join"
-        case selfJoin                  = "Self Join"
-        case aggregateFunction         = "Aggregate Function"
-        case aggregateFunctionExtended = "Aggregate Function using GROUP BY and HAVING"
-        case textBasedSearch           = "Text-Based-Search Query using LIKE with wildcard(s)"
-        case subQuery                  = "Subquery"
-        case storedFunction            = "Stored Function"
-        case storedProcedure           = "Stored Procedure"
-        case trigger                   = "Trigger"
-
-        var code: String {
-            switch self {
-            
-            case .createTables:
-                return """
-                create table PersonalityType(
-                  personalityId integer primary key not null,
-                  description text,
-                  fourLetterCode text
-                  
-                );
-
-                create table PersonalitySpectrum(
-                  id integer,
-                  introversion float
-                );
-
-                create table Response(
-                  responseId integer primary key not null,
-                  response TEXT
-                );
-
-                create table Question(
-                  questionId integer primary key not null,
-                  content TEXT,
-                  responseId integer,
-                  personalitySpectrumId integer,
-                  FOREIGN KEY (personalitySpectrumId) REFERENCES PersonalitySpectrum(id),
-                  FOREIGN KEY (responseId) REFERENCES Response(responseId)
-                );
-
-                CREATE TABLE Person (
-                  personId INTEGER PRIMARY KEY NOT NULL,
-                  name TEXT,
-                  assessmentResults TEXT NOT NULL
-                );
-                  
-                Create table Assessment(
-                 assessmentId integer primary key not null,
-                 personId integer,
-                 questionId integer,
-                 personalityType integer,
-                 FOREIGN KEY (questionid) REFERENCES Question(questionId)
-                 FOREIGN KEY (personId) REFERENCES Person(personId)
-                 FOREIGN KEY (personalityType) REFERENCES PersonalityType(personalityId)
-                );
-            """
-
-            case .twoTableJoin:
-                return """
-                -- not yet implemented
-                """
-            case .threeTableJoin:
-                return """
-                -- not yet implemented
-                """
-
-            case .selfJoin:
-                return """
-                -- not yet implemented
-                """
-
-            case .aggregateFunction:
-                return """
-                -- not yet implemented
-                """
-
-            case .aggregateFunctionExtended:
-                return """
-                -- not yet implemented
-                """
-
-            case .textBasedSearch:
-                return """
-                -- not yet implemented
-                """
-
-            case .subQuery:
-                return """
-                -- not yet implemented
-                """
-
-            case .storedFunction:
-                return """
-                -- not yet implemented
-                """
-
-            case .storedProcedure:
-                return """
-                -- not yet implemented
-                """
-
-            case .trigger:
-                return """
-                -- not yet implemented
-                """
-
-            }
-        }
-    }
+//    enum Query: String, Identifiable, CaseIterable {
+//        var id: Query { self }
+//
+//        // Examples
+//        // https://tinyurl.com/r4c6nmk
+//        case createUsersTable = "Create users Table"
+//        case createPostsTable = "Create posts Table"
+//        case addAliceUser     = "Insert alice into users Table"
+//        case selectAllFromUsers
+//
+//        // UNCW Required
+//        case twoTableJoin              = "2-Table Join"
+//        case threeTableJoin            = "3-Table Join"
+//        case selfJoin                  = "Self Join"
+//        case aggregateFunction         = "Aggregate Function"
+//        case aggregateFunctionExtended = "Aggregate Function using GROUP BY and HAVING"
+//        case textBasedSearch           = "Text-Based-Search Query using LIKE with wildcard(s)"
+//        case subQuery                  = "Subquery"
+//        case storedFunction            = "Stored Function"
+//        case storedProcedure           = "Stored Procedure"
+//        case trigger                   = "Trigger"
+//
+//        var code: String {
+//            switch self {
+//
+//            case .createUsersTable:
+//                return """
+//                CREATE TABLE users (
+//                    id INTEGER PRIMARY KEY NOT NULL,
+//                    email TEXT UNIQUE NOT NULL,
+//                    name TEXT
+//                );
+//                """
+//            case .createPostsTable:
+//                return """
+//                CREATE TABLE posts (
+//                    id INTEGER PRIMARY KEY NOT NULL,
+//                    title TEXT NOT NULL,
+//                    body TEXT NOT NULL,
+//                    published_at DATETIME
+//                );
+//                """
+//            case .addAliceUser:
+//                return """
+//                INSERT INTO users (email) VALUES ('alice@mac.com')
+//                """
+//
+//            case .selectAllFromUsers:
+//                return """
+//                SELECT * FROM users
+//                """
+//
+//            case .twoTableJoin:
+//                return """
+//                -- not yet implemented
+//                """
+//            case .threeTableJoin:
+//                return """
+//                -- not yet implemented
+//                """
+//
+//            case .selfJoin:
+//                return """
+//                -- not yet implemented
+//                """
+//
+//            case .aggregateFunction:
+//                return """
+//                -- not yet implemented
+//                """
+//
+//            case .aggregateFunctionExtended:
+//                return """
+//                -- not yet implemented
+//                """
+//
+//            case .textBasedSearch:
+//                return """
+//                -- not yet implemented
+//                """
+//
+//            case .subQuery:
+//                return """
+//                -- not yet implemented
+//                """
+//
+//            case .storedFunction:
+//                return """
+//                -- not yet implemented
+//                """
+//
+//            case .storedProcedure:
+//                return """
+//                -- not yet implemented
+//                """
+//
+//            case .trigger:
+//                return """
+//                -- not yet implemented
+//                """
+//
+//            }
+//        }
+//    }
 }
 
 

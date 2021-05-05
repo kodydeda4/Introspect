@@ -9,8 +9,8 @@ import Foundation
 import SQLite
 
 struct SQL {
-    var db: Connection
-    var path: String
+    private var db: Connection
+    private var path: String
     
     init() {
 //        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
@@ -18,6 +18,11 @@ struct SQL {
         self.db = try! Connection(.temporary)
         self.path = "see above"
         db.trace { print($0) }
+    }
+    
+    func execute(_ query: SQL.Query) {
+        do { try db.execute(query.code) }
+        catch {}
     }
     
     enum Query: String, Identifiable, CaseIterable {

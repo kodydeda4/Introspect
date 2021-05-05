@@ -9,14 +9,14 @@ import SwiftUI
 
 
 struct SQLView2: View {
-    let f = SQL.init()
-    
-    @State var selectedSQLAction: SQL.Query = .createUsersTable
-    
+    let sql = SQL.init()
+        
     var body: some View {
         Form {
-            Button("foo") {
-                SQL.Query.createUsersTable
+            ForEach(SQL.Query.allCases) { query in
+                Button(query.rawValue) {
+                    sql.execute(query)
+                }
             }
         }
     }

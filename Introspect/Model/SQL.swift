@@ -24,26 +24,29 @@ struct SQL {
     func example() {
         
         // I. Creating a Table
-        let personalityTypes = Table("users")
-        let id       = Expression<Int64>("id")
-        let name     = Expression<String?>("name")
-        let email    = Expression<String>("email")
-        
+        let users = Table("users")
+        let id = Expression<Int64>("id")
+        let email = Expression<String>("email")
+        let balance = Expression<Double>("balance")
+        let verified = Expression<Bool>("verified")
+        let name = Expression<String?>("name")
+
         do {
-            try db.run(personalityTypes.create { t in
-                t.column(id, primaryKey: true)
-                t.column(name)
-                t.column(email, unique: true)
+            try db.run(users.create { t in
+                t.column(id, primaryKey: true) //     "id" INTEGER PRIMARY KEY NOT NULL,
+                t.column(email, unique: true)  //     "email" TEXT UNIQUE NOT NULL,
+                t.column(name)                 //     "name" TEXT
             })
         } catch {
             print("creation failed: \(error)")
         }
         
+        
         // II. INSERT - Inserting rows (returns an Int64 representing the row’s ROWID.)
         do {
-            let rowid1 = try db.run(personalityTypes.insert(email <- "alice@mac.com", name <- "Alice A."))
-            let rowid2 = try db.run(personalityTypes.insert(email <- "mike@mac.com", name <- "Mike B."))
-            let rowid3 = try db.run(personalityTypes.insert(email <- "sarah@mac.com", name <- "Sarah C."))
+            let rowid1 = try db.run(users.insert(email <- "alice@mac.com", name <- "Alice A."))
+            let rowid2 = try db.run(users.insert(email <- "mike@mac.com", name <- "Mike B."))
+            let rowid3 = try db.run(users.insert(email <- "sarah@mac.com", name <- "Sarah C."))
             print("inserted id: \(rowid1)")
             print("inserted id: \(rowid2)")
             print("inserted id: \(rowid3)")
@@ -53,15 +56,24 @@ struct SQL {
         
         // III. SELECT - Iterating and Accessing Values
         do {
-            for user in try db.prepare(personalityTypes) {
+            for user in try db.prepare(users) {
                 print("id: \(user[id]), email: \(user[email]), name: \(String(describing: user[name]))")
             }
-            for user in try db.prepare(personalityTypes.select(id, email)) {
+            for user in try db.prepare(users.select(id, email)) {
                 print("id: \(user[id]), email: \(user[email])")
             }
         } catch {
             print("iteration failed: \(error)")
         }
+        
+        // IV. JOIN
+        
+        // SELECT * FROM "users" INNER JOIN "posts" ON ("user_id" = "users"."id")
+        
+        
+        
+        
+        
     }
     
 //    enum Query: String, Identifiable, CaseIterable {

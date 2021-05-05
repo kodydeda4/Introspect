@@ -17,7 +17,6 @@ struct SQLView: View {
             ForEach(SQL.Query.allCases) { action in
                 Section(header: Text(action.rawValue)) {
                     Text(action.code)
-                        .padding(.vertical)
                 }
             }
         }

@@ -10,9 +10,17 @@ import SwiftUI
 
 struct SQLView2: View {
     let sql = SQL.init()
+    
+    @State var users = [String]()
         
     var body: some View {
         Form {
+            Text(users.joined())
+
+            Button("Example") {
+                sql.example()
+            }
+
             ForEach(SQL.Query.allCases) { query in
                 Button(query.rawValue) {
                     sql.execute(query)

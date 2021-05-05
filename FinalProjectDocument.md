@@ -53,9 +53,18 @@ During development we encountered issues with converting the sql queries into di
   
 ### ii. Misc (implemented and demonstrated through an appropriate query)
 
-* Stored Function
-* Stored Procedure
-* Trigger
+* Stored Function  
+`
+--Not yet implemented.
+`
+* Stored Procedure  
+`
+--Not yet implemented.
+`
+* Trigger  
+`
+--Not yet implemented.
+`
 
 ## V. A simple, web-based front-end providing links to the appropriate queries
 

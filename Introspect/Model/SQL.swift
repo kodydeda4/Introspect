@@ -23,19 +23,34 @@ struct SQL {
     
     func example() {
         
-        // I. Creating a Table
-        let users = Table("users")
-        let id = Expression<Int64>("id")
-        let email = Expression<String>("email")
-        let balance = Expression<Double>("balance")
+        // I. Creating the users Table
+        let users    = Table("users")
+        let id       = Expression<Int64>("id")
+        let email    = Expression<String>("email")
+        let balance  = Expression<Double>("balance")
         let verified = Expression<Bool>("verified")
-        let name = Expression<String?>("name")
+        let name     = Expression<String?>("name")
 
         do {
             try db.run(users.create { t in
-                t.column(id, primaryKey: true) //     "id" INTEGER PRIMARY KEY NOT NULL,
-                t.column(email, unique: true)  //     "email" TEXT UNIQUE NOT NULL,
-                t.column(name)                 //     "name" TEXT
+                t.column(id, primaryKey: true)
+                t.column(email, unique: true)
+                t.column(name)
+            })
+        } catch {
+            print("creation failed: \(error)")
+        }
+        
+        
+        // I. Creating the posts Table
+        let posts   = Table("posts")
+        let user_id = Expression<Int64>("id")
+
+        do {
+            try db.run(posts.create { t in
+                t.column(user_id, primaryKey: true)
+                t.column(email, unique: true)
+                t.column(name)
             })
         } catch {
             print("creation failed: \(error)")
@@ -47,9 +62,11 @@ struct SQL {
             let rowid1 = try db.run(users.insert(email <- "alice@mac.com", name <- "Alice A."))
             let rowid2 = try db.run(users.insert(email <- "mike@mac.com", name <- "Mike B."))
             let rowid3 = try db.run(users.insert(email <- "sarah@mac.com", name <- "Sarah C."))
+            
             print("inserted id: \(rowid1)")
             print("inserted id: \(rowid2)")
             print("inserted id: \(rowid3)")
+            
         } catch {
             print("insertion failed: \(error)")
         }
@@ -67,9 +84,9 @@ struct SQL {
         }
         
         // IV. JOIN
+        let _ = users.join(.inner, posts, on: user_id == users[id])
         
-        // SELECT * FROM "users" INNER JOIN "posts" ON ("user_id" = "users"."id")
-        
+
         
         
         

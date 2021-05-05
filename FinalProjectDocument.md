@@ -1,63 +1,62 @@
 # CSC 455 Group Project Information
 
-The final project submission should include the following:
+Kody Deda, Alex Chisholm, Basam Ahmed
 
-## 1. Written overview or summary of the project
+## I. Written overview or summary of the project
 
-Should be “deliverable” to a client (i.e. professional tone and writing.)
+For our CSC 455 final project, we decided to create an iOS app for the Myers Briggs Personality Type assessment.  The purpose of our app was to allow users to learn more about themselves and others through taking the assessment and reading information about the different types.
 
-* Purpose
-* Functionality
-* Any user documentation
-* Description of known problems
-* etc.
+Functionally, our app was written using SwiftUI and a package called SQLite for writing our SQLite queries directly.  We used sql for loading, storing, and comparing information about different personality types and groups.
+
+During development we encountered issues with converting the sql queries into direct Swift code and implementing that into the app.  However, we were able to get the queries and the UI working independently of one another.
   
-## 2. Final logical E-R diagram
+## II. Final logical E-R diagram
 
-Final logical E-R diagram/schema (not hand-drawn)
+![map](https://user-images.githubusercontent.com/45678211/117189952-ca99f680-adac-11eb-9780-ee6fa000a9a0.png)
 
-## 3. Table design, Relationships, & Data
+## III. Table design, Relationships, & Data
 
-a. The resulting schema is correctly mapped from the Final E-R diagram
-b. Primary and foreign keys are appropriately identified and assigned
-c. Attributes are an appropriate type and size
-d. The initial DDL includes the correct SQL syntax to create tables,
-    and the initial insertion of data for each table is a separate transaction.
+![drawSQL-export-2021-05-05_13_49](https://user-images.githubusercontent.com/45678211/117189923-c1108e80-adac-11eb-84fd-6f27d1c84df5.png)
 
-## 4. Supporting Queries and Functionality
-
-At least 10 SQL queries are demonstrated that implement the functionality described in #1.
-
-These must include:
+## IV. Supporting Queries and Functionality
 
 ### i. SELECT queries that demonstrate
 
-* Two-Table Join
-* Three-Table Join
-* Self-Join
-* An Aggregate Function
-* An Aggregate Function using GROUP BY and HAVING
-* A Text-Based-Search Query using LIKE with wildcard(s)
-* A Subquery
-
+* Two-Table Join  
+`
+--Not yet implemented.
+`
+* Three-Table Join  
+`
+--Not yet implemented.
+`
+* Self-Join  
+`
+--Not yet implemented.
+`
+* Aggregate Function  
+`
+--Not yet implemented.
+`
+* Aggregate Function using GROUP BY and HAVING  
+`
+--Not yet implemented.
+`
+* Text-Based-Search Query using LIKE with wildcard(s)  
+`
+--Not yet implemented.
+`
+* Subquery  
+`
+--Not yet implemented.
+`
+  
 ### ii. Misc (implemented and demonstrated through an appropriate query)
 
-* One Stored Function
-* One Stored Procedure
-* One Trigger
+* Stored Function
+* Stored Procedure
+* Trigger
 
-## 5. A simple, web-based front-end providing links to the appropriate queries
+## V. A simple, web-based front-end providing links to the appropriate queries
 
-N/A
-
-## 6. Group evaluation: completed confidentially and individually
-
-The project will be scored as follows:
-
-1. Project Summary 10%
-2. Final, Logical E-R diagram 10%
-3. Schema, Table design, Relationships, & Data 35%
-4. Supporting Queries and Functionality (including front-end) 35%
-5. Group evaluation 10%
-
-_To submit, please zip and upload your project summary and ER diagram. Also provide a URL and/or instructions about using the front-end. Include any other information I may need for grading. One member of the group can submit this part. Please also complete the confidential group evaluation form in the separate Canvas assignment. Everyone should do this individually._
+See above.

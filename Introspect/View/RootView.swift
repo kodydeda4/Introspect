@@ -43,6 +43,13 @@ struct RootView: View {
                     Label("SQL", systemImage: "curlybraces")
                         .foregroundColor(.accentColor)
                 }
+                NavigationView {
+                    SQLView2()
+                }
+                .tabItem {
+                    Label("SQL 2", systemImage: "externaldrive.fill.badge.plus")
+                        .foregroundColor(.accentColor)
+                }
             }
         }
     }

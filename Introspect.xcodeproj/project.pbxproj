@@ -20,6 +20,7 @@
 		332994232625CEB600618E7E /* PersonalityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332994222625CEB600618E7E /* PersonalityType.swift */; };
 		332C1ECE261E248B001F43B6 /* Progress-Bar in Frameworks */ = {isa = PBXBuildFile; productRef = 332C1ECD261E248B001F43B6 /* Progress-Bar */; };
 		332C1ED1261E2A6B001F43B6 /* Progressbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332C1ED0261E2A6B001F43B6 /* Progressbar.swift */; };
+		335458782642C5A1006AB227 /* SQLView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335458772642C5A1006AB227 /* SQLView2.swift */; };
 		335AEFF2261D31310048ED51 /* AssessmentStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335AEFF1261D31310048ED51 /* AssessmentStartView.swift */; };
 		336A122C2627247300511F80 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 336A122B2627247300511F80 /* DynamicColor */; };
 		336A122F26273AFD00511F80 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A122E26273AFD00511F80 /* String+Extensions.swift */; };
@@ -52,6 +53,7 @@
 		3329941F2625CE4B00618E7E /* AssessmentResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentResultsView.swift; sourceTree = "<group>"; };
 		332994222625CEB600618E7E /* PersonalityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalityType.swift; sourceTree = "<group>"; };
 		332C1ED0261E2A6B001F43B6 /* Progressbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progressbar.swift; sourceTree = "<group>"; };
+		335458772642C5A1006AB227 /* SQLView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLView2.swift; sourceTree = "<group>"; };
 		335AEFF1261D31310048ED51 /* AssessmentStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentStartView.swift; sourceTree = "<group>"; };
 		336A122E26273AFD00511F80 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		336DDC25262489B2008D0C20 /* SQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQL.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				338013A82620883E00F76D0E /* SQLView.swift */,
+				335458772642C5A1006AB227 /* SQLView2.swift */,
 			);
 			path = SQLTab;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				33008249261CF2D300A9427C /* Assessment.swift in Sources */,
 				33742F29261D2E11002B769C /* AssessmentFinishedView.swift in Sources */,
 				332994202625CE4B00618E7E /* AssessmentResultsView.swift in Sources */,
+				335458782642C5A1006AB227 /* SQLView2.swift in Sources */,
 				332994232625CEB600618E7E /* PersonalityType.swift in Sources */,
 				335AEFF2261D31310048ED51 /* AssessmentStartView.swift in Sources */,
 				33742F26261D2DE9002B769C /* AssessmentQuestionView.swift in Sources */,

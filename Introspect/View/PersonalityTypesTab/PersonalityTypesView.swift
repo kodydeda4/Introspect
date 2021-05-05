@@ -23,6 +23,7 @@ struct PersonalityTypesView: View {
                         .bold()
                         .padding(.horizontal)
                         .padding(.bottom, 1)
+                        
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
                     

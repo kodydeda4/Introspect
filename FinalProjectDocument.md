@@ -20,56 +20,59 @@ During development we encountered issues with converting the sql queries into di
 
 ## IV. Supporting Queries and Functionality
 
-### i. SELECT queries that demonstrate
+### 1. Two-Table Join
 
-* Two-Table Join  
-`
+```
 SELECT Assessment.assessmentId, Assessment.questionId
 FROM Assessment
 INNER JOIN Question ON Question.questionId = Assessmet.questionId;
-`
-* Three-Table Join  
-`
+```
+
+### 2. Three-Table Join
+```
 SELECT Assessment.assessmentId, Assessment.questionId
 FROM Assessment
 INNER JOIN Question ON Question.questionId = Assessmet.questionId
 INNER JOIN PersonalitySpectrum ON PersonalitySpectrum.Id = Question.personalitySpectrumId;
-`
-* Self-Join  
-`
+```
+
+### 3. Self-Join
+```
 SELECT A.questionId as Assessment1, B.questionId as Assessment2
 FROM Assessment A, Assessment B
 WHERE A.questionId = B.questionId;
-`
-* Aggregate Function  
-`
+```
+
+### 4. Aggregate Function
+```
 SELECT COUNT(name)
 FROM Person;
-`
-* Aggregate Function using GROUP BY and HAVING  
-`
+```
+
+### 5. Aggregate Function using GROUP BY and HAVING
+```
 SELECT COUNT(name)
 FROM Person
 GROUP BY assessmentResults;
-`
-* Text-Based-Search Query using LIKE with wildcard(s)  
-`
+```
+
+### 6. Text-Based-Search Query using LIKE with wildcard(s)
+```
 SELECT personId
 FROM Person
 WHERE CONTAINS("Alice")
-`
-* Subquery  
-`
+```
+
+### 7. Subquery
+```
 SELECT Assessment.id
 (SELECT MAX(Person.assessmentsTaken)
 FROM PersonAS) as max_person
 FROM Person.assessmentsTaken AS p;
-`
-  
-### ii. Misc (implemented and demonstrated through an appropriate query)
+```
 
-* Stored Function  
-`
+### 8. Stored Function
+```
 CREATE FUNCTION PersonLevel()
   RETURNS VCHAR(15)
   DETERMINISTIC
@@ -86,24 +89,26 @@ CREATE FUNCTION PersonLevel()
       END IF;
       RETURN (personLevel);
   END$$
-`
-* Stored Procedure  
-`
+```
+
+### 9. Stored Procedure
+```
 CREATE PROCEDURE setPersonName
 AS
 UPDATE Person
 SET Person.name = new_name
 where Person.name = old_name;
-`
-* Trigger  
-`
+```
+
+### 10. Trigger
+```
 create trigger assessment_count
 before INSERT
 on
 Assessment
 UPDATE Assessment.Count = Assessment.Count + 1;
-`
+```
 
 ## V. A simple, web-based front-end providing links to the appropriate queries
 
-See above.
+N/A see above

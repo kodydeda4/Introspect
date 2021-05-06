@@ -24,46 +24,84 @@ During development we encountered issues with converting the sql queries into di
 
 * Two-Table Join  
 `
---Not yet implemented.
+SELECT Assessment.assessmentId, Assessment.questionId
+FROM Assessment
+INNER JOIN Question ON Question.questionId = Assessmet.questionId;
 `
 * Three-Table Join  
 `
---Not yet implemented.
+SELECT Assessment.assessmentId, Assessment.questionId
+FROM Assessment
+INNER JOIN Question ON Question.questionId = Assessmet.questionId
+INNER JOIN PersonalitySpectrum ON PersonalitySpectrum.Id = Question.personalitySpectrumId;
 `
 * Self-Join  
 `
---Not yet implemented.
+SELECT A.questionId as Assessment1, B.questionId as Assessment2
+FROM Assessment A, Assessment B
+WHERE A.questionId = B.questionId;
 `
 * Aggregate Function  
 `
---Not yet implemented.
+SELECT COUNT(name)
+FROM Person;
 `
 * Aggregate Function using GROUP BY and HAVING  
 `
---Not yet implemented.
+SELECT COUNT(name)
+FROM Person
+GROUP BY assessmentResults;
 `
 * Text-Based-Search Query using LIKE with wildcard(s)  
 `
---Not yet implemented.
+SELECT personId
+FROM Person
+WHERE CONTAINS("Alice")
 `
 * Subquery  
 `
---Not yet implemented.
+SELECT Assessment.id
+(SELECT MAX(Person.assessmentsTaken)
+FROM PersonAS) as max_person
+FROM Person.assessmentsTaken AS p;
 `
   
 ### ii. Misc (implemented and demonstrated through an appropriate query)
 
 * Stored Function  
 `
---Not yet implemented.
+CREATE FUNCTION PersonLevel()
+  RETURNS VCHAR(15)
+  DETERMINISTIC
+  BEGIN
+      DECLARE personLevel VARCHAR(15);
+
+      IF assessmentsTaken > 10 THEN
+          SET personLevel = '3';
+      ELSEIF (assessmentsTaken >= 5 AND
+                                  assessmentsTaken <= 10) THEN
+          SET personLevel = '2';
+      ELSEIF assessmentsTaken < 10 THEN
+          SET personLevel = '1';
+      END IF;
+      RETURN (personLevel);
+  END$$
 `
 * Stored Procedure  
 `
---Not yet implemented.
+CREATE PROCEDURE setPersonName
+AS
+UPDATE Person
+SET Person.name = new_name
+where Person.name = old_name;
 `
 * Trigger  
 `
---Not yet implemented.
+create trigger assessment_count
+before INSERT
+on
+Assessment
+UPDATE Assessment.Count = Assessment.Count + 1;
 `
 
 ## V. A simple, web-based front-end providing links to the appropriate queries

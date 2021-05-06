@@ -73,6 +73,7 @@ struct SQL {
                 CREATE TABLE Person (
                   personId INTEGER PRIMARY KEY NOT NULL,
                   name TEXT,
+                  assessmentsTaken INTEGER,
                   assessmentResults TEXT NOT NULL
                 );
                   
@@ -80,6 +81,7 @@ struct SQL {
                  assessmentId integer primary key not null,
                  personId integer,
                  questionId integer,
+                 assessmentCount integer,
                  personalityType integer,
                  FOREIGN KEY (questionid) REFERENCES Question(questionId)
                  FOREIGN KEY (personId) REFERENCES Person(personId)
@@ -89,51 +91,89 @@ struct SQL {
 
             case .twoTableJoin:
                 return """
-                -- not yet implemented
+                SELECT Assessment.assessmentId, Assessment.questionId
+                FROM Assessment
+                INNER JOIN Question ON Question.questionId = Assessmet.questionId;
                 """
             case .threeTableJoin:
                 return """
-                -- not yet implemented
+                SELECT Assessment.assessmentId, Assessment.questionId
+                FROM Assessment
+                INNER JOIN Question ON Question.questionId = Assessmet.questionId
+                INNER JOIN PersonalitySpectrum ON PersonalitySpectrum.Id = Question.personalitySpectrumId;
                 """
 
             case .selfJoin:
                 return """
-                -- not yet implemented
+                SELECT A.questionId as Assessment1, B.questionId as Assessment2
+                FROM Assessment A, Assessment B
+                WHERE A.questionId = B.questionId;
                 """
 
             case .aggregateFunction:
                 return """
-                -- not yet implemented
+                SELECT COUNT(name)
+                FROM Person;
                 """
 
             case .aggregateFunctionExtended:
                 return """
-                -- not yet implemented
+                SELECT COUNT(name)
+                FROM Person
+                GROUP BY assessmentResults;
                 """
 
             case .textBasedSearch:
                 return """
-                -- not yet implemented
+                SELECT personId
+                FROM Person
+                WHERE CONTAINS("Alice")
                 """
 
             case .subQuery:
                 return """
-                -- not yet implemented
+                SELECT Assessment.id
+                    (SELECT MAX(Person.assessmentsTaken)
+                     FROM PersonAS) as max_person
+                FROM Person.assessmentsTaken AS p;
                 """
 
             case .storedFunction:
                 return """
-                -- not yet implemented
+                CREATE FUNCTION PersonLevel()
+                RETURNS VCHAR(15)
+                DETERMINISTIC
+                BEGIN
+                    DECLARE personLevel VARCHAR(15);
+
+                    IF assessmentsTaken > 10 THEN
+                        SET personLevel = '3';
+                    ELSEIF (assessmentsTaken >= 5 AND
+                                                assessmentsTaken <= 10) THEN
+                        SET personLevel = '2';
+                    ELSEIF assessmentsTaken < 10 THEN
+                        SET personLevel = '1';
+                    END IF;
+                    RETURN (personLevel);
+                END$$
                 """
 
             case .storedProcedure:
                 return """
-                -- not yet implemented
+                CREATE PROCEDURE setPersonName
+                AS
+                UPDATE Person
+                SET Person.name = new_name
+                where Person.name = old_name;
                 """
 
             case .trigger:
                 return """
-                -- not yet implemented
+                create trigger assessment_count
+                before INSERT
+                on
+                Assessment
+                UPDATE Assessment.Count = Assessment.Count + 1;
                 """
 
             }

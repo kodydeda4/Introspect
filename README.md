@@ -1,10 +1,10 @@
 # 🧩 Myer Briggs
 
-![banner](https://user-images.githubusercontent.com/45678211/116263528-70af8600-a747-11eb-9836-778339326539.png)
+![banner](https://user-images.githubusercontent.com/45678211/119196486-3e4a2d80-ba54-11eb-9426-fb33d5ce5132.png)
 
 ## About Myer Briggs
 
-Myer Briggs is an iOS app for the Myer Briggs personality test. It uses the personality type icons, information, and test questions from <https://www.16personalities.com>. It is the final project for CSC 455 - Database Design & Implementation.
+Myer Briggs is an iOS app for the Myer Briggs personality test. It uses the personality type icons, information, and test questions from <https://www.16personalities.com>.
 
 ## 🧠 16 Types
 

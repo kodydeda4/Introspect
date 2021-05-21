@@ -19,13 +19,11 @@ Myer Briggs is an iOS app for the Myer Briggs personality test. It uses the pers
 ![analysts_0](https://user-images.githubusercontent.com/45678211/116251212-76ec3500-a73c-11eb-8700-a4233babf08c.png)
 ![sentinels_0](https://user-images.githubusercontent.com/45678211/116251236-794e8f00-a73c-11eb-9008-5fd200ad7bcc.png)
 
-
 ## 📖 Assessment
 
 * Animating buttons
 * Progressbar
 * Switch questions with Sheet View
-
 
 ![assessment_start](https://user-images.githubusercontent.com/45678211/116250084-6b4c3e80-a73b-11eb-83d6-ef9e4ead8a14.png)
 ![assessment_q2](https://user-images.githubusercontent.com/45678211/116250081-6b4c3e80-a73b-11eb-8058-d8921f079bff.png)

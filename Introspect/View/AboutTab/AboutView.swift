@@ -14,15 +14,9 @@ struct AboutView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             Form {
-                Section(header: Text("UNCW Fall 2021 | CSC 455")) {
-                    Text("Database Design & Implementation")
-                    Text("Dr Ferner")
-                }
                 Section(header: Text("Team Members")) {
                     ForEach([
                         "Kody Deda",
-                        "Alex Chisolm",
-                        "Basam Ahmed",
                     ], id: \.self) {
                         Text($0)
                     }

@@ -38,13 +38,3 @@ Myer Briggs is an iOS app for the Myer Briggs personality test. It uses the pers
 * Queries saved as Swift enum
 
 ![sql](https://user-images.githubusercontent.com/45678211/116250086-6be4d500-a73b-11eb-90e8-0dd7664816c1.png)
-
-## Team Info
-
-![footer](https://user-images.githubusercontent.com/45678211/116249204-91bdaa00-a73a-11eb-895f-e885b70d89bd.png)
-
-|Team Member    | Contact Email              |
-| ------------- | ---------------------------|
-|Kody Deda      | kodydeda4@gmail.com        |
-|Alex           | alexchisholm343@gmail.com  |
-|BSam           | nil                        |
